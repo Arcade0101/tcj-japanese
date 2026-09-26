@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>キャスト — 日本語ノート</title>
+<meta name="description" content="The three voices of にほんごノート — who they are, how they speak, and what to listen for when casting them.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.intro{max-width:64ch}
+.pair{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);margin:34px 0 0;padding-bottom:6px;
+  border-bottom:1px solid var(--line)}
+
+.card{border:1px solid var(--line);background:var(--surface);margin:16px 0 0;
+  border-left:3px solid var(--indigo);padding:20px 22px}
+.card.ja{border-left-color:var(--vermilion)}
+
+.hdr{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.hdr .nm{font-family:var(--ja);font-size:26px;font-weight:600;line-height:1.2}
+.hdr .rl{font-family:var(--en);font-size:13.5px;color:var(--muted);font-weight:500}
+.hdr .tag{margin-left:auto;font-family:var(--en);font-size:10.5px;font-weight:600;
+  letter-spacing:.07em;padding:3px 9px;border-radius:3px;white-space:nowrap;
+  border:1px solid color-mix(in srgb,var(--indigo) 40%,var(--line));color:var(--indigo)}
+.card.ja .hdr .tag{border-color:color-mix(in srgb,var(--vermilion) 45%,var(--line));color:var(--vermilion)}
+
+.line{font-family:var(--ja);font-size:17px;line-height:1.8;margin:14px 0 0;
+  padding:12px 15px;background:var(--paper);border:1px solid var(--line-soft)}
+.line .who{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--faint);display:block;margin-bottom:4px}
+.card.en .line{font-family:var(--en);font-size:15.5px;line-height:1.65}
+
+.rows{display:grid;grid-template-columns:118px 1fr;gap:9px 18px;margin:16px 0 0;font-size:14.5px}
+.rows dt{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);padding-top:3px}
+.rows dd{margin:0;line-height:1.6}
+.rows dd .ja{font-family:var(--ja);font-size:15.5px}
+.never{color:var(--vermilion)}
+
+.cast-note{margin:16px 0 0;padding:13px 16px;background:var(--indigo-soft);
+  border:1px solid color-mix(in srgb,var(--indigo) 22%,transparent);font-size:14px}
+.card.ja .cast-note{background:var(--vermilion-soft);
+  border-color:color-mix(in srgb,var(--vermilion) 25%,transparent)}
+.cast-note .lbl{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--indigo);display:block;margin-bottom:5px}
+.card.ja .cast-note .lbl{color:var(--vermilion)}
+.cast-note b{font-weight:600}
+
+.dyn{margin:34px 0 0;padding:18px 20px;border:1px solid var(--line);background:var(--surface)}
+.dyn h2{font-family:var(--ja);font-size:17px;font-weight:600;margin:0 0 12px}
+.dyn p{margin:0 0 10px;font-size:14.5px;line-height:1.7}
+.dyn p:last-child{margin:0}
+
+@media (max-width:640px){
+  .card{padding:16px 15px}
+  .hdr .nm{font-size:22px}
+  .hdr .tag{margin-left:0}
+  .rows{grid-template-columns:1fr;gap:2px 0}
+  .rows dt{padding-top:10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="sitenav"><div class="sitenav-in">
+  <a class="home" href="./">日本語ノート</a>
+  <button class="hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="navlinks" id="navLinks">
+    <button class="searchbtn searchbtn-menu" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span class="lbl">さがす</span><kbd>⌘K</kbd>
+    </button>
+    <a class="nl" href="./">週ごと <small>WEEKS</small></a>
+    <a class="nl" href="grammar.html">文法 <small>GRAMMAR</small></a>
+    <a class="nl" href="kanji.html">漢字 <small>KANJI</small></a>
+    <a class="nl" href="vocab.html">ことば <small>VOCAB</small></a>
+    <a class="nl" href="2026-09-14/podcast.html">ポッドキャスト <small>AUDIO</small></a>
+  </div>
+  <button class="searchbtn searchbtn-top" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <span class="lbl">さがす</span><kbd>⌘K</kbd>
+  </button>
+</div></nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>キャスト — the three voices</h1>
+    <p class="sub intro">Who these people are, how they talk, and what to listen for when casting
+      them. Written for auditioning voices: "a Japanese male voice" is useless direction —
+      "calm, unflappable, the person you'd want to call when you're running late" is something
+      you can actually judge a sample against.</p>
+    <div class="rule"></div>
+  </div>
+
+  <p class="pair">The host — English only · he frames the skit</p>
+
+  <article class="card en">
+    <div class="hdr">
+      <span class="nm">Ben</span>
+      <span class="rl">Narrator — sets up the skit, doesn't teach it</span>
+      <span class="tag">English only</span>
+    </div>
+    <div class="line"><span class="who">sounds like</span>Welcome to Episode 1. I'm Ben.</div>
+    <dl class="rows">
+      <dt>Role</dt><dd>Bookends the skit. He opens by saying who's in it and what to listen for, steps back entirely for the Japanese, then closes with a one-line recap.</dd>
+      <dt>Drives by</dt><dd><b>Giving the listener something to listen for</b> — not a personal story, a listening prompt: who's talking, what's going on, what to pay attention to.</dd>
+      <dt>Personality</dt><dd>Plain, clear, welcoming. No verbal tics or asides — the point is to get out of the way before the skit starts.</dd>
+      <dt>Speech</dt><dd>Short, direct sentences. States the situation, then hands off: "Alright, let's listen."</dd>
+      <dt class="never">Never</dt><dd class="never">Speaks Japanese. Announces a grammar point or vocabulary word. Explains what a line meant.</dd>
+    </dl>
+    <div class="cast-note">
+      <span class="lbl">Casting</span>
+      Male, <b>warm but mature</b> — measured, pleasant to listen to for the whole episode, a little
+      gravel in it. English only, so the delivery carries the whole episode's personality on its own
+      instead of splitting it across two hosts.
+    </div>
+  </article>
+
+  <p class="pair">The skit — Japanese · they perform</p>
+
+  <article class="card ja">
+    <div class="hdr">
+      <span class="nm">はる</span>
+      <span class="rl">Haru — things happen to her</span>
+      <span class="tag">Japanese only</span>
+    </div>
+    <div class="line"><span class="who">sounds like</span>すみません、電車の事故があったので、少し遅れます。</div>
+    <dl class="rows">
+      <dt>Age</dt><dd>Twenties. Working and studying — the situations the listener is actually in.</dd>
+      <dt>Role</dt><dd>The one with the problem. She's late, she's unwell, she needs to ask for something. Every episode's grammar arrives through her needing it.</dd>
+      <dt>Personality</dt><dd>Lively, polite, a little flustered but entirely competent. Apologises properly and moves on.</dd>
+      <dt>Speech</dt><dd>Natural polite Japanese with the hesitations real speech has — <span class="ja">あの…</span> · <span class="ja">実は…</span> · <span class="ja">はい……</span></dd>
+      <dt class="never">Never</dt><dd class="never">Speaks English. Narrates. Explains grammar. Reads romaji.</dd>
+    </dl>
+    <div class="cast-note">
+      <span class="lbl">Casting</span>
+      <b>ja-JP female, twenties.</b> Natural and lively. Must survive sounding slightly stressed
+      without turning shrill. Reject anything that reads like a station announcement — the test
+      line is a phone call, not a broadcast.
+    </div>
+  </article>
+
+  <article class="card ja">
+    <div class="hdr">
+      <span class="nm">ゆき</span>
+      <span class="rl">Yuki — the steady one</span>
+      <span class="tag">Japanese only</span>
+    </div>
+    <div class="line"><span class="who">sounds like</span>わかりました。無理しないでくださいね。</div>
+    <dl class="rows">
+      <dt>Age</dt><dd>Thirties. A few years ahead of Haru, wherever they happen to be.</dd>
+      <dt>Role</dt><dd>Receives. Reassures. Occasionally advises. He's the person you'd want to be calling when you're running late.</dd>
+      <dt>Personality</dt><dd>Calm, kind, unflappable. Takes problems as information rather than drama.</dd>
+      <dt>Speech</dt><dd>Measured polite Japanese, unhurried. <span class="ja">そうですか。大丈夫ですか。</span> · <span class="ja">もちろんです。</span></dd>
+      <dt class="never">Never</dt><dd class="never">Speaks English. Panics. Lectures Haru. Sounds like a narrator.</dd>
+    </dl>
+    <div class="cast-note">
+      <span class="lbl">Casting</span>
+      <b>ja-JP male, thirties.</b> Standard Tokyo accent, clear articulation, steady pacing.
+      The trap here is narrator voices — they're abundant and they sound wrong the moment
+      he's meant to be a colleague picking up the phone.
+    </div>
+  </article>
+
+  <div class="dyn">
+    <h2>どうしが — how they work together</h2>
+    <p><b>Ben frames, the skit shows.</b> He opens by naming who's talking and what to listen for,
+      steps back entirely for the skit, then closes with a one-line recap of what happened. He
+      never explains a grammar point or names a pattern — nothing is taught directly, the skit
+      teaches itself.</p>
+    <p><b>Haru needs something, Yuki responds.</b> Every skit is a small transaction — an apology,
+      a request, a piece of bad news. The grammar of the week is whatever that transaction requires.</p>
+    <p><b>The layers never mix.</b> Ben and the skit characters exist in different layers: he
+      talks <em>about</em> the skit, never to it, and he's English-only where they're
+      Japanese-only. The casting is fixed for the series — Haru is always the female Japanese
+      voice, Yuki always the male — but what they are to each other changes per episode:
+      colleagues here, classmates or friends later. Write the relationship into the skit, never
+      into the voice.</p>
+  </div>
+
+  <footer class="site">
+    <p>Casting constraints and voice IDs: <a href="https://github.com/Arcade0101/tcj-japanese/blob/main/docs/VOICES.md">docs/VOICES.md</a></p>
+    <p>復習シートと テストは じゅぎょうの ノートです。きょうかしょ そのものは ふくまれて いません。</p>
+  </footer>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

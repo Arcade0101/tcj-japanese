@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日本語ノート</title>
+<meta name="description" content="TCJ の じゅぎょうの 復習シートと たしかめテスト — weekly Japanese study sheets with furigana and English.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.hero{padding:40px 0 0}
+.hero h1{font-family:var(--ja);font-size:36px;font-weight:600;margin:0;letter-spacing:.02em}
+.hero .sub{font-size:14.5px;color:var(--muted);margin:7px 0 0;max-width:58ch}
+.hero .rule{height:2px;background:var(--ink);margin:20px 0 0}
+
+/* primary: this week */
+.now{margin:26px 0 0;border:1px solid var(--line);background:var(--surface);border-left:3px solid var(--vermilion)}
+.now-in{padding:20px 22px}
+.now .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--vermilion)}
+.now .range{font-family:var(--ja);font-size:24px;font-weight:600;margin:6px 0 0}
+.now .book{font-size:12px;color:var(--faint);font-family:var(--en);margin-top:3px}
+.now .cando{font-family:var(--ja);font-size:14.5px;color:var(--muted);margin:9px 0 0}
+.now-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+.now-actions a{
+  flex:1 1 150px;display:flex;flex-direction:column;gap:2px;text-decoration:none;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  padding:12px 15px;transition:border-color .15s,background .15s;
+}
+.now-actions a:hover{border-color:var(--indigo);background:var(--indigo-soft)}
+.now-actions a .t{font-family:var(--ja);font-size:15px}
+.now-actions a .n{font-family:var(--mono);font-size:10.5px;opacity:.75}
+.now-tags{display:flex;flex-wrap:wrap;gap:5px;margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line-soft)}
+.now-tags span{font-family:var(--ja);font-size:12.5px;padding:2px 8px;border-radius:2px;color:var(--ink)}
+.now-tags .g{background:var(--hl-p)}
+.now-tags .k{background:var(--hl-y)}
+.now-tags .v{background:var(--hl-b)}
+
+/* secondary: cumulative index */
+.year{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;
+      color:var(--faint);margin:40px 0 0}
+.jump{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+      background:var(--line);border:1px solid var(--line);margin:12px 0 0}
+.jump a{background:var(--surface);padding:13px 15px;text-decoration:none;color:var(--ink);
+        display:block;transition:background .15s}
+.jump a:hover{background:var(--indigo-soft)}
+.jump a:focus-visible{outline:2px solid var(--vermilion);outline-offset:-2px}
+.jump .t{display:block;font-family:var(--ja);font-size:15px;font-weight:600}
+.jump .d{display:block;font-family:var(--en);font-size:11.5px;color:var(--muted);margin-top:2px}
+.jump .n{display:block;font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:5px}
+
+.next{margin:26px 0 0;padding:16px 18px;border:1px dashed var(--line);color:var(--faint);
+      font-family:var(--ja);font-size:14.5px;text-align:center}
+
+@media (min-width:1000px){
+  .now-in{padding:28px 32px}
+  .now .range{font-size:28px}
+  .now-actions a{padding:16px 18px}
+  .now-actions a .t{font-size:16px}
+}
+@media (max-width:640px){
+  .hero{padding-top:28px}
+  .hero h1{font-size:28px}
+  .now-in{padding:16px 17px}
+  .jump{grid-template-columns:1fr}
+  .jump a{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;padding:12px 14px}
+  .jump .t{flex:none}
+  .jump .d{margin-top:0;flex:1 1 auto}
+  .jump .n{margin-top:0;flex:none;margin-left:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="sitenav"><div class="sitenav-in">
+  <a class="home" href="./">日本語ノート</a>
+  <button class="hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="navlinks" id="navLinks">
+    <button class="searchbtn searchbtn-menu" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span class="lbl">さがす</span><kbd>⌘K</kbd>
+    </button>
+    <a class="nl" href="./" aria-current="page">週ごと <small>WEEKS</small></a>
+    <a class="nl" href="grammar.html">文法 <small>GRAMMAR</small></a>
+    <a class="nl" href="kanji.html">漢字 <small>KANJI</small></a>
+    <a class="nl" href="vocab.html">ことば <small>VOCAB</small></a>
+    <a class="nl" href="2026-09-14/podcast.html">ポッドキャスト <small>AUDIO</small></a>
+  </div>
+  <button class="searchbtn searchbtn-top" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <span class="lbl">さがす</span><kbd>⌘K</kbd>
+  </button>
+</div></nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>日本語ノート</h1>
+    <p class="sub">TCJ · O-ML2511 — weekly review sheets and practice tests, with full furigana and English.</p>
+    <div class="rule"></div>
+  </div>
+
+  <article class="now">
+    <div class="now-in">
+      <span class="eyebrow">this week</span>
+      <div class="range ja">9月14日 – 18日</div>
+      <div class="book">いっぽ にほんご さんぽ 3 P62–65 · ひらく にほんご U173–178</div>
+      <p class="cando">〜ので で りゆうを ていねいに 言う／〜ても で はんたいの けっかを 言う／〜すぎ と かもしれません</p>
+      <div class="now-actions">
+        <a href="2026-09-14/podcast.html"><span class="t">ポッドキャスト</span><span class="n">第1回 · 2分19秒</span></a>
+        <a href="2026-09-14/review.html"><span class="t">復習シート</span><span class="n">Review sheet</span></a>
+        <a href="2026-09-14/quiz.html"><span class="t">たしかめテスト</span><span class="n">50問 · 90% で ごうかく</span></a>
+      </div>
+      <div class="now-tags">
+        <span class="g">〜たほうがいい</span><span class="g">〜ので</span><span class="g">から / ので</span>
+        <span class="g">〜場合は</span><span class="g">〜ないで</span><span class="g">〜ても</span>
+        <span class="g">〜すぎ</span><span class="g">かもしれません</span>
+        <span class="k">駅</span><span class="k">電</span><span class="k">急</span><span class="v">道</span><span class="v">乗</span>
+      </div>
+    </div>
+  </article>
+
+  <p class="year">ぜんぶの さくいん</p>
+  <nav class="jump" aria-label="Cumulative references">
+    <a href="grammar.html"><span class="t">文法</span><span class="d">All grammar so far</span><span class="n">12 パターン</span></a>
+    <a href="kanji.html"><span class="t">漢字</span><span class="d">Readings and compounds</span><span class="n">5 字</span></a>
+    <a href="vocab.html"><span class="t">ことば</span><span class="d">Searchable, with self-test</span><span class="n">52 ことば</span></a>
+  </nav>
+
+  <p class="next">つぎの じゅぎょう — 9月25日（金）p.16–18 ／ 柔らかい表現で 指示を 聞いたり 伝えたり する</p>
+
+  <footer class="site">
+    <p>復習シートと テストは じゅぎょうの ノートです。きょうかしょ そのものは ふくまれて いません。</p>
+    <p>Study notes only — no textbook or class material is reproduced here.</p>
+  </footer>
+
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

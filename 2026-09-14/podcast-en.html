@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[archived] ポッドキャスト 第1回「〜ので」(English narration)</title>
+<meta name="description" content="にほんごノート 第1回 — 〜ので。9月14日の文法を、聞いて練習する。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.player{position:sticky;top:var(--nav-h);z-index:20;background:var(--surface);
+  border:1px solid var(--line);border-left:3px solid var(--vermilion);padding:15px 17px;margin:20px 0 0}
+.player audio{width:100%;margin-top:11px}
+.player .meta{font-family:var(--en);font-size:12.5px;color:var(--muted);margin-top:8px;
+  display:flex;gap:14px;flex-wrap:wrap}
+.speeds{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.speeds button{font-family:var(--en);font-size:12.5px;padding:6px 12px;min-height:34px;cursor:pointer;
+  border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:999px}
+.speeds button[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:var(--paper)}
+.speeds button:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+
+.seg{margin:26px 0 0;padding-top:18px;border-top:1px solid var(--line-soft)}
+.seg h2{font-family:var(--ja);font-size:16px;font-weight:600;margin:0 0 12px;color:var(--indigo)}
+.seg.drill h2::after{content:" れんしゅう";font-family:var(--en);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--vermilion);margin-left:8px}
+.l{display:grid;grid-template-columns:62px 1fr;gap:12px;margin:0 0 10px;align-items:baseline}
+.l .who{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--faint);padding-top:3px}
+.l.ja .who{color:var(--vermilion)}
+.l .t{line-height:1.75}
+.l.ja .t{font-family:var(--ja);font-size:17px;line-height:1.95}
+.l.host .t{font-size:15px;color:var(--muted)}
+.pause{font-family:var(--en);font-size:11.5px;letter-spacing:.1em;color:var(--faint);
+  text-align:center;margin:12px 0;padding:6px 0;border-top:1px dashed var(--line);
+  border-bottom:1px dashed var(--line)}
+@media (max-width:640px){
+  .l{grid-template-columns:1fr;gap:2px}
+  .l .who{padding-top:0}
+  .player{position:static}
+}
+</style>
+</head>
+<body>
+
+<div style="max-width:940px;margin:0 auto;padding:10px 20px 0">
+  <div style="font-family:var(--en);font-size:12.5px;background:var(--vermilion-soft);color:var(--vermilion);
+    border:1px solid var(--vermilion);padding:9px 13px;border-radius:2px">
+    Archived — replaced by the <a href="podcast.html" style="color:inherit;text-decoration:underline">Japanese-narrated episode</a>. Kept here for reference only, not linked from the site nav.
+  </div>
+</div>
+
+<nav class="sitenav"><div class="sitenav-in">
+  <a class="home" href="../">日本語ノート</a>
+  <button class="hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="navlinks" id="navLinks">
+    <button class="searchbtn searchbtn-menu" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span class="lbl">さがす</span><kbd>⌘K</kbd>
+    </button>
+    <a class="nl" href="../">週ごと <small>WEEKS</small></a>
+    <a class="nl" href="../grammar.html">文法 <small>GRAMMAR</small></a>
+    <a class="nl" href="../kanji.html">漢字 <small>KANJI</small></a>
+    <a class="nl" href="../vocab.html">ことば <small>VOCAB</small></a>
+    <a class="nl" href="podcast.html">ポッドキャスト <small>AUDIO</small></a>
+  </div>
+  <button class="searchbtn searchbtn-top" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <span class="lbl">さがす</span><kbd>⌘K</kbd>
+  </button>
+</div></nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>にほんごノート 第1回「〜ので」</h1>
+    <p class="sub">9月14日の文法。りゆうを ていねいに 言う 言い方を、聞いて、いっしょに 言って、おぼえます。
+    <a href="review.html" style="color:var(--indigo)">復習シート</a> ·
+    <a href="quiz.html" style="color:var(--indigo)">たしかめテスト</a> · <a href="../cast.html" style="color:var(--indigo)">キャスト</a></p>
+    <div class="rule"></div>
+  </div>
+
+  <div class="player">
+    <audio controls preload="metadata" src="../podcast/ep01/episode1-node.mp3"></audio>
+    <div class="speeds" id="speeds">
+      <button data-r="0.75">0.75×</button>
+      <button data-r="1" aria-pressed="true">1×</button>
+      <button data-r="1.25">1.25×</button>
+      <button data-r="1.5">1.5×</button>
+    </div>
+    <div class="meta"><span>5分50秒</span><span>Ben · Nessa · はる · ゆき</span></div>
+  </div>
+
+<section class="seg">
+<h2>1. オープニング</h2>
+<p class="l host"><span class="who">Ben</span><span class="t">Hello, and welcome to Episode 1 of the TCJ review study materials. I&#x27;m Ben.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">And I&#x27;m Nessa.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">In a few minutes you&#x27;ll be able to phone an office in Japan and say you&#x27;re running late. Politely. Even if this is the first Japanese you have ever heard.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">We mean that literally. One small word does most of the work.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Here it is.</span></p>
+</section>
+<section class="seg">
+<h2>2. きょうの ことば</h2>
+<p class="l ja"><span class="who">はる</span><span class="t">ので。</span></p>
+<p class="l ja"><span class="who">Ben</span><span class="t">ので。</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Two beats — hard to miss once you know it.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">ので。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">It means &quot;because.&quot; But it sits in a different place than in English.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">We give the result first — &quot;I&#x27;ll be late, because there&#x27;s been an accident.&quot;</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Japanese flips it. The reason comes first, and &quot;node&quot; sits in the middle, like a hinge.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Reason. Node. Result.</span></p>
+</section>
+<section class="seg">
+<h2>3. つくって みよう</h2>
+<p class="l host"><span class="who">Ben</span><span class="t">Let&#x27;s put one together — reason: I have a fever.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">熱がある。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">That&#x27;s the fever part.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Now hook our word onto the end.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">熱があるので。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">&quot;Because I have a fever.&quot;</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">And the result — I&#x27;m taking the day off school.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">学校を休みます。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">&quot;I&#x27;m taking the day off school.&quot;</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Now put it all together.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">熱があるので、学校を休みます。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">&quot;I have a fever, so I&#x27;m taking the day off school.&quot; There you go — a complete sentence.</span></p>
+</section>
+<section class="seg drill">
+<h2>4. いっしょに いって みましょう</h2>
+<p class="l host"><span class="who">Ben</span><span class="t">Let&#x27;s try the first half.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">熱があるので。</span></p>
+<p class="pause">— 3 びょう —</p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Nice. One more time.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">熱があるので。</span></p>
+<p class="pause">— 3 びょう —</p>
+<p class="l host"><span class="who">Ben</span><span class="t">There you go. Now the whole sentence.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">熱があるので、学校を休みます。</span></p>
+<p class="pause">— 5 びょう —</p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Once more.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">熱があるので、学校を休みます。</span></p>
+<p class="pause">— 5 びょう —</p>
+<p class="l host"><span class="who">Ben</span><span class="t">Keep that one. Swap the ending and it works for school, for work, almost anything.</span></p>
+</section>
+<section class="seg">
+<h2>5. スキット</h2>
+<p class="l ja"><span class="who">はる</span><span class="t">もしもし、田中さんですか。はるです。おはようございます。</span></p>
+<p class="l ja"><span class="who">ゆき</span><span class="t">あ、はるさん。おはようございます。</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">すみません、電車の事故があったので、少し遅れます。</span></p>
+<p class="l ja"><span class="who">ゆき</span><span class="t">そうですか。大丈夫ですか。</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">はい。今、新宿にいるので、あと三十分くらいかかります。</span></p>
+<p class="l ja"><span class="who">ゆき</span><span class="t">わかりました。事故で電車が止まっているので、みんな遅れていますよ。</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">ありがとうございます。申し訳ありません。</span></p>
+<p class="l ja"><span class="who">ゆき</span><span class="t">今日は雨なので、道も混んでいます。気をつけてください。</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">はい。あ、それから……実は、まだ熱が下がらないので、今日は早退してもいいですか。</span></p>
+<p class="l ja"><span class="who">ゆき</span><span class="t">もちろんです。無理しないでくださいね。</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">ありがとうございます。失礼します。</span></p>
+</section>
+<section class="seg">
+<h2>6. わかりましたか</h2>
+<p class="l host"><span class="who">Ben</span><span class="t">Four sentences from that call — let&#x27;s break them down.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">電車の事故があったので、少し遅れます。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">&quot;There&#x27;s been a train accident, so I&#x27;ll be a little late.&quot; Reason, node, result — the same hinge you already know.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">That&#x27;s the sentence to keep.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Next one.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">今、新宿にいるので、あと三十分くらいかかります。</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">&quot;I&#x27;m in Shinjuku right now, so it&#x27;ll take another thirty minutes.&quot; Same shape again.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">実は、まだ熱が下がらないので、今日は早退してもいいですか。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">&quot;My fever still hasn&#x27;t gone down, so would it be all right if I left early?&quot;</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Notice what she&#x27;s doing there — she isn&#x27;t explaining herself, she&#x27;s asking permission.</span></p>
+</section>
+<section class="seg">
+<h2>7. ひとつだけ きをつけて</h2>
+<p class="l host"><span class="who">Ben</span><span class="t">There&#x27;s one exception worth knowing.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Most of the time you just stick node on the end and you&#x27;re done.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">熱があるので。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Nothing added. &quot;Because I have a fever.&quot;</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">But when the word in front of node is a <em>thing</em> — rain, Sunday, ten o&#x27;clock — you slip a small &quot;na&quot; in first.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">雨なので。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">&quot;Because it&#x27;s raining.&quot;</span></p>
+<p class="l ja"><span class="who">Ben</span><span class="t">あめだので。</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Not that one.</span></p>
+<p class="l ja"><span class="who">Ben</span><span class="t">あめなので。</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">That one.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">便利なので。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">&quot;Because it&#x27;s convenient.&quot;</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">That little &quot;na&quot; is the one to remember.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">You already heard it in the skit.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">会議は十時からなので。</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Same &quot;na&quot; — because the meeting is at ten.</span></p>
+</section>
+<section class="seg drill">
+<h2>8. もう いちど いっしょに</h2>
+<p class="l host"><span class="who">Ben</span><span class="t">Last practice, then we&#x27;ll hear the whole call again.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">The key sentence first, in pieces.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">電車の、事故が、あったので、少し、遅れます。</span></p>
+<p class="pause">— 6 びょう —</p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Nice. Now at normal speed.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">電車の事故があったので、少し遅れます。</span></p>
+<p class="pause">— 5 びょう —</p>
+<p class="l host"><span class="who">Ben</span><span class="t">And the two with &quot;na&quot;. Rain first.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">雨なので。</span></p>
+<p class="pause">— 3 びょう —</p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Then convenient.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">便利なので。</span></p>
+<p class="pause">— 3 びょう —</p>
+<p class="l host"><span class="who">Ben</span><span class="t">Now let&#x27;s hear it in a real conversation — see if you can catch it every time it comes up.</span></p>
+</section>
+<section class="seg">
+<h2>9. スキット（もう一度）</h2>
+</section>
+<section class="seg">
+<h2>10. きょうの ことば</h2>
+<p class="l host"><span class="who">Ben</span><span class="t">Four words from that call, straight out of your Unit 173 list.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">具合。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">How your body is doing.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">具合が悪いです。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">&quot;I don&#x27;t feel well.&quot;</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Next.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">顔色。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Literally face-colour — your complexion.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">顔色が悪いですね。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">&quot;You look pale.&quot; It&#x27;s what a colleague says when they&#x27;re worried about you.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">And two more.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">早退します。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">To leave early, from work or from school.</span></p>
+<p class="l ja"><span class="who">はる</span><span class="t">熱が下がります。</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">A fever goes down. Not gets smaller — it comes down.</span></p>
+</section>
+<section class="seg">
+<h2>11. ひとこと</h2>
+<p class="l host"><span class="who">Ben</span><span class="t">One last thing about that phone call.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">Haru didn&#x27;t only say she&#x27;d be late. Near the end of the call, she used a fuller, more formal apology than the one she opened with.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">In a Japanese workplace the apology carries as much weight as the reason. And notice how short she kept the reason. There&#x27;d been a train accident. That was all.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">She didn&#x27;t say which line, or how long she&#x27;d been standing on the platform.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">Because a long explanation starts to sound like an excuse. Give the reason, apologise, move on.</span></p>
+</section>
+<section class="seg">
+<h2>12. まとめ</h2>
+<p class="l host"><span class="who">Ben</span><span class="t">So. Reason, node, result. You don&#x27;t need to get it perfect yet — say it a few more times and it&#x27;ll come naturally.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">And if the word in front is a thing, slip in a &quot;na&quot; first.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">That&#x27;s the episode. Next time: &quot;temo&quot; — even if it rains, I&#x27;m going.</span></p>
+<p class="l host"><span class="who">Nessa</span><span class="t">See you then. I&#x27;m Nessa.</span></p>
+<p class="l host"><span class="who">Ben</span><span class="t">And I&#x27;m Ben. Take care of yourself.</span></p>
+</section>
+
+  <footer class="site">
+    <p>復習シートと テストは じゅぎょうの ノートです。きょうかしょ そのものは ふくまれて いません。</p>
+    <p>Study notes only — no textbook or class material is reproduced here.</p>
+  </footer>
+</div>
+
+<script>
+var a=document.querySelector("audio");
+document.getElementById("speeds").addEventListener("click",function(e){
+  var b=e.target.closest("button"); if(!b)return;
+  a.playbackRate=parseFloat(b.dataset.r);
+  [].forEach.call(this.children,function(x){x.setAttribute("aria-pressed",String(x===b));});
+});
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

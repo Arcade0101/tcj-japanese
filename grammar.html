@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文法まとめ — 日本語ノート</title>
+<meta name="description" content="Every grammar point from my TCJ classes, with formation, notes and examples.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.glist{margin:20px 0 0;display:flex;flex-direction:column;gap:14px}
+.gday{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--faint);
+      margin:18px 0 -4px;scroll-margin-top:calc(var(--nav-h) + 14px)}
+.gday:first-child{margin-top:0}
+.gitem{border:1px solid var(--line);background:var(--surface);border-left:3px solid var(--indigo);padding:15px 17px;
+       transition:border-color .15s}
+.gitem.is-new{border-left-color:var(--vermilion)}
+.gitem .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.gitem .pat{font-family:var(--ja);font-size:21px;font-weight:600;line-height:1.4}
+.gitem .en{font-family:var(--en);font-size:14px;color:var(--muted);font-weight:500}
+.gitem .meta{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.gitem .src{font-family:var(--mono);font-size:10.5px;color:var(--faint);white-space:nowrap}
+.form{font-family:var(--ja);font-size:16px;line-height:1.85;margin:11px 0 0;
+      padding:10px 13px;background:var(--paper);border:1px solid var(--line-soft)}
+.form b{font-weight:600;background:var(--hl-y);padding:0 .15em;border-radius:2px;color:var(--ink)}
+.gitem .note{font-family:var(--en);font-size:13.5px;color:var(--muted);margin:9px 0 0}
+.gitem .note b{font-family:var(--ja);color:var(--ink);font-weight:600}
+.exs{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.exs li{padding-left:13px;border-left:1px solid var(--line)}
+.exs .ja{font-size:16px;line-height:1.9}
+.exs .en{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+em.k{font-style:normal;font-weight:600;color:var(--vermilion)}
+em.k2{font-style:normal;font-weight:600;color:var(--indigo)}
+@media (max-width:640px){
+  .gitem{padding:13px 14px}
+  .gitem .pat{font-size:19px}
+  .gitem .meta{margin-left:0;width:100%}
+  .form{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<nav class="sitenav"><div class="sitenav-in">
+  <a class="home" href="./">日本語ノート</a>
+  <button class="hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="navlinks" id="navLinks">
+    <button class="searchbtn searchbtn-menu" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span class="lbl">さがす</span><kbd>⌘K</kbd>
+    </button>
+    <a class="nl" href="./">週ごと <small>WEEKS</small></a>
+    <a class="nl" href="grammar.html" aria-current="page">文法 <small>GRAMMAR</small></a>
+    <a class="nl" href="kanji.html">漢字 <small>KANJI</small></a>
+    <a class="nl" href="vocab.html">ことば <small>VOCAB</small></a>
+    <a class="nl" href="2026-09-14/podcast.html">ポッドキャスト <small>AUDIO</small></a>
+  </div>
+  <button class="searchbtn searchbtn-top" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <span class="lbl">さがす</span><kbd>⌘K</kbd>
+  </button>
+</div></nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>文法まとめ</h1>
+    <p class="sub">Every grammar point so far, with how it's built and what it's for. Search in Japanese or English, or filter by the day it was taught.</p>
+    <div class="rule"></div>
+  </div>
+
+  <div class="filters">
+    <input type="search" id="q" placeholder="さがす — ので / even if / too much …" aria-label="Search grammar">
+    <div class="chipset" id="days">
+      <button data-day="all" aria-pressed="true">ぜんぶ</button>
+      <button data-day="9/14" aria-pressed="false">9/14</button>
+      <button data-day="9/16" aria-pressed="false">9/16</button>
+      <button data-day="9/18" aria-pressed="false">9/18</button>
+    </div>
+  </div>
+  <p class="tally" id="tally"></p>
+</div>
+
+<div class="layout has-rail">
+  <div class="layout-main">
+    <div class="wrap" style="padding-top:0">
+      <div class="glist" id="list"></div>
+      <p class="noresult" id="none" hidden>みつかりませんでした。 — Nothing matched.</p>
+      <footer class="site">
+        <p>復習シートと テストは じゅぎょうの ノートです。きょうかしょ そのものは ふくまれて いません。</p>
+        <p>Study notes only — no textbook or class material is reproduced here.</p>
+      </footer>
+    </div>
+  </div>
+  <aside class="rail">
+    <p class="rail-title">day</p>
+    <a href="#day-9-14">9/14 — 4パターン</a>
+    <a href="#day-9-16">9/16 — 4パターン</a>
+    <a href="#day-9-18">9/18 — 4パターン</a>
+  </aside>
+</div>
+
+<script>
+var G=[
+{p:"〜た ほうが いいです",en:"you'd better ~ / it'd be better to ~",day:"9/14",src:"いっぽ3 P58",nw:0,
+ f:"V<b>た形</b> ＋ ほうが いいです",
+ note:"アドバイス。<b>じしょ形ではなく た形</b>を つかいます。✗ 寝るほうがいいです",
+ ex:[["<ruby>会社<rt>かいしゃ</rt></ruby>を<ruby>休<rt>やす</rt></ruby><em class='k2'>んだ</em>ほうが いいです。","You'd better take the day off work."],
+     ["<ruby>明日<rt>あした</rt></ruby>は テストですから、<ruby>早<rt>はや</rt></ruby>く<ruby>寝<rt>ね</rt></ruby><em class='k2'>た</em>ほうが いいです。","You have a test tomorrow, so you'd better sleep early."],
+     ["<ruby>熱<rt>ねつ</rt></ruby>が あったら、<ruby>病院<rt>びょういん</rt></ruby>へ<ruby>行<rt>い</rt></ruby><em class='k2'>った</em>ほうが いいです。","If you have a fever, you'd better go to hospital."]]},
+
+{p:"〜ない ほうが いいです",en:"you'd better not ~",day:"9/14",src:"いっぽ3 P58",nw:0,
+ f:"V<b>ない形</b> ＋ ほうが いいです",
+ note:"<b>ない形</b>のまま ほうがいいです を つけます。",
+ ex:[["ケーキを<ruby>食<rt>た</rt></ruby>べ<em class='k'>ない</em>ほうが いいです。","You'd better not eat cake."],
+     ["<ruby>疲<rt>つか</rt></ruby>れて いたら、<ruby>運転<rt>うんてん</rt></ruby>し<em class='k'>ない</em>ほうが いいです。","If you're tired, you'd better not drive."],
+     ["<ruby>転<rt>ころ</rt></ruby>びますから、<ruby>走<rt>はし</rt></ruby>ら<em class='k'>ない</em>ほうが いいです。","You'll fall over, so you'd better not run."]]},
+
+{p:"〜ので",en:"because ~ (polite)",day:"9/14",src:"いっぽ3 P62–63",nw:1,
+ f:"<ruby>普通形<rt>ふつうけい</rt></ruby> ＋ <b>ので</b>　／　な<ruby>形容詞<rt>けいようし</rt></ruby> ＋ <b>な</b> ＋ ので　／　<ruby>名詞<rt>めいし</rt></ruby> ＋ <b>な</b> ＋ ので",
+ note:"<ruby>動詞<rt>どうし</rt></ruby>と い形容詞は ふつう形そのまま。<b>な形容詞と名詞だけ な が入る</b>。✗ 便利だので ✗ 雨だので",
+ ex:[["<ruby>熱<rt>ねつ</rt></ruby>が<em class='k'>ある</em>ので、<ruby>学校<rt>がっこう</rt></ruby>を<ruby>休<rt>やす</rt></ruby>みます。","I have a fever, so I'll be absent from school."],
+     ["<ruby>電車<rt>でんしゃ</rt></ruby>が<em class='k'><ruby>来<rt>こ</rt></ruby>ない</em>ので、<ruby>会社<rt>かいしゃ</rt></ruby>に<ruby>遅<rt>おく</rt></ruby>れます。","The train isn't coming, so I'll be late for work."],
+     ["ICカードは<ruby>便利<rt>べんり</rt></ruby><em class='k'>な</em>ので、よく<ruby>使<rt>つか</rt></ruby>います。","IC cards are handy, so I use them a lot. （なA ＋ な）"],
+     ["<ruby>今日<rt>きょう</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby><em class='k'>な</em>ので、<ruby>出<rt>で</rt></ruby>かけません。","It's raining today, so I'm not going out. （N ＋ な）"]]},
+
+{p:"「から」と「ので」",en:"which 'because' to use",day:"9/14",src:"いっぽ3 P65",nw:1,
+ f:"<b>から</b> ＝ <ruby>理由<rt>りゆう</rt></ruby>を はっきり　／　<b>ので</b> ＝ ていねい",
+ note:"お<ruby>願<rt>ねが</rt></ruby>いするとき・<ruby>謝<rt>あやま</rt></ruby>るときは <b>ので</b>。<ruby>友<rt>とも</rt></ruby>だちや<ruby>家族<rt>かぞく</rt></ruby>には <b>から</b> でOK。",
+ ex:[["<ruby>危険<rt>きけん</rt></ruby>です<em class='k'>から</em>、ここに<ruby>入<rt>はい</rt></ruby>らないで ください。","It's dangerous, so do not enter. （はっきり）"],
+     ["すみません、<ruby>頭<rt>あたま</rt></ruby>が<ruby>痛<rt>いた</rt></ruby>い<em class='k2'>ので</em>、<ruby>早<rt>はや</rt></ruby>く<ruby>帰<rt>かえ</rt></ruby>っても いいですか。","Sorry, I have a headache, so may I go home early? （お願い）"],
+     ["<ruby>暑<rt>あつ</rt></ruby>い<em class='k'>から</em>、エアコンを つけよう。","It's hot — let's put the AC on. （カジュアル）"],
+     ["<ruby>暑<rt>あつ</rt></ruby>い<em class='k2'>ので</em>、エアコンを つけましょうか。","It's hot, so shall we put the AC on? （ていねい）"]]},
+
+{p:"〜場合は",en:"in the case of ~, if ~ (formal)",day:"9/16",src:"いっぽ3 第48課",nw:0,
+ f:"V<ruby>普通形<rt>ふつうけい</rt></ruby> ／ いA ／ なA <b>な</b> ／ N <b>の</b> ＋ <b><ruby>場合<rt>ばあい</rt></ruby>は</b>",
+ note:"ルール・しじ・てつづき に つかいます。〜たら より かたい 言い方。",
+ ex:[["<ruby>地震<rt>じしん</rt></ruby>が<ruby>起<rt>お</rt></ruby>きた<em class='k2'><ruby>場合<rt>ばあい</rt></ruby>は</em>、つくえの<ruby>下<rt>した</rt></ruby>に<ruby>入<rt>はい</rt></ruby>って ください。","If an earthquake occurs, please get under a desk."],
+     ["<ruby>雨<rt>あめ</rt></ruby>の<em class='k2'><ruby>場合<rt>ばあい</rt></ruby>は</em>、BBQは<ruby>中止<rt>ちゅうし</rt></ruby>です。","In case of rain, the BBQ is cancelled."],
+     ["<ruby>遅刻<rt>ちこく</rt></ruby>する<em class='k2'><ruby>場合<rt>ばあい</rt></ruby>は</em>、<ruby>連絡<rt>れんらく</rt></ruby>しなければ なりません。","If you're going to be late, you must get in touch."]]},
+
+{p:"〜ないで",en:"without doing ~",day:"9/16",src:"いっぽ3 第48課",nw:0,
+ f:"V<ruby>ナイ形<rt>けい</rt></ruby> ＋ <b>で</b>",
+ note:"Vて＝したあとで、Vないで＝<b>しなかった</b>。ペアで おぼえる。",
+ ex:[["<ruby>砂糖<rt>さとう</rt></ruby>を<ruby>入<rt>い</rt></ruby>れ<em class='k'>ないで</em>、コーヒーを<ruby>飲<rt>の</rt></ruby>みます。","I drink coffee without putting sugar in."],
+     ["<ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べ<em class='k'>ないで</em>、<ruby>会社<rt>かいしゃ</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。","I went to the office without eating breakfast."],
+     ["バスに<ruby>乗<rt>の</rt></ruby>ら<em class='k'>ないで</em>、<ruby>歩<rt>ある</rt></ruby>いて<ruby>行<rt>い</rt></ruby>きます。","I'll walk instead of taking the bus."]]},
+
+{p:"〜ても",en:"even if ~, even though ~",day:"9/16",src:"ひらく U174",nw:1,
+ f:"Vて形 ＋ <b>も</b>　／　いA 〜い → <b>〜くても</b>　／　なA・N ＋ <b>でも</b>　／　ない → <b>なくても</b>",
+ note:"<b>きたいと 反対の けっか</b>。これが 〜ても の いちばん だいじな ところ。",
+ ex:[["1<ruby>時間<rt>じかん</rt></ruby><ruby>待<rt>ま</rt></ruby>っ<em class='k'>ても</em>、パフェを<ruby>食<rt>た</rt></ruby>べます。","Even if I wait an hour, I'm going to eat the parfait."],
+     ["<ruby>暑<rt>あつ</rt></ruby><em class='k'>くても</em>、エアコンを つけません。","Even if it's hot, I don't turn the AC on."],
+     ["<ruby>日曜日<rt>にちようび</rt></ruby><em class='k'>でも</em>、<ruby>働<rt>はたら</rt></ruby>きます。","Even on Sundays, I work. （N ＋ でも）"],
+     ["ピーマンは おいしく<em class='k'>なくても</em>、<ruby>食<rt>た</rt></ruby>べます。","Even if peppers don't taste good, I eat them."]]},
+
+{p:"〜たら ↔ 〜ても",en:"expected result vs contrary result",day:"9/16",src:"いっぽ3 第48課",nw:1,
+ f:"<b>〜たら</b> → きたいどおり ○　／　<b>〜ても</b> → きたいと 反対 ✕",
+ note:"じゅぎょうの <b>いちばん だいじな たいひ</b>。同じ文で 入れかえて れんしゅうする。",
+ ex:[["<ruby>高<rt>たか</rt></ruby>かっ<em class='k2'>たら</em><ruby>買<rt>か</rt></ruby>いません。／ <ruby>高<rt>たか</rt></ruby>く<em class='k'>ても</em><ruby>買<rt>か</rt></ruby>います。","If it's expensive I won't buy it. / Even if it's expensive I'll buy it."],
+     ["たくさん<ruby>寝<rt>ね</rt></ruby><em class='k2'>たら</em>、<ruby>元気<rt>げんき</rt></ruby>に なります。／ たくさん<ruby>寝<rt>ね</rt></ruby><em class='k'>ても</em>、<ruby>元気<rt>げんき</rt></ruby>に なりません。","If I sleep a lot I feel better. / Even if I sleep a lot I don't feel better."],
+     ["<ruby>走<rt>はし</rt></ruby>っ<em class='k2'>たら</em>、8<ruby>時<rt>じ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>きます。／ <ruby>走<rt>はし</rt></ruby>っ<em class='k'>ても</em>、8<ruby>時<rt>じ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>きません。","If I run I'll arrive at 8. / Even if I run I won't arrive at 8."]]},
+
+{p:"〔動詞ます形〕＋ すぎ",en:"doing something too much",day:"9/18",src:"ひらく U175",nw:1,
+ f:"〔<ruby>動詞<rt>どうし</rt></ruby>／ます形〕 ＋ <b>すぎ</b>",
+ note:"よくない きもちが 入ります。かこけいは <b>〜すぎました</b>。",
+ ex:[["ごはんを<ruby>食<rt>た</rt></ruby>べ<em class='k'>すぎました</em>。","I ate too much."],
+     ["もう12<ruby>時<rt>じ</rt></ruby>ですよ。<ruby>寝<rt>ね</rt></ruby><em class='k'>すぎ</em>ですよ。","It's already 12 — you've slept too long."],
+     ["<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>し<em class='k'>すぎ</em>ですよ。","You're shopping too much."]]},
+
+{p:"〔名詞〕の＋〔ます形〕＋ すぎ",en:"too much of (a thing)",day:"9/18",src:"ひらく U175",nw:1,
+ f:"〔<ruby>名詞<rt>めいし</rt></ruby>〕<b>の</b> ＋〔<ruby>動詞<rt>どうし</rt></ruby>／ます形〕＋ <b>すぎ</b>",
+ note:"<b>の</b> を わすれない。✗ スマホを見すぎです → ○ スマホ<b>の</b>見すぎです",
+ ex:[["お<ruby>酒<rt>さけ</rt></ruby><em class='k'>の</em><ruby>飲<rt>の</rt></ruby>み<em class='k'>すぎ</em>ですね。","That's too much drinking."],
+     ["スマホ<em class='k'>の</em><ruby>見<rt>み</rt></ruby><em class='k'>すぎ</em>ですよ。","You look at your phone too much."],
+     ["<ruby>残業<rt>ざんぎょう</rt></ruby><em class='k'>の</em>し<em class='k'>すぎ</em>です。","That's too much overtime."]]},
+
+{p:"〔形容詞〕＋ すぎます",en:"too ~ (adjective)",day:"9/18",src:"ひらく U175",nw:1,
+ f:"〔<ruby>形容詞<rt>けいようし</rt></ruby>の<ruby>語幹<rt>ごかん</rt></ruby>〕 ＋ <b>すぎます</b>",
+ note:"い形容詞は <b>い</b>を とる／な形容詞は <b>な</b>を とる。<ruby>不規則<rt>ふきそく</rt></ruby>：いい → <b>よすぎる</b>",
+ ex:[["この ラーメンは<ruby>辛<rt>から</rt></ruby><em class='k'>すぎます</em>。","This ramen is too spicy."],
+     ["この ズボンは<ruby>小<rt>ちい</rt></ruby>さ<em class='k'>すぎます</em>。<ruby>入<rt>はい</rt></ruby>りません。","These trousers are too small — they don't fit."],
+     ["お<ruby>店<rt>みせ</rt></ruby>が<ruby>暇<rt>ひま</rt></ruby><em class='k'>すぎます</em>。","The shop is far too quiet. （なA — な を とる）"]]},
+
+{p:"〜かもしれません",en:"might ~, maybe ~ (about 50%)",day:"9/18",src:"ひらく U178",nw:1,
+ f:"〔<ruby>普通形<rt>ふつうけい</rt></ruby>〕 ＋ <b>かもしれません</b>",
+ note:"<b>名詞と な形容詞は そのまま</b>つける。✗ 雪だかもしれません。よく <b>もしかすると／もしかしたら</b> と いっしょに つかう。",
+ ex:[["<ruby>今日<rt>きょう</rt></ruby>は ゆきが ふる<em class='k'>かもしれません</em>。","It might snow today."],
+     ["さいふを おとした<em class='k'>かもしれません</em>。","I might have dropped my wallet."],
+     ["あしたの<ruby>授業<rt>じゅぎょう</rt></ruby>は オンライン<em class='k'>かもしれません</em>。","Tomorrow's class might be online. （N — だ は つけない）"]]}
+];
+
+var list=document.getElementById('list'), tally=document.getElementById('tally'),
+    none=document.getElementById('none'), q=document.getElementById('q'), days=document.getElementById('days');
+
+var seenDay=null;
+list.innerHTML = G.map(function(g,i){
+  var head='';
+  if(g.day!==seenDay){ seenDay=g.day; head='<h2 class="gday" id="day-'+g.day.replace('/','-')+'">'+g.day+'</h2>'; }
+  return head+'<div class="gitem'+(g.nw?' is-new':'')+'" data-i="'+i+'" data-day="'+g.day+'">'+
+    '<div class="hd"><span class="pat ja">'+g.p+'</span><span class="en">'+g.en+'</span>'+
+    '<span class="meta"><span class="day'+(g.day=="9/14"?" d14":"")+'">'+g.day+'</span><span class="src">'+g.src+'</span></span></div>'+
+    '<div class="form">'+g.f+'</div>'+
+    '<p class="note">'+g.note+'</p>'+
+    '<ul class="exs">'+g.ex.map(function(e){return '<li><span class="ja">'+e[0]+'</span><span class="en">'+e[1]+'</span></li>'}).join('')+'</ul>'+
+  '</div>';
+}).join('');
+
+var cards=[].slice.call(list.querySelectorAll('.gitem'));
+var headers=[].slice.call(list.querySelectorAll('.gday'));
+var hay=G.map(function(g){return (g.p+' '+g.en+' '+g.note+' '+g.ex.map(function(e){return e[0]+e[1]}).join(' ')).replace(/<[^>]+>/g,'').toLowerCase();});
+var curDay='all';
+function apply(){
+  var term=q.value.trim().toLowerCase();
+  var n=0, byDay={};
+  cards.forEach(function(c,i){
+    var okDay = curDay==='all' || c.dataset.day===curDay;
+    var okQ = !term || hay[i].indexOf(term)>-1;
+    var show = okDay && okQ;
+    c.hidden=!show; if(show){n++; byDay[c.dataset.day]=(byDay[c.dataset.day]||0)+1;}
+  });
+  headers.forEach(function(h){
+    var day=h.textContent;
+    h.hidden = !byDay[day];
+  });
+  tally.textContent = n+' / '+cards.length+' パターン';
+  none.hidden = n>0;
+}
+q.addEventListener('input', apply);
+days.addEventListener('click', function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  curDay=b.dataset.day;
+  [].forEach.call(days.children,function(x){x.setAttribute('aria-pressed', String(x===b))});
+  apply();
+});
+apply();
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

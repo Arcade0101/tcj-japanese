@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ことばまとめ — 日本語ノート</title>
+<meta name="description" content="Every vocabulary word from my TCJ classes, searchable, with a hide-the-meaning self-test.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.modes{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.modes button{
+  font-family:var(--mono);font-size:12px;font-weight:500;padding:7px 13px;cursor:pointer;min-height:36px;
+  border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;
+  transition:background .12s,color .12s,border-color .12s;
+}
+.modes button[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:var(--paper)}
+.modes button:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+
+.vlist{border-top:1px solid var(--line);margin:16px 0 0}
+.vunit{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--faint);
+       margin:16px 0 -2px;scroll-margin-top:calc(var(--nav-h) + 14px)}
+.vunit:first-child{margin-top:12px}
+.vrow{display:grid;grid-template-columns:minmax(178px,242px) 1fr;gap:5px 22px;
+      padding:13px 0;border-bottom:1px solid var(--line-soft);align-items:start}
+.vrow .lhs{display:flex;flex-wrap:wrap;align-items:baseline;gap:7px}
+.vrow .word{font-family:var(--ja);font-size:20px;line-height:1.55}
+.vrow .word mark{padding:0 .12em;border-radius:2px;color:var(--ink);background:var(--hl-y)}
+.vrow .word mark.v{background:var(--hl-p)}
+.vrow .word mark.a{background:var(--hl-b)}
+.chip{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.02em;
+      padding:2px 7px;border-radius:3px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.chip.vb{border-color:color-mix(in srgb,var(--vermilion) 45%,var(--line));color:var(--vermilion)}
+.chip.nn{border-color:color-mix(in srgb,var(--indigo) 45%,var(--line));color:var(--indigo)}
+.chip.unit{color:var(--faint)}
+.vrow .mean{font-family:var(--en);font-size:15px;font-weight:500}
+.vrow .ex{margin-top:5px}
+.vrow .ex .ja{font-family:var(--ja);font-size:15.5px;line-height:1.85}
+.vrow .ex .gloss{font-family:var(--en);font-size:13px;color:var(--muted);margin-top:2px}
+
+body.hide-en .vrow .rhs{visibility:hidden}
+body.hide-en .vrow .rhs.revealed{visibility:visible}
+body.hide-ja .vrow .lhs .word{visibility:hidden}
+body.hide-ja .vrow.revealed .lhs .word{visibility:visible}
+body.hide-en .vrow,body.hide-ja .vrow{cursor:pointer}
+body.hide-en .vrow:hover,body.hide-ja .vrow:hover{background:color-mix(in srgb,var(--indigo) 4%,transparent)}
+.hint{font-family:var(--en);font-size:12.5px;color:var(--faint);margin:9px 0 0}
+
+@media (max-width:640px){
+  .vrow{grid-template-columns:1fr;gap:3px}
+  .vrow .word{font-size:19px}
+}
+</style>
+</head>
+<body>
+
+<nav class="sitenav"><div class="sitenav-in">
+  <a class="home" href="./">日本語ノート</a>
+  <button class="hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="navlinks" id="navLinks">
+    <button class="searchbtn searchbtn-menu" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span class="lbl">さがす</span><kbd>⌘K</kbd>
+    </button>
+    <a class="nl" href="./">週ごと <small>WEEKS</small></a>
+    <a class="nl" href="grammar.html">文法 <small>GRAMMAR</small></a>
+    <a class="nl" href="kanji.html">漢字 <small>KANJI</small></a>
+    <a class="nl" href="vocab.html" aria-current="page">ことば <small>VOCAB</small></a>
+    <a class="nl" href="2026-09-14/podcast.html">ポッドキャスト <small>AUDIO</small></a>
+  </div>
+  <button class="searchbtn searchbtn-top" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <span class="lbl">さがす</span><kbd>⌘K</kbd>
+  </button>
+</div></nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>ことばまとめ</h1>
+    <p class="sub">Every word so far, with readings, word class and an example where there was one. Switch on a self-test to hide one side and tap a row to reveal it.</p>
+    <div class="rule"></div>
+  </div>
+
+  <div class="filters">
+    <input type="search" id="q" placeholder="さがす — ぐあい / 具合 / condition …" aria-label="Search vocabulary">
+    <div class="chipset" id="units">
+      <button data-u="all" aria-pressed="true">ぜんぶ</button>
+      <button data-u="U173" aria-pressed="false">U173</button>
+      <button data-u="P62" aria-pressed="false">P62–65</button>
+      <button data-u="U174" aria-pressed="false">U174</button>
+      <button data-u="U175" aria-pressed="false">U175</button>
+      <button data-u="U178" aria-pressed="false">U178</button>
+    </div>
+  </div>
+
+  <div class="modes" id="modes">
+    <button data-m="none" aria-pressed="true">ふつう · both</button>
+    <button data-m="hide-en" aria-pressed="false">いみを かくす · hide EN</button>
+    <button data-m="hide-ja" aria-pressed="false">ことばを かくす · hide JA</button>
+    <button data-m="fg" aria-pressed="false">ふりがな OFF</button>
+  </div>
+  <p class="tally" id="tally"></p>
+  <p class="hint" id="hint" hidden>ぎょうを タップすると 見えます。 — Tap a row to reveal it.</p>
+</div>
+
+<div class="layout has-rail">
+  <div class="layout-main">
+    <div class="wrap" style="padding-top:0">
+      <div class="vlist" id="list"></div>
+      <p class="noresult" id="none" hidden>みつかりませんでした。 — Nothing matched.</p>
+      <footer class="site">
+        <p>復習シートと テストは じゅぎょうの ノートです。きょうかしょ そのものは ふくまれて いません。</p>
+        <p>Study notes only — no textbook or class material is reproduced here.</p>
+      </footer>
+    </div>
+  </div>
+  <aside class="rail">
+    <p class="rail-title">unit</p>
+    <a href="#unit-U173">U173</a>
+    <a href="#unit-P62">P62–65</a>
+    <a href="#unit-U174">U174</a>
+    <a href="#unit-U175">U175</a>
+    <a href="#unit-U178">U178</a>
+  </aside>
+</div>
+
+<script>
+var V=[
+["<mark class='v'><ruby>売<rt>う</rt></ruby>れます</mark>","うれます","2G","to be sold, to sell well",["この<ruby>本<rt>ほん</rt></ruby>はよく<ruby>売<rt>う</rt></ruby>れています。","This book sells really well."],"U173","9/14"],
+["<mark><ruby>窓側<rt>まどがわ</rt></ruby></mark>","まどがわ","N","window side, window seat",["<ruby>窓側<rt>まどがわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。","A window seat, please."],"U173","9/14"],
+["<mark><ruby>通路側<rt>つうろがわ</rt></ruby></mark>","つうろがわ","N","aisle side, aisle seat",["<ruby>通路側<rt>つうろがわ</rt></ruby>のほうがトイレに<ruby>行<rt>い</rt></ruby>きやすいです。","The aisle side is easier for the toilet."],"U173","9/14"],
+["<mark><ruby>一杯<rt>いっぱい</rt></ruby></mark>","いっぱい","N","full, full of",["<ruby>電車<rt>でんしゃ</rt></ruby>は<ruby>人<rt>ひと</rt></ruby>で<ruby>一杯<rt>いっぱい</rt></ruby>でした。","The train was full of people."],"U173","9/14"],
+["<mark class='v'><ruby>出<rt>で</rt></ruby>ます</mark>［<ruby>試合<rt>しあい</rt></ruby>に〜］","でます","2G","to take part in, to participate",["<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>試合<rt>しあい</rt></ruby><b>に</b><ruby>出<rt>で</rt></ruby>ます。","I'm taking part in next week's match."],"U173","9/14"],
+["<mark>ボーナス</mark>","ボーナス","N","bonus",["<ruby>夏<rt>なつ</rt></ruby>のボーナスで<ruby>旅行<rt>りょこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。","I'll travel with my summer bonus."],"U173","9/14"],
+["<mark class='v'><ruby>出<rt>で</rt></ruby>ます</mark>［ボーナスが〜］","でます","2G","(a bonus) is given, comes out",["<ruby>今年<rt>ことし</rt></ruby>はボーナス<b>が</b><ruby>出<rt>で</rt></ruby>ませんでした。","No bonus was given this year."],"U173","9/14"],
+["<mark><ruby>具合<rt>ぐあい</rt></ruby></mark>","ぐあい","N","condition (of health), state",["<ruby>今日<rt>きょう</rt></ruby>は<ruby>具合<rt>ぐあい</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いです。","I'm not feeling well today."],"U173","9/14"],
+["<mark class='v'><ruby>早退<rt>そうたい</rt></ruby>します</mark>","そうたいします","3G","to leave early (work / school)",["<ruby>頭<rt>あたま</rt></ruby>が<ruby>痛<rt>いた</rt></ruby>いので<ruby>早退<rt>そうたい</rt></ruby>します。","I have a headache, so I'll leave early."],"U173","9/14"],
+["<mark class='v'><ruby>下<rt>さ</rt></ruby>がります</mark>［<ruby>熱<rt>ねつ</rt></ruby>が〜］","さがります","1G","(one's fever) goes down",["<ruby>薬<rt>くすり</rt></ruby>を<ruby>飲<rt>の</rt></ruby>んで<ruby>熱<rt>ねつ</rt></ruby>が<ruby>下<rt>さ</rt></ruby>がりました。","I took medicine and my fever went down."],"U173","9/14"],
+["<mark class='v'><ruby>謝<rt>あやま</rt></ruby>ります</mark>","あやまります","1G","to apologize",["<ruby>遅<rt>おく</rt></ruby>れて、ちゃんと<ruby>謝<rt>あやま</rt></ruby>りました。","I was late, so I apologized properly."],"U173","9/14"],
+["<mark class='a'>かっこいい</mark>","かっこいい","いA*","cool, good-looking",["あの<ruby>人<rt>ひと</rt></ruby>はかっこいいですね。","That person is cool, isn't he/she."],"U173","9/14"],
+["<mark><ruby>操作<rt>そうさ</rt></ruby></mark>","そうさ","N","operation, handling (of a device)",["この<ruby>機械<rt>きかい</rt></ruby>は<ruby>操作<rt>そうさ</rt></ruby>が<ruby>簡単<rt>かんたん</rt></ruby>です。","This machine is easy to operate."],"U173","9/14"],
+["<mark><ruby>入管<rt>にゅうかん</rt></ruby></mark>","にゅうかん","N","immigration office （＝入国管理局）",["ビザのことで<ruby>入管<rt>にゅうかん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。","I went to the immigration office about my visa."],"U173","9/14"],
+
+["<mark><ruby>熱中症<rt>ねっちゅうしょう</rt></ruby></mark>","ねっちゅうしょう","N","heatstroke",["<ruby>毎日<rt>まいにち</rt></ruby><ruby>暑<rt>あつ</rt></ruby>いので、<ruby>熱中症<rt>ねっちゅうしょう</rt></ruby>に<ruby>気<rt>き</rt></ruby>をつけてください。","It's hot every day, so take care not to get heatstroke."],"P62","9/14"],
+["<mark><ruby>保護者会<rt>ほごしゃかい</rt></ruby></mark>","ほごしゃかい","N","parents' meeting （保護者＝子どもを守る人）",null,"P62","9/14"],
+["<mark><ruby>書類<rt>しょるい</rt></ruby></mark>","しょるい","N","documents, paperwork",["これは<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>書類<rt>しょるい</rt></ruby>なので、なくさないでください。","These are important documents, so please don't lose them."],"P62","9/14"],
+["<mark><ruby>新幹線<rt>しんかんせん</rt></ruby></mark>","しんかんせん","N","shinkansen, bullet train",null,"P62","9/14"],
+["<mark class='v'><ruby>予約<rt>よやく</rt></ruby>します</mark>","よやくします","3G","to reserve, to book",null,"P62","9/14"],
+["<mark class='a'><ruby>狭<rt>せま</rt></ruby>い</mark>","せまい","いA","narrow, cramped",["この<ruby>道<rt>みち</rt></ruby>は<ruby>狭<rt>せま</rt></ruby>いので、<ruby>運転<rt>うんてん</rt></ruby>が<ruby>大変<rt>たいへん</rt></ruby>です。","This road is narrow, so driving is tough."],"P62","9/14"],
+["<mark class='a'><ruby>軽<rt>かる</rt></ruby>い</mark>","かるい","いA","light (in weight)",null,"P62","9/14"],
+["<mark class='a'><ruby>不便<rt>ふべん</rt></ruby>な</mark>","ふべんな","なA","inconvenient",["ここは<ruby>不便<rt>ふべん</rt></ruby>なので、<ruby>隣<rt>となり</rt></ruby>の<ruby>町<rt>まち</rt></ruby>へ<ruby>引<rt>ひ</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>します。","It's inconvenient here, so I'm moving to the next town."],"P62","9/14"],
+["<mark class='v'><ruby>引<rt>ひ</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>します</mark>","ひっこします","1G","to move house",null,"P62","9/14"],
+["<mark class='v'><ruby>寝坊<rt>ねぼう</rt></ruby>します</mark>","ねぼうします","3G","to oversleep",["<ruby>寝坊<rt>ねぼう</rt></ruby>したので、<ruby>学校<rt>がっこう</rt></ruby>に<ruby>遅<rt>おく</rt></ruby>れました。","I overslept, so I was late for school."],"P62","9/14"],
+["<mark class='v'>すいています</mark>","すいています","—","to be empty, uncrowded",["<ruby>日曜日<rt>にちようび</rt></ruby>なので、<ruby>電車<rt>でんしゃ</rt></ruby>がすいています。","It's Sunday, so the trains are empty."],"P62","9/14"],
+
+["<mark><ruby>特急<rt>とっきゅう</rt></ruby></mark>","とっきゅう","N","limited express (train)",null,"U174","9/18"],
+["<mark class='v'><ruby>渋滞<rt>じゅうたい</rt></ruby>します</mark>","じゅうたいします","3G","to be jammed, congested",["<ruby>道<rt>みち</rt></ruby>が<ruby>渋滞<rt>じゅうたい</rt></ruby>しています。","The road is jammed."],"U174","9/18"],
+["<mark><ruby>調子<rt>ちょうし</rt></ruby></mark>","ちょうし","N","condition, form (body or machine)",null,"U174","9/18"],
+["<mark>ダイエット</mark>","ダイエット","N","diet",null,"U174","9/18"],
+["<mark><ruby>顔色<rt>かおいろ</rt></ruby></mark>","かおいろ","N","complexion, the look on one's face",["<ruby>顔色<rt>かおいろ</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いですね。<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですか。","You look pale. Are you all right?"],"U174","9/18"],
+["<mark><ruby>発音<rt>はつおん</rt></ruby></mark>","はつおん","N","pronunciation",null,"U174","9/18"],
+["<mark class='v'><ruby>辞<rt>や</rt></ruby>めます</mark>［<ruby>仕事<rt>しごと</rt></ruby>を〜］","やめます","2G","to quit (a job)",null,"U174","9/18"],
+["<mark class='v'><ruby>過<rt>す</rt></ruby>ごします</mark>","すごします","1G","to spend (time)",["<ruby>週末<rt>しゅうまつ</rt></ruby>は<ruby>家族<rt>かぞく</rt></ruby>と<ruby>過<rt>す</rt></ruby>ごします。","I spend the weekend with my family."],"U174","9/18"],
+["<mark class='a'><ruby>平気<rt>へいき</rt></ruby>な</mark>","へいきな","なA","all right, fine, not bothered",null,"U174","9/18"],
+["<mark><ruby>続<rt>つづ</rt></ruby>き</mark>","つづき","N","continuation, the rest",["<ruby>続<rt>つづ</rt></ruby>きをかきます。","I'll write the rest."],"U174","9/18"],
+["<mark><ruby>待<rt>ま</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせ</mark>","まちあわせ","N","meeting up, an arranged meeting",null,"U174","9/18"],
+["<mark>もしかすると</mark>","もしかすると","ADV","possibly, perhaps",null,"U174","9/18"],
+
+["<mark><ruby>涙<rt>なみだ</rt></ruby></mark>","なみだ","N","tear(s)",null,"U175","9/18"],
+["<mark>アルコール</mark>","アルコール","N","alcohol",null,"U175","9/18"],
+["<mark><ruby>動画<rt>どうが</rt></ruby></mark>","どうが","N","video",null,"U175","9/18"],
+["<mark><ruby>掃除機<rt>そうじき</rt></ruby></mark>","そうじき","N","vacuum cleaner",null,"U175","9/18"],
+["<mark class='v'><ruby>遅刻<rt>ちこく</rt></ruby>します</mark>","ちこくします","3G","to be late",["<ruby>寝坊<rt>ねぼう</rt></ruby>して<ruby>遅刻<rt>ちこく</rt></ruby>しました。","I overslept and was late."],"U175","9/18"],
+
+["<mark><ruby>健康<rt>けんこう</rt></ruby></mark>","けんこう","N","health",null,"U178","9/18"],
+["<mark><ruby>健康診断<rt>けんこうしんだん</rt></ruby></mark>","けんこうしんだん","N","medical checkup",null,"U178","9/18"],
+["<mark><ruby>仲間<rt>なかま</rt></ruby></mark>","なかま","N","friends, mates, people you belong with",null,"U178","9/18"],
+["<mark class='v'><ruby>慣<rt>な</rt></ruby>れます</mark>［<ruby>生活<rt>せいかつ</rt></ruby>に〜］","なれます","2G","to get accustomed to (life here)",["<ruby>日本<rt>にほん</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>に<ruby>慣<rt>な</rt></ruby>れました。","I've got used to life in Japan."],"U178","9/18"],
+["<mark><ruby>寒気<rt>さむけ</rt></ruby></mark>","さむけ","N","a chill",null,"U178","9/18"],
+["<mark class='v'>します</mark>［<ruby>寒気<rt>さむけ</rt></ruby>が〜］","さむけがします","3G","to feel a chill",["<ruby>寒気<rt>さむけ</rt></ruby>がします。<ruby>熱<rt>ねつ</rt></ruby>があるかもしれません。","I feel a chill. I might have a fever."],"U178","9/18"],
+["<mark><ruby>食中毒<rt>しょくちゅうどく</rt></ruby></mark>","しょくちゅうどく","N","food poisoning",null,"U178","9/18"],
+["<mark class='v'><ruby>冷<rt>ひ</rt></ruby>えます</mark>","ひえます","2G","to get cold, become chilled",["<ruby>体<rt>からだ</rt></ruby>が<ruby>冷<rt>ひ</rt></ruby>えると<ruby>体調<rt>たいちょう</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>くなります。","If your body gets cold, you feel unwell."],"U178","9/18"],
+["<mark><ruby>帰<rt>かえ</rt></ruby>り</mark>","かえり","N","return, the way back",null,"U178","9/18"],
+["<mark>もしかしたら</mark>","もしかしたら","ADV","maybe, perhaps",null,"U178","9/18"]
+];
+
+var list=document.getElementById('list'), tally=document.getElementById('tally'),
+    none=document.getElementById('none'), q=document.getElementById('q'),
+    hint=document.getElementById('hint'), unit='all';
+
+function esc(s){return String(s).replace(/<[^>]*>/g,'');}
+function cls(c){return c==='N'||c==='ADV'?'nn':(/^[123]G$/.test(c)?'vb':'');}
+
+var seenUnit=null;
+list.innerHTML=V.map(function(v){
+  var head='';
+  if(v[5]!==seenUnit){ seenUnit=v[5]; head='<h2 class="vunit" id="unit-'+v[5]+'">'+v[5]+'</h2>'; }
+  return head+'<div class="vrow" data-unit="'+v[5]+'">'
+   +'<div class="lhs"><span class="word">'+v[0]+'</span>'
+   +'<span class="chip '+cls(v[2])+'">'+v[2]+'</span>'
+   +'<span class="chip unit">'+v[5]+'</span></div>'
+   +'<div class="rhs"><div class="mean">'+v[3]+'</div>'
+   +(v[4]?'<div class="ex"><div class="ja">'+v[4][0]+'</div><div class="gloss">'+v[4][1]+'</div></div>':'')
+   +'</div></div>';
+}).join('');
+
+var rows=[].slice.call(list.querySelectorAll('.vrow'));
+var headers=[].slice.call(list.querySelectorAll('.vunit'));
+var hay=V.map(function(v){
+  return (esc(v[0])+' '+v[1]+' '+v[2]+' '+v[3]+' '+v[5]+' '+v[6]+' '
+   +(v[4]?esc(v[4][0])+' '+v[4][1]:'')).toLowerCase();
+});
+
+function apply(){
+  var t=q.value.trim().toLowerCase(), n=0, byUnit={};
+  rows.forEach(function(r,i){
+    var ok=(unit==='all'||V[i][5]===unit)&&(!t||hay[i].indexOf(t)>-1);
+    r.hidden=!ok; if(ok){n++; byUnit[V[i][5]]=(byUnit[V[i][5]]||0)+1;}
+  });
+  headers.forEach(function(h){ h.hidden = !byUnit[h.textContent]; });
+  tally.textContent=n+' / '+V.length+' ことば';
+  none.hidden=n>0;
+}
+q.addEventListener('input',apply);
+
+document.getElementById('units').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b)return;
+  unit=b.dataset.u;
+  [].forEach.call(this.children,function(x){x.setAttribute('aria-pressed',String(x===b));});
+  apply();
+});
+
+document.getElementById('modes').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b)return;
+  var m=b.dataset.m;
+  if(m==='fg'){
+    var off=document.body.classList.toggle('fg-off');
+    b.setAttribute('aria-pressed',String(off));
+    b.textContent=off?'ふりがな ON':'ふりがな OFF';
+    return;
+  }
+  document.body.classList.remove('hide-en','hide-ja');
+  if(m!=='none')document.body.classList.add(m);
+  [].forEach.call(this.children,function(x){
+    if(x.dataset.m!=='fg')x.setAttribute('aria-pressed',String(x===b));
+  });
+  hint.hidden=(m==='none');
+  rows.forEach(function(r){r.classList.remove('revealed');
+    var rhs=r.querySelector('.rhs'); if(rhs)rhs.classList.remove('revealed');});
+});
+
+list.addEventListener('click',function(e){
+  if(!document.body.classList.contains('hide-en')&&!document.body.classList.contains('hide-ja'))return;
+  var r=e.target.closest('.vrow'); if(!r)return;
+  r.classList.toggle('revealed');
+  var rhs=r.querySelector('.rhs'); if(rhs)rhs.classList.toggle('revealed');
+});
+
+apply();
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

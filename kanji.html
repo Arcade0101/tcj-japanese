@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>漢字まとめ — 日本語ノート</title>
+<meta name="description" content="Every kanji from my TCJ classes, with readings and compound words.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.kgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:20px 0 0}
+.kcard{border:1px solid var(--line);background:var(--surface);border-top:3px solid var(--indigo);padding:16px 18px;
+       transition:border-color .15s}
+.kcard.is-new{border-top-color:var(--vermilion)}
+.kcard .top{display:flex;align-items:flex-start;gap:15px}
+.kcard .glyph{font-family:var(--ja);font-size:58px;line-height:.95;font-weight:600;flex:none}
+.kcard .rd{flex:1;min-width:0}
+.kcard .mean{font-family:var(--en);font-size:14px;font-weight:600;color:var(--ink)}
+.kcard .yomi{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.9;margin-top:6px}
+.kcard .yomi b{font-family:var(--ja);font-size:14px;color:var(--ink);font-weight:600}
+.kcard .yomi .lab{display:inline-block;min-width:44px;color:var(--faint);font-size:9.5px;
+                  letter-spacing:.06em;text-transform:uppercase}
+.kcard .tagrow{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.kcard ul{list-style:none;margin:13px 0 0;padding:13px 0 0;border-top:1px solid var(--line-soft);
+          display:flex;flex-direction:column;gap:7px}
+.kcard li{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.kcard li .w{font-family:var(--ja);font-size:17px;line-height:1.7;flex:none}
+.kcard li .e{font-family:var(--en);font-size:12.5px;color:var(--muted)}
+
+.trainbar{margin:26px 0 0;padding:15px 17px;border:1px solid var(--line);background:var(--indigo-soft)}
+.trainbar .lbl{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;
+               text-transform:uppercase;color:var(--indigo);display:block;margin-bottom:8px}
+.ladder{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--ja);font-size:16px}
+.ladder .step{padding:5px 11px;background:var(--surface);border:1px solid var(--line)}
+.ladder .arw{color:var(--faint);font-family:var(--en)}
+.ladder .step small{display:block;font-family:var(--en);font-size:11px;color:var(--muted);margin-top:2px}
+
+.trap{margin:20px 0 0;padding:13px 16px;background:var(--vermilion-soft);
+      border:1px solid color-mix(in srgb,var(--vermilion) 25%,transparent);font-size:14px}
+.trap .lbl{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;
+           text-transform:uppercase;color:var(--vermilion);display:block;margin-bottom:4px}
+@media (max-width:640px){
+  .kgrid{grid-template-columns:1fr}
+  .kcard .glyph{font-size:50px}
+}
+</style>
+</head>
+<body>
+
+<nav class="sitenav"><div class="sitenav-in">
+  <a class="home" href="./">日本語ノート</a>
+  <button class="hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="navlinks" id="navLinks">
+    <button class="searchbtn searchbtn-menu" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span class="lbl">さがす</span><kbd>⌘K</kbd>
+    </button>
+    <a class="nl" href="./">週ごと <small>WEEKS</small></a>
+    <a class="nl" href="grammar.html">文法 <small>GRAMMAR</small></a>
+    <a class="nl" href="kanji.html" aria-current="page">漢字 <small>KANJI</small></a>
+    <a class="nl" href="vocab.html">ことば <small>VOCAB</small></a>
+    <a class="nl" href="2026-09-14/podcast.html">ポッドキャスト <small>AUDIO</small></a>
+  </div>
+  <button class="searchbtn searchbtn-top" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <span class="lbl">さがす</span><kbd>⌘K</kbd>
+  </button>
+</div></nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>漢字まとめ</h1>
+    <p class="sub">Every kanji taught so far, with kun'yomi, on'yomi and the compound words from class. Search by character, reading or meaning.</p>
+    <div class="rule"></div>
+  </div>
+
+  <div class="filters">
+    <input type="search" id="q" placeholder="さがす — 駅 / えき / station …" aria-label="Search kanji">
+    <div class="chipset" id="kinds">
+      <button data-kind="all" aria-pressed="true">ぜんぶ</button>
+      <button data-kind="new" aria-pressed="false">新しい</button>
+      <button data-kind="rev" aria-pressed="false">ふくしゅう</button>
+    </div>
+  </div>
+  <p class="tally" id="tally"></p>
+
+  <div class="kgrid" id="list"></div>
+  <p class="noresult" id="none" hidden>みつかりませんでした。 — Nothing matched.</p>
+
+  <div class="trainbar">
+    <span class="lbl">でんしゃの はやさ — train speed ladder</span>
+    <div class="ladder">
+      <span class="step"><ruby>各駅停車<rt>かくえきていしゃ</rt></ruby><small>stops everywhere</small></span>
+      <span class="arw">→</span>
+      <span class="step"><ruby>急行<rt>きゅうこう</rt></ruby><small>skips some</small></span>
+      <span class="arw">→</span>
+      <span class="step"><ruby>特急<rt>とっきゅう</rt></ruby><small>skips most</small></span>
+    </div>
+  </div>
+
+  <div class="trap">
+    <span class="lbl">よみの わな — the reading trap</span>
+    <span class="ja"><ruby>道<rt>みち</rt></ruby></span> alone and in <span class="ja"><ruby>帰<rt>かえ</rt></ruby>り<ruby>道<rt>みち</rt></ruby></span> is <strong>みち</strong>, but inside a compound it turns into <strong>ドウ</strong> — <span class="ja"><ruby>道路<rt>どうろ</rt></ruby>・<ruby>道具<rt>どうぐ</rt></ruby>・<ruby>北海道<rt>ほっかいどう</rt></ruby></span>. Same shape for 乗: <span class="ja"><ruby>乗<rt>の</rt></ruby>ります</span> but <span class="ja"><ruby>乗車券<rt>じょうしゃけん</rt></ruby></span>.
+  </div>
+
+  <footer class="site">
+    <p>復習シートと テストは じゅぎょうの ノートです。きょうかしょ そのものは ふくまれて いません。</p>
+    <p>Study notes only — no textbook or class material is reproduced here.</p>
+  </footer>
+</div>
+
+<script>
+var K=[
+{c:"駅",mean:"station",kun:"—",on:"エキ",day:"9/18",nw:1,
+ w:[["<ruby>駅員<rt>えきいん</rt></ruby>","station staff"],
+    ["<ruby>駅前<rt>えきまえ</rt></ruby>","in front of the station"],
+    ["<ruby>各駅停車<rt>かくえきていしゃ</rt></ruby>","local train — stops at every station"]]},
+{c:"電",mean:"electricity",kun:"—",on:"デン",day:"9/18",nw:1,
+ w:[["<ruby>電話<rt>でんわ</rt></ruby>","telephone"],
+    ["<ruby>電車<rt>でんしゃ</rt></ruby>","train"],
+    ["<ruby>電池<rt>でんち</rt></ruby>","battery"],
+    ["<ruby>電源<rt>でんげん</rt></ruby>","power source, power switch"]]},
+{c:"急",mean:"hurry, sudden, express",kun:"いそ-ぐ",on:"キュウ",day:"9/18",nw:1,
+ w:[["<ruby>急<rt>いそ</rt></ruby>ぎます","to hurry"],
+    ["<ruby>急<rt>きゅう</rt></ruby>ブレーキ","sudden braking"],
+    ["<ruby>急行<rt>きゅうこう</rt></ruby>","express train"]]},
+{c:"道",mean:"road, way",kun:"みち",on:"ドウ・トウ",day:"9/18",nw:0,
+ w:[["<ruby>道具<rt>どうぐ</rt></ruby>","tool"],
+    ["<ruby>帰<rt>かえ</rt></ruby>り<ruby>道<rt>みち</rt></ruby>","the way home"],
+    ["<ruby>道路<rt>どうろ</rt></ruby>","road"],
+    ["<ruby>北海道<rt>ほっかいどう</rt></ruby>","Hokkaido"]]},
+{c:"乗",mean:"ride, get on",kun:"の-る",on:"ジョウ",day:"9/18",nw:0,
+ w:[["<ruby>乗<rt>の</rt></ruby>ります","to ride, to get on"],
+    ["<ruby>乗車券<rt>じょうしゃけん</rt></ruby>","passenger ticket"],
+    ["<ruby>乗<rt>の</rt></ruby>り<ruby>物<rt>もの</rt></ruby>","vehicle"],
+    ["<ruby>乗車<rt>じょうしゃ</rt></ruby>","boarding"]]}
+];
+
+var list=document.getElementById('list'), tally=document.getElementById('tally'),
+    none=document.getElementById('none'), q=document.getElementById('q'), kind='all';
+
+function esc(s){return s.replace(/<[^>]*>/g,'');}
+
+list.innerHTML=K.map(function(k){
+  return '<article class="kcard'+(k.nw?' is-new':'')+'">'
+   +'<div class="top"><span class="glyph">'+k.c+'</span><div class="rd">'
+   +'<div class="mean">'+k.mean+'</div>'
+   +'<div class="yomi"><span class="lab">くんよみ</span><b>'+k.kun+'</b><br>'
+   +'<span class="lab">おんよみ</span><b>'+k.on+'</b></div>'
+   +'<div class="tagrow"><span class="day">'+k.day+'</span>'
+   +'<span class="day"'+(k.nw?'':' style="border-color:var(--line);color:var(--faint)"')+'>'
+   +(k.nw?'新しい':'ふくしゅう')+'</span></div>'
+   +'</div></div>'
+   +'<ul>'+k.w.map(function(x){
+       return '<li><span class="w">'+x[0]+'</span><span class="e">'+x[1]+'</span></li>';}).join('')
+   +'</ul></article>';
+}).join('');
+
+var cards=[].slice.call(list.children);
+var hay=K.map(function(k){
+  return (k.c+' '+k.mean+' '+k.kun+' '+k.on+' '+k.day+' '+(k.nw?'new 新しい':'review ふくしゅう')+' '
+   +k.w.map(function(x){return esc(x[0])+' '+x[1];}).join(' ')).toLowerCase();
+});
+
+function apply(){
+  var t=q.value.trim().toLowerCase(), n=0;
+  cards.forEach(function(c,i){
+    var ok=(kind==='all'||(kind==='new')===!!K[i].nw)&&(!t||hay[i].indexOf(t)>-1);
+    c.hidden=!ok; if(ok)n++;
+  });
+  tally.textContent=n+' / '+K.length+' 漢字';
+  none.hidden=n>0;
+}
+q.addEventListener('input',apply);
+document.getElementById('kinds').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b)return;
+  kind=b.dataset.kind;
+  [].forEach.call(this.children,function(x){x.setAttribute('aria-pressed',String(x===b));});
+  apply();
+});
+apply();
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

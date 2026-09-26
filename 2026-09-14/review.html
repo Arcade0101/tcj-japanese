@@ -1,0 +1,1487 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+/* The week pages carry their own full palette, so site.css here supplies the
+   site nav only. Park their sticky bar below it — a sibling selector, because
+   the page's own <style> block sits between the nav and the bar. */
+.sitenav~.bar{top:var(--nav-h)!important}
+</style>
+<title>TCJ 復習シート 9/14–9/18</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<nav class="sitenav"><div class="sitenav-in">
+<a class="home" href="../">日本語ノート</a>
+<button class="hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<div class="navlinks" id="navLinks">
+<button class="searchbtn searchbtn-menu" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+  <span class="lbl">さがす</span><kbd>⌘K</kbd>
+</button>
+<a class="nl" href="../">週ごと <small>WEEKS</small></a>
+<a class="nl" href="../grammar.html">文法 <small>GRAMMAR</small></a>
+<a class="nl" href="../kanji.html">漢字 <small>KANJI</small></a>
+<a class="nl" href="../vocab.html">ことば <small>VOCAB</small></a>
+<a class="nl" href="../2026-09-14/podcast.html">ポッドキャスト <small>AUDIO</small></a>
+</div>
+<button class="searchbtn searchbtn-top" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+  <span class="lbl">さがす</span><kbd>⌘K</kbd>
+</button>
+</div></nav>
+<style>
+:root{
+  --paper:#FBFAF6;
+  --surface:#FFFFFF;
+  --ink:#15181E;
+  --muted:#5C6272;
+  --faint:#8A8F9C;
+  --line:#E4E1D8;
+  --line-soft:#EFEDE6;
+  --indigo:#2C4370;
+  --indigo-soft:#E8EDF7;
+  --vermilion:#B8402A;
+  --vermilion-soft:#FBEAE5;
+  --hl-y:#FFF08A;
+  --hl-p:#FFCBDD;
+  --hl-b:#BEDCF7;
+  --ja:"Klee One","Hiragino Mincho ProN","Yu Mincho",serif;
+  --en:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14161A;
+    --surface:#1B1E24;
+    --ink:#E9E7E1;
+    --muted:#A0A6B4;
+    --faint:#7A8090;
+    --line:#2B2F38;
+    --line-soft:#232730;
+    --indigo:#93B3E8;
+    --indigo-soft:#1C2635;
+    --vermilion:#F0937B;
+    --vermilion-soft:#2E1F1B;
+    --hl-y:rgba(255,224,90,.24);
+    --hl-p:rgba(255,140,180,.24);
+    --hl-b:rgba(130,190,255,.24);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14161A;
+  --surface:#1B1E24;
+  --ink:#E9E7E1;
+  --muted:#A0A6B4;
+  --faint:#7A8090;
+  --line:#2B2F38;
+  --line-soft:#232730;
+  --indigo:#93B3E8;
+  --indigo-soft:#1C2635;
+  --vermilion:#F0937B;
+  --vermilion-soft:#2E1F1B;
+  --hl-y:rgba(255,224,90,.24);
+  --hl-p:rgba(255,140,180,.24);
+  --hl-b:rgba(130,190,255,.24);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--en);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.ja,ruby,.ex-ja,h1,h2,h3,.word,.pat{font-family:var(--ja)}
+
+/* ---------- toolbar ---------- */
+.bar{
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.bar-in{
+  max-width:940px;margin:0 auto;padding:10px 20px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;
+}
+.brand{font-family:var(--ja);font-weight:600;font-size:15px;letter-spacing:.02em;margin-right:auto}
+.brand span{font-family:var(--en);font-weight:500;color:var(--faint);font-size:12px;letter-spacing:.06em;margin-left:8px}
+.toggles{display:flex;gap:6px}
+button.tg{
+  font-family:var(--en);font-size:12px;font-weight:500;letter-spacing:.02em;
+  padding:5px 11px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line);background:var(--surface);color:var(--muted);
+  transition:background .15s,color .15s,border-color .15s;
+}
+button.tg[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:var(--paper)}
+button.tg:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+
+/* ---------- day rail ---------- */
+.rail{max-width:940px;margin:0 auto;padding:0 20px}
+.rail ol{
+  list-style:none;margin:0;padding:18px 0 0;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border-top:1px solid var(--line-soft);
+}
+.rail li{padding-top:14px;border-top:2px solid var(--indigo);margin-right:2px;transition:border-color .15s}
+.rail li.current{border-top-color:var(--vermilion)}
+.rail li.current .d{color:var(--vermilion)}
+.rail a{text-decoration:none;color:inherit;display:block}
+.rail .d{display:block;font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--indigo);text-transform:uppercase}
+.rail .t{display:block;font-family:var(--ja);font-size:14px;margin-top:2px;line-height:1.45}
+.rail .g{display:block;font-size:12px;color:var(--faint);margin-top:1px;line-height:1.45}
+
+/* ---------- pager (one day/section "page" at a time, not endless scroll) ---------- */
+.pager{
+  display:flex;align-items:center;gap:10px;margin:22px 0;padding:12px 4px;
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+}
+.pager button{
+  font-family:var(--en);font-size:13px;font-weight:500;letter-spacing:.02em;
+  display:flex;align-items:center;gap:6px;cursor:pointer;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  padding:8px 14px;border-radius:999px;transition:background .15s,border-color .15s,opacity .15s;
+}
+.pager button:hover:not(:disabled){border-color:var(--indigo);background:var(--indigo-soft)}
+.pager button:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+.pager button:disabled{opacity:.35;cursor:default}
+.pager .pg-next{margin-left:auto}
+.pager .pg-mid{display:flex;flex-direction:column;align-items:center;gap:1px;flex:none}
+.pager .pg-pos{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.06em}
+.pager .pg-label{font-family:var(--ja);font-size:13.5px;color:var(--muted)}
+@media (max-width:640px){
+  .pager .pg-mid .pg-label{display:none}
+  .pager button span.txt{display:none}
+}
+
+/* ---------- layout ---------- */
+main{max-width:940px;margin:0 auto;padding:0 20px 80px}
+.lede{max-width:64ch;padding:28px 0 6px}
+.lede h1{font-size:30px;line-height:1.25;margin:0 0 8px;font-weight:600;text-wrap:balance}
+.lede p{margin:0;color:var(--muted);font-size:15px}
+
+section{padding-top:44px}
+.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:6px}
+.sec-head .date{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--vermilion)}
+.sec-head h2{font-size:22px;margin:0;font-weight:600}
+.sec-head .src{font-size:12px;color:var(--faint);margin-left:auto;font-family:var(--en)}
+.sec-sub{color:var(--muted);font-size:14px;margin:10px 0 0;max-width:64ch}
+
+.pod-link{display:flex;align-items:center;gap:13px;margin:18px 0 0;padding:13px 16px;
+  border:1px solid var(--line);background:var(--surface);text-decoration:none;color:var(--ink);
+  border-left:3px solid var(--vermilion);transition:background .12s}
+.pod-link:hover{background:var(--indigo-soft)}
+.pod-link:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+.pod-ico{flex:none;width:30px;height:30px;border-radius:50%;background:var(--vermilion);
+  color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:12px}
+.pod-txt{display:flex;flex-direction:column;font-family:var(--ja)}
+.pod-txt b{font-size:15px;font-weight:600}
+.pod-txt small{font-family:var(--en);font-size:12px;color:var(--muted);margin-top:2px}
+ol.flow{list-style:none;counter-reset:f;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+ol.flow li{counter-increment:f;background:var(--surface);padding:11px 14px;font-family:var(--ja);font-size:15px;position:relative}
+ol.flow li::before{content:counter(f);font-family:var(--en);font-size:10.5px;font-weight:600;color:var(--paper);background:var(--indigo);width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-right:7px;vertical-align:1px}
+ol.flow li .fl{display:block;font-family:var(--en);font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin:0 0 2px 23px}
+h3{font-size:17px;margin:34px 0 10px;font-weight:600;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+h3 .en-h{font-family:var(--en);font-size:12px;font-weight:500;color:var(--faint);letter-spacing:.02em}
+h4{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin:22px 0 8px}
+
+/* ---------- furigana / gloss ---------- */
+rt{font-family:var(--ja);font-size:.5em;color:var(--muted);font-weight:400;letter-spacing:0}
+body.fg-off rt{display:none}
+.gloss{font-family:var(--en);font-size:13.5px;color:var(--muted);line-height:1.5}
+body.en-off .gloss{display:none}
+
+/* ---------- vocab list ---------- */
+.vocab{border-top:1px solid var(--line);margin:8px 0 0}
+.vrow{
+  display:grid;grid-template-columns:minmax(190px,270px) 1fr;gap:6px 22px;
+  padding:13px 0;border-bottom:1px solid var(--line-soft);align-items:start;
+}
+.vrow .lhs{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.word{font-size:20px;line-height:1.5}
+.word mark{padding:0 .12em;border-radius:2px;color:var(--ink)}
+mark.n{background:var(--hl-y)}
+mark.v{background:var(--hl-p)}
+mark.a{background:var(--hl-b)}
+.chip{
+  font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  padding:2px 7px;border-radius:3px;border:1px solid var(--line);color:var(--muted);white-space:nowrap;
+}
+.chip.g1,.chip.g2,.chip.g3{border-color:color-mix(in srgb,var(--vermilion) 45%,var(--line));color:var(--vermilion)}
+.chip.nn{border-color:color-mix(in srgb,var(--indigo) 45%,var(--line));color:var(--indigo)}
+.vrow .rhs .meaning{font-family:var(--en);font-size:15px;font-weight:500}
+.vrow .rhs .ex{margin-top:5px}
+.ex-ja{font-size:15.5px;line-height:1.85}
+.ex .gloss{margin-top:1px}
+
+/* ---------- grammar blocks ---------- */
+.pat-box{
+  background:var(--surface);border:1px solid var(--line);
+  border-left:3px solid var(--indigo);
+  padding:16px 18px;margin:12px 0 0;
+}
+.pat-box.new{border-left-color:var(--vermilion)}
+.pat-box .tag{
+  font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--indigo);display:block;margin-bottom:6px;
+}
+.pat-box.new .tag{color:var(--vermilion)}
+.pat{font-size:19px;line-height:1.7;margin:0}
+.pat b{font-weight:600;background:var(--hl-y);padding:0 .15em;border-radius:2px;color:var(--ink)}
+.pat-box.new .pat b{background:var(--hl-p)}
+.pat-box .note{font-family:var(--en);font-size:13.5px;color:var(--muted);margin:9px 0 0}
+
+ul.ex-list{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:11px}
+ul.ex-list>li{padding-left:15px;border-left:1px solid var(--line)}
+ul.ex-list>li .ex-ja{font-size:16px}
+em.k{font-style:normal;font-weight:600;color:var(--vermilion)}
+em.k2{font-style:normal;font-weight:600;color:var(--indigo)}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;margin:12px 0 0;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:14.5px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+thead th{
+  font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--faint);background:color-mix(in srgb,var(--ink) 4%,var(--surface));border-bottom:1px solid var(--line);
+}
+tbody tr:last-child td{border-bottom:0}
+td.j{font-family:var(--ja);font-size:16px;line-height:1.8}
+td .gloss{margin-top:2px}
+.col-tara{color:var(--indigo);font-weight:600}
+.col-temo{color:var(--vermilion);font-weight:600}
+
+/* ---------- kanji cards ---------- */
+.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:12px}
+.kcard{background:var(--surface);padding:15px 17px}
+.kcard .top{display:flex;align-items:center;gap:13px}
+.kcard .glyph{font-family:var(--ja);font-size:46px;line-height:1;font-weight:600}
+.kcard .rd{font-family:var(--en);font-size:12px;color:var(--muted);line-height:1.65}
+.kcard .rd b{font-family:var(--ja);font-weight:600;color:var(--ink);font-size:13px}
+.kcard ul{list-style:none;margin:11px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}
+.kcard li{font-size:13px;color:var(--muted);font-family:var(--en)}
+.kcard li .jw{font-family:var(--ja);font-size:15px;color:var(--ink);margin-right:7px}
+
+/* ---------- callout ---------- */
+.call{
+  background:var(--indigo-soft);border:1px solid color-mix(in srgb,var(--indigo) 22%,transparent);
+  padding:13px 16px;margin:16px 0 0;font-size:14px;color:var(--ink);
+}
+.call.warn{background:var(--vermilion-soft);border-color:color-mix(in srgb,var(--vermilion) 25%,transparent)}
+.call strong{font-weight:600}
+.call .lbl{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--indigo);display:block;margin-bottom:4px}
+.call.warn .lbl{color:var(--vermilion)}
+
+/* ---------- legend ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:18px 0 0;padding:12px 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);font-size:13px;color:var(--muted)}
+.legend span.sw{display:inline-block;width:13px;height:13px;border-radius:2px;vertical-align:-2px;margin-right:6px}
+
+/* ---------- quiz ---------- */
+.q{border-top:1px solid var(--line-soft);padding:16px 0}
+.q:first-of-type{border-top:1px solid var(--line)}
+.q .num{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--vermilion)}
+.q .ask{font-family:var(--ja);font-size:16.5px;line-height:1.8;margin:3px 0 0}
+.q .gloss{margin-top:3px}
+details.ans{margin-top:9px}
+details.ans>summary{
+  font-family:var(--en);font-size:12px;font-weight:500;color:var(--indigo);cursor:pointer;
+  list-style:none;display:inline-block;padding:4px 11px;border:1px dashed color-mix(in srgb,var(--indigo) 45%,var(--line));border-radius:999px;
+}
+details.ans>summary::-webkit-details-marker{display:none}
+details.ans>summary:hover{background:var(--indigo-soft)}
+details.ans>summary:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+details.ans[open]>summary{color:var(--faint);border-style:solid}
+.ansbody{margin-top:9px;padding:12px 15px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--indigo)}
+.ansbody .ex-ja{font-size:16px}
+.ansbody p{margin:0 0 7px}
+.ansbody p:last-child{margin-bottom:0}
+
+/* ---------- footer ---------- */
+footer{margin-top:54px;padding-top:20px;border-top:2px solid var(--ink);font-size:14px}
+footer .nx{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px 26px;margin-top:12px}
+footer .nx div .k{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:3px}
+footer .nx div .v{font-family:var(--ja);font-size:15px}
+
+@media (max-width:640px){
+  .vrow{grid-template-columns:1fr;gap:4px}
+  .rail ol{grid-template-columns:1fr;gap:10px}
+  .rail li{margin-right:0}
+  .lede h1{font-size:25px}
+}
+/* ---------- contents ---------- */
+.toc{margin:18px 0 0;border:1px solid var(--line);background:var(--surface)}
+.toc>summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:baseline;gap:10px;
+             font-family:var(--ja);font-size:15px;font-weight:600;min-height:44px;align-items:center}
+.toc>summary::-webkit-details-marker{display:none}
+.toc>summary::after{content:"▾";margin-left:auto;color:var(--faint);font-size:12px;transition:transform .15s}
+.toc[open]>summary::after{transform:rotate(180deg)}
+.toc>summary:hover{background:var(--indigo-soft)}
+.toc>summary:focus-visible{outline:2px solid var(--vermilion);outline-offset:-2px}
+.toc .cnt{font-family:var(--en);font-size:11.5px;font-weight:500;color:var(--faint);letter-spacing:.04em}
+.toc ol{list-style:none;margin:0;padding:4px 10px 12px;border-top:1px solid var(--line-soft);
+        display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px 10px}
+.toc li a{display:block;padding:7px 8px;text-decoration:none;color:var(--muted);
+          font-family:var(--ja);font-size:14.5px;line-height:1.5;border-radius:2px}
+.toc li a:hover{background:var(--indigo-soft);color:var(--ink)}
+.toc li a:focus-visible{outline:2px solid var(--vermilion);outline-offset:-2px}
+.toc li.lv2 a{font-weight:600;color:var(--ink);margin-top:6px}
+.toc li.lv2 a::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;
+                      background:var(--vermilion);margin-right:8px;vertical-align:1px}
+section[id],h3[id],h2[id]{scroll-margin-top:calc(var(--nav-h,0px) + 62px)}
+@media (max-width:640px){.toc ol{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand">TCJ 復習シート<span>9/14 – 9/18</span></div>
+    <div class="toggles">
+      <button class="tg" id="tgFuri" aria-pressed="true">ふりがな Furigana</button>
+      <button class="tg" id="tgEn" aria-pressed="true">English</button>
+    </div>
+  </div>
+</div>
+
+<div class="rail">
+  <ol>
+    <li><a href="#d14"><span class="d">Sep 14</span><span class="t">いっぽ3 P62–65</span><span class="g">New: 〜ので ・ から/ので</span></a></li>
+    <li><a href="#d16"><span class="d">Sep 16</span><span class="t">いっぽ3 第48課-2</span><span class="g">New grammar: 〜ても</span></a></li>
+    <li><a href="#d18"><span class="d">Sep 18</span><span class="t">漢字・ことば・文法</span><span class="g">New: 〜すぎ / 〜かもしれません</span></a></li>
+    <li><a href="#matome"><span class="d">まとめ</span><span class="t">Summary &amp; quiz</span><span class="g">一覧・たしかめテスト</span></a></li>
+  </ol>
+</div>
+
+<main>
+
+<div class="lede">
+  <h1>先週の復習 — 9月14日・16日・18日</h1>
+  <p>Everything from the three decks, with full readings and English. Turn off <strong>ふりがな</strong> to test your reading, or turn off <strong>English</strong> to test your meaning. The quiz is at the bottom — answer first, reveal after.</p>
+</div>
+
+<a class="pod-link" href="podcast.html">
+  <span class="pod-ico" aria-hidden="true">▶</span>
+  <span class="pod-txt"><b>ポッドキャスト 第1回</b><small>2分19秒 — この週の文法を、聞いて練習する</small></span>
+</a>
+
+<div class="legend">
+  <span><span class="sw" style="background:var(--hl-y)"></span>名詞・N — noun</span>
+  <span><span class="sw" style="background:var(--hl-p)"></span>動詞・V — verb</span>
+  <span><span class="sw" style="background:var(--hl-b)"></span>形容詞・A — adjective</span>
+  <span><span class="sw" style="background:var(--indigo)"></span>復習 — review grammar</span>
+  <span><span class="sw" style="background:var(--vermilion)"></span>新しい文法 — new grammar</span>
+</div>
+
+<details class="toc" id="toc">
+  <summary><span class="lab">目次</span> <span class="cnt" id="tocCnt"></span></summary>
+  <nav aria-label="Contents"><ol id="tocList"></ol></nav>
+</details>
+
+<div class="pager" data-pager>
+  <button type="button" class="pg-prev" aria-label="Previous">
+    <span aria-hidden="true">←</span><span class="txt">前へ</span>
+  </button>
+  <div class="pg-mid"><span class="pg-pos"></span><span class="pg-label"></span></div>
+  <button type="button" class="pg-next" aria-label="Next">
+    <span class="txt">つぎへ</span><span aria-hidden="true">→</span>
+  </button>
+</div>
+
+<!-- =================== SEP 14 =================== -->
+<section id="d14">
+  <div class="sec-head">
+    <span class="date">2026.09.14 (月)</span>
+    <h2>いっぽ にほんご さんぽ 3 — P62〜P65</h2>
+    <span class="src">ことば U173</span>
+  </div>
+  <p class="sec-sub">The fullest lesson of the three. Advice forms are reviewed first, then the day's main grammar <strong>〜ので</strong> is introduced, and the lesson closes by contrasting it with <strong>から</strong>.</p>
+
+  <ol class="flow">
+    <li><span class="fl">復習 P58</span>〜たほうがいいです ／ 〜ないほうがいいです</li>
+    <li><span class="fl">ことば</span>Unit 173</li>
+    <li><span class="fl">★ 新文法 P62–64</span>〜ので</li>
+    <li><span class="fl">まとめ P65</span>「から」と「ので」</li>
+  </ol>
+
+  <h3>ことば — Unit 173 <span class="en-h">used in the P64 practice</span></h3>
+  <div class="vocab">
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="v">売</mark><rt>う</rt></ruby><mark class="v">れます</mark></span><span class="chip g2">2G</span></div>
+      <div class="rhs">
+        <div class="meaning">to be sold, to sell well</div>
+        <div class="ex"><div class="ex-ja">この<ruby>本<rt>ほん</rt></ruby>はよく<ruby>売<rt>う</rt></ruby>れています。</div><div class="gloss">This book sells really well.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="n">窓側</mark><rt>まどがわ</rt></ruby></span><span class="chip nn">N</span></div>
+      <div class="rhs">
+        <div class="meaning">window side, window seat</div>
+        <div class="ex"><div class="ex-ja"><ruby>窓側<rt>まどがわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。</div><div class="gloss">A window seat, please.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="n">通路側</mark><rt>つうろがわ</rt></ruby></span><span class="chip nn">N</span></div>
+      <div class="rhs">
+        <div class="meaning">aisle side, aisle seat</div>
+        <div class="ex"><div class="ex-ja"><ruby>通路側<rt>つうろがわ</rt></ruby>のほうがトイレに<ruby>行<rt>い</rt></ruby>きやすいです。</div><div class="gloss">The aisle side is easier for going to the toilet.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="n">一杯</mark><rt>いっぱい</rt></ruby></span><span class="chip nn">N</span></div>
+      <div class="rhs">
+        <div class="meaning">full, full of</div>
+        <div class="ex"><div class="ex-ja"><ruby>電車<rt>でんしゃ</rt></ruby>は<ruby>人<rt>ひと</rt></ruby>で<ruby>一杯<rt>いっぱい</rt></ruby>でした。</div><div class="gloss">The train was full of people.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="v">出</mark><rt>で</rt></ruby><mark class="v">ます</mark>［<ruby>試合<rt>しあい</rt></ruby>に〜］</span><span class="chip g2">2G</span></div>
+      <div class="rhs">
+        <div class="meaning">to take part in, to participate in (a match)</div>
+        <div class="ex"><div class="ex-ja"><ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>試合<rt>しあい</rt></ruby><em class="k">に</em><ruby>出<rt>で</rt></ruby>ます。</div><div class="gloss">I'm taking part in next week's match.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><mark class="n">ボーナス</mark></span><span class="chip nn">N</span></div>
+      <div class="rhs">
+        <div class="meaning">bonus</div>
+        <div class="ex"><div class="ex-ja"><ruby>夏<rt>なつ</rt></ruby>のボーナスで<ruby>旅行<rt>りょこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。</div><div class="gloss">I'll travel with my summer bonus.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="v">出</mark><rt>で</rt></ruby><mark class="v">ます</mark>［ボーナスが〜］</span><span class="chip g2">2G</span></div>
+      <div class="rhs">
+        <div class="meaning">(a bonus) is given, comes out</div>
+        <div class="ex"><div class="ex-ja"><ruby>今年<rt>ことし</rt></ruby>はボーナス<em class="k">が</em><ruby>出<rt>で</rt></ruby>ませんでした。</div><div class="gloss">No bonus was given this year.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="n">具合</mark><rt>ぐあい</rt></ruby></span><span class="chip nn">N</span></div>
+      <div class="rhs">
+        <div class="meaning">condition (of health), state</div>
+        <div class="ex"><div class="ex-ja"><ruby>今日<rt>きょう</rt></ruby>は<ruby>具合<rt>ぐあい</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いです。</div><div class="gloss">I'm not feeling well today.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="v">早退</mark><rt>そうたい</rt></ruby><mark class="v">します</mark></span><span class="chip g3">3G</span></div>
+      <div class="rhs">
+        <div class="meaning">to leave early (from work or school)</div>
+        <div class="ex"><div class="ex-ja"><ruby>頭<rt>あたま</rt></ruby>が<ruby>痛<rt>いた</rt></ruby>いので<ruby>早退<rt>そうたい</rt></ruby>します。</div><div class="gloss">I have a headache, so I'll leave early.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="v">下</mark><rt>さ</rt></ruby><mark class="v">がります</mark>［<ruby>熱<rt>ねつ</rt></ruby>が〜］</span><span class="chip g1">1G</span></div>
+      <div class="rhs">
+        <div class="meaning">(one's fever) goes down</div>
+        <div class="ex"><div class="ex-ja"><ruby>薬<rt>くすり</rt></ruby>を<ruby>飲<rt>の</rt></ruby>んで<ruby>熱<rt>ねつ</rt></ruby>が<ruby>下<rt>さ</rt></ruby>がりました。</div><div class="gloss">I took medicine and my fever went down.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="v">謝</mark><rt>あやま</rt></ruby><mark class="v">ります</mark></span><span class="chip g1">1G</span></div>
+      <div class="rhs">
+        <div class="meaning">to apologize</div>
+        <div class="ex"><div class="ex-ja"><ruby>遅<rt>おく</rt></ruby>れて、ちゃんと<ruby>謝<rt>あやま</rt></ruby>りました。</div><div class="gloss">I was late, so I apologized properly.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><mark class="a">かっこいい</mark></span><span class="chip">なA*</span></div>
+      <div class="rhs">
+        <div class="meaning">cool, good-looking</div>
+        <div class="ex"><div class="ex-ja">あの<ruby>人<rt>ひと</rt></ruby>はかっこいいですね。</div><div class="gloss">That person is cool, isn't he/she.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="n">操作</mark><rt>そうさ</rt></ruby></span><span class="chip nn">N</span></div>
+      <div class="rhs">
+        <div class="meaning">operation, handling (of a device)</div>
+        <div class="ex"><div class="ex-ja">この<ruby>機械<rt>きかい</rt></ruby>は<ruby>操作<rt>そうさ</rt></ruby>が<ruby>簡単<rt>かんたん</rt></ruby>です。</div><div class="gloss">This machine is easy to operate.</div></div>
+      </div>
+    </div>
+
+    <div class="vrow">
+      <div class="lhs"><span class="word"><ruby><mark class="n">入管</mark><rt>にゅうかん</rt></ruby></span><span class="chip nn">N</span></div>
+      <div class="rhs">
+        <div class="meaning">immigration office — short for <ruby>入国管理局<rt>にゅうこくかんりきょく</rt></ruby></div>
+        <div class="ex"><div class="ex-ja">ビザのことで<ruby>入管<rt>にゅうかん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。</div><div class="gloss">I went to the immigration office about my visa.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="call">
+    <span class="lbl">Watch the particle</span>
+    <strong><ruby>出<rt>で</rt></ruby>ます</strong> is one verb doing two jobs. <span class="ja"><ruby>試合<rt>しあい</rt></ruby><em class="k">に</em><ruby>出<rt>で</rt></ruby>ます</span> = <em>you</em> go out into the match (participate). <span class="ja">ボーナス<em class="k">が</em><ruby>出<rt>で</rt></ruby>ます</span> = the bonus comes out (is given). Different particle, different meaning.
+  </div>
+
+  <div class="call warn">
+    <span class="lbl">* Small correction worth knowing</span>
+    The slide tags <strong>かっこいい</strong> as なA, but it conjugates as an <strong>い-adjective</strong>: かっこ<strong>よくない</strong> / かっこ<strong>よくても</strong> / かっこ<strong>よすぎます</strong> — never かっこいいな. This matters now that you're using 〜ても and 〜すぎ.
+  </div>
+
+  <h3>復習（P58） 〜たほうがいいです ／ 〜ないほうがいいです <span class="en-h">you'd better ~ / you'd better not ~</span></h3>
+  <div class="pat-box">
+    <span class="tag">Review · Formation</span>
+    <p class="pat">V<b>た形</b> ＋ ほうがいいです　→　do it<br>V<b>ない形</b> ＋ ほうがいいです　→　don't do it</p>
+    <p class="note">The slide labels the two halves <strong>た・けい</strong> and <strong>ない・けい</strong>. Used for giving advice.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>じょうきょう Situation</th><th>アドバイス Advice</th></tr></thead>
+      <tbody>
+        <tr><td class="j"><ruby>熱<rt>ねつ</rt></ruby>があるんです。<div class="gloss">I have a fever.</div></td><td class="j"><ruby>会社<rt>かいしゃ</rt></ruby>を<ruby>休<rt>やす</rt></ruby><em class="k2">んだ</em>ほうがいいです。<div class="gloss">You'd better take the day off work.</div></td></tr>
+        <tr><td class="j"><ruby>漢字<rt>かんじ</rt></ruby>が<ruby>全然<rt>ぜんぜん</rt></ruby>わかりません。<div class="gloss">I don't understand kanji at all.</div></td><td class="j"><ruby>漢字<rt>かんじ</rt></ruby>を<ruby>書<rt>か</rt></ruby>いて<ruby>練習<rt>れんしゅう</rt></ruby>し<em class="k2">た</em>ほうがいいです。<div class="gloss">You'd better practise by writing them.</div></td></tr>
+        <tr><td class="j">やせたいです。<div class="gloss">I want to lose weight.</div></td><td class="j">ケーキを<ruby>食<rt>た</rt></ruby>べ<em class="k">ない</em>ほうがいいです。<div class="gloss">You'd better not eat cake.</div></td></tr>
+        <tr><td class="j">コーヒー、<ruby>飲<rt>の</rt></ruby>みたいです。（<ruby>妊婦<rt>にんぷ</rt></ruby>さん）<div class="gloss">I want a coffee. (pregnant)</div></td><td class="j">コーヒーを<ruby>飲<rt>の</rt></ruby>ま<em class="k">ない</em>ほうがいいです。<div class="gloss">You'd better not drink coffee.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>れんしゅう — 12問の答え</h4>
+  <div class="tw">
+    <table>
+      <thead><tr><th>#</th><th>もんだい</th><th>こたえ</th></tr></thead>
+      <tbody>
+        <tr><td>ex</td><td class="j"><ruby>明日<rt>あした</rt></ruby>はテストですから、<ruby>早<rt>はや</rt></ruby>く（<ruby>寝<rt>ね</rt></ruby>ます⇒）</td><td class="j"><ruby>早<rt>はや</rt></ruby>く<em class="k2">寝た</em>ほうがいいです<div class="gloss">You'd better sleep early.</div></td></tr>
+        <tr><td>ex</td><td class="j"><ruby>明日<rt>あした</rt></ruby>はテストですから、ゲームは（します⇒）</td><td class="j">ゲームは<em class="k">しない</em>ほうがいいです<div class="gloss">You'd better not play games.</div></td></tr>
+        <tr><td>①</td><td class="j"><ruby>学校<rt>がっこう</rt></ruby>に<ruby>遅<rt>おく</rt></ruby>れますから、（<ruby>急<rt>いそ</rt></ruby>ぎます⇒）</td><td class="j"><em class="k2"><ruby>急<rt>いそ</rt></ruby>いだ</em>ほうがいいです<div class="gloss">You'd better hurry.</div></td></tr>
+        <tr><td>②</td><td class="j">あの<ruby>映画<rt>えいが</rt></ruby>はつまらないですから、（<ruby>見<rt>み</rt></ruby>ます⇒）</td><td class="j"><em class="k"><ruby>見<rt>み</rt></ruby>ない</em>ほうがいいです<div class="gloss">You'd better not watch it.</div></td></tr>
+        <tr><td>③</td><td class="j"><ruby>午後<rt>ごご</rt></ruby><ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>りますから、<ruby>傘<rt>かさ</rt></ruby>を（<ruby>持<rt>も</rt></ruby>っていきます⇒）</td><td class="j"><ruby>傘<rt>かさ</rt></ruby>を<ruby>持<rt>も</rt></ruby>って<em class="k2">いった</em>ほうがいいです<div class="gloss">You'd better take an umbrella.</div></td></tr>
+        <tr><td>④</td><td class="j"><ruby>転<rt>ころ</rt></ruby>びますから、（<ruby>走<rt>はし</rt></ruby>ります⇒）</td><td class="j"><em class="k"><ruby>走<rt>はし</rt></ruby>らない</em>ほうがいいです<div class="gloss">You'd better not run.</div></td></tr>
+        <tr><td>⑤</td><td class="j"><ruby>熱<rt>ねつ</rt></ruby>があったら、<ruby>病院<rt>びょういん</rt></ruby>へ（<ruby>行<rt>い</rt></ruby>きます⇒）</td><td class="j"><ruby>病院<rt>びょういん</rt></ruby>へ<em class="k2"><ruby>行<rt>い</rt></ruby>った</em>ほうがいいです<div class="gloss">You'd better go to hospital.</div></td></tr>
+        <tr><td>⑥</td><td class="j">お<ruby>金<rt>かね</rt></ruby>がなかったら、<ruby>車<rt>くるま</rt></ruby>を（<ruby>買<rt>か</rt></ruby>います⇒）</td><td class="j"><ruby>車<rt>くるま</rt></ruby>を<em class="k"><ruby>買<rt>か</rt></ruby>わない</em>ほうがいいです<div class="gloss">You'd better not buy a car.</div></td></tr>
+        <tr><td>⑦</td><td class="j"><ruby>目<rt>め</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>かったら、めがねを（かけます⇒）</td><td class="j">めがねを<em class="k2">かけた</em>ほうがいいです<div class="gloss">You'd better wear glasses.</div></td></tr>
+        <tr><td>⑧</td><td class="j"><ruby>天気<rt>てんき</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>かったら、（<ruby>出<rt>で</rt></ruby>かけます⇒）</td><td class="j"><em class="k"><ruby>出<rt>で</rt></ruby>かけない</em>ほうがいいです<div class="gloss">You'd better not go out.</div></td></tr>
+        <tr><td>⑨</td><td class="j"><ruby>疲<rt>つか</rt></ruby>れていたら、（<ruby>休<rt>やす</rt></ruby>みます⇒）</td><td class="j"><em class="k2"><ruby>休<rt>やす</rt></ruby>んだ</em>ほうがいいです<div class="gloss">You'd better rest.</div></td></tr>
+        <tr><td>⑩</td><td class="j"><ruby>疲<rt>つか</rt></ruby>れていたら、（<ruby>運転<rt>うんてん</rt></ruby>します⇒）</td><td class="j"><em class="k"><ruby>運転<rt>うんてん</rt></ruby>しない</em>ほうがいいです<div class="gloss">You'd better not drive.</div></td></tr>
+        <tr><td>⑪</td><td class="j"><ruby>明日<rt>あした</rt></ruby>も<ruby>外<rt>そと</rt></ruby>は<ruby>暑<rt>あつ</rt></ruby>いですから、<ruby>外<rt>そと</rt></ruby>に（<ruby>出<rt>で</rt></ruby>ます⇒）</td><td class="j"><ruby>外<rt>そと</rt></ruby>に<em class="k"><ruby>出<rt>で</rt></ruby>ない</em>ほうがいいです<div class="gloss">You'd better not go outside.</div></td></tr>
+        <tr><td>⑫</td><td class="j"><ruby>野菜<rt>やさい</rt></ruby>は<ruby>体<rt>からだ</rt></ruby>にいいですから、たくさん（<ruby>食<rt>た</rt></ruby>べます⇒）</td><td class="j">たくさん<em class="k2"><ruby>食<rt>た</rt></ruby>べた</em>ほうがいいです<div class="gloss">You'd better eat a lot.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>★ 新しい文法（P62–P64） 〜ので <span class="en-h">because ~ (polite)</span></h3>
+  <div class="pat-box new">
+    <span class="tag">New · Formation</span>
+    <p class="pat"><ruby>普通形<rt>ふつうけい</rt></ruby> ＋ <b>ので</b>　／　な<ruby>形容詞<rt>けいようし</rt></ruby> ＋ <b>な</b> ＋ ので　／　<ruby>名詞<rt>めいし</rt></ruby> ＋ <b>な</b> ＋ ので</p>
+    <p class="note">Verbs and い-adjectives take the plain form as-is. Only <strong>な-adjectives and nouns</strong> insert <strong>な</strong>.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ていねい形</th><th>⇒ 〜ので</th></tr></thead>
+      <tbody>
+        <tr><td class="j"><ruby>熱<rt>ねつ</rt></ruby>が<strong>あります</strong>。⇒ <ruby>学校<rt>がっこう</rt></ruby>を<ruby>休<rt>やす</rt></ruby>みます。</td><td class="j"><ruby>熱<rt>ねつ</rt></ruby>が<em class="k">ある</em>ので、<ruby>学校<rt>がっこう</rt></ruby>を<ruby>休<rt>やす</rt></ruby>みます。<div class="gloss">I have a fever, so I'll be absent from school.</div></td></tr>
+        <tr><td class="j"><ruby>電車<rt>でんしゃ</rt></ruby>が<strong>来ません</strong>。⇒ <ruby>会社<rt>かいしゃ</rt></ruby>に<ruby>遅<rt>おく</rt></ruby>れます。</td><td class="j"><ruby>電車<rt>でんしゃ</rt></ruby>が<em class="k"><ruby>来<rt>こ</rt></ruby>ない</em>ので、<ruby>会社<rt>かいしゃ</rt></ruby>に<ruby>遅<rt>おく</rt></ruby>れます。<div class="gloss">The train isn't coming, so I'll be late for work.</div></td></tr>
+        <tr><td class="j">ICカードは<strong><ruby>便利<rt>べんり</rt></ruby>です</strong>。⇒ よく<ruby>使<rt>つか</rt></ruby>います。</td><td class="j">ICカードは<ruby>便利<rt>べんり</rt></ruby><em class="k">な</em>ので、よく<ruby>使<rt>つか</rt></ruby>います。<div class="gloss">IC cards are handy, so I use them a lot.　←なA＋な</div></td></tr>
+        <tr><td class="j"><ruby>今日<rt>きょう</rt></ruby>は<strong><ruby>雨<rt>あめ</rt></ruby>です</strong>。⇒ <ruby>出<rt>で</rt></ruby>かけません。</td><td class="j"><ruby>今日<rt>きょう</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby><em class="k">な</em>ので、<ruby>出<rt>で</rt></ruby>かけません。<div class="gloss">It's raining today, so I'm not going out.　←N＋な</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="call">
+    <span class="lbl">P62 — the real announcement on the slide</span>
+    <div class="ex-ja" style="font-size:16px;line-height:2">おはようございます。いっぽ<ruby>自動車<rt>じどうしゃ</rt></ruby>のマリオです。<ruby>今<rt>いま</rt></ruby>、<ruby>新宿<rt>しんじゅく</rt></ruby>ですが、<ruby>電車<rt>でんしゃ</rt></ruby>の<ruby>事故<rt>じこ</rt></ruby>があった<em class="k">ので</em>、<ruby>少<rt>すこ</rt></ruby>し<ruby>遅<rt>おく</rt></ruby>れます。<ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ありません。</div>
+    <div class="gloss" style="margin-top:5px">Good morning, this is Mario from Ippo Motors. I'm in Shinjuku now, but there was a train accident, so I'll be a little late. I'm very sorry.</div>
+  </div>
+
+  <h4>P63 れいぶん</h4>
+  <ul class="ex-list">
+    <li><div class="ex-ja">このカードはいろいろな<ruby>電車<rt>でんしゃ</rt></ruby>やバスに<ruby>乗<rt>の</rt></ruby>れる<em class="k">ので</em>、<ruby>便利<rt>べんり</rt></ruby>です。</div><div class="gloss">You can ride all sorts of trains and buses with this card, so it's handy.</div></li>
+    <li><div class="ex-ja">バスが<ruby>来<rt>こ</rt></ruby>なかった<em class="k">ので</em>、<ruby>駅<rt>えき</rt></ruby>まで<ruby>歩<rt>ある</rt></ruby>きました。</div><div class="gloss">The bus didn't come, so I walked to the station.</div></li>
+    <li><div class="ex-ja">この<ruby>道<rt>みち</rt></ruby>は<ruby>狭<rt>せま</rt></ruby>い<em class="k">ので</em>、<ruby>運転<rt>うんてん</rt></ruby>が<ruby>大変<rt>たいへん</rt></ruby>です。</div><div class="gloss">This road is narrow, so driving is tough.</div></li>
+    <li><div class="ex-ja"><ruby>日曜日<rt>にちようび</rt></ruby><em class="k">なので</em>、<ruby>電車<rt>でんしゃ</rt></ruby>がすいています。</div><div class="gloss">It's Sunday, so the trains are empty.</div></li>
+    <li><div class="ex-ja"><ruby>事故<rt>じこ</rt></ruby>で<ruby>電車<rt>でんしゃ</rt></ruby>が<ruby>止<rt>と</rt></ruby>まっている<em class="k">ので</em>、バスで<ruby>行<rt>い</rt></ruby>きます。</div><div class="gloss">The trains have stopped because of an accident, so I'll go by bus.</div></li>
+    <li><div class="ex-ja"><ruby>駅<rt>えき</rt></ruby>のアナウンスがよくわからなかった<em class="k">ので</em>、<ruby>近<rt>ちか</rt></ruby>くの<ruby>人<rt>ひと</rt></ruby>に<ruby>聞<rt>き</rt></ruby>きました。</div><div class="gloss">I couldn't understand the station announcement, so I asked someone nearby.</div></li>
+    <li><div class="ex-ja"><ruby>娘<rt>むすめ</rt></ruby>は<ruby>卵<rt>たまご</rt></ruby>アレルギーがある<em class="k">ので</em>、ケーキが<ruby>食<rt>た</rt></ruby>べられません。</div><div class="gloss">My daughter has an egg allergy, so she can't eat cake.</div></li>
+    <li><div class="ex-ja">このデジカメは<ruby>軽<rt>かる</rt></ruby>くて、<ruby>操作<rt>そうさ</rt></ruby>が<ruby>簡単<rt>かんたん</rt></ruby><em class="k">なので</em>、よく<ruby>売<rt>う</rt></ruby>れています。</div><div class="gloss">This digital camera is light and easy to operate, so it sells well.</div></li>
+    <li><div class="ex-ja">これは<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>書類<rt>しょるい</rt></ruby><em class="k">なので</em>、なくさないでください。</div><div class="gloss">These are important documents, so please don't lose them.</div></li>
+    <li><div class="ex-ja"><ruby>次<rt>つぎ</rt></ruby>の<ruby>新大阪行<rt>しんおおさかゆ</rt></ruby>きの<ruby>新幹線<rt>しんかんせん</rt></ruby>を<ruby>予約<rt>よやく</rt></ruby>したいんですが、<ruby>窓側<rt>まどがわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>がありますか。<br>→ すみませんが、<ruby>窓側<rt>まどがわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>は<ruby>予約<rt>よやく</rt></ruby>がいっぱいです<em class="k">ので</em>、<ruby>通路側<rt>つうろがわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>でよろしいですか。</div><div class="gloss">I'd like to book the next shinkansen to Shin-Osaka — do you have a window seat? / Sorry, window seats are fully booked, so would an aisle seat be all right?</div></li>
+  </ul>
+
+  <h4>P64 れんしゅう — ことばバンク と 答え</h4>
+  <div class="call">
+    <span class="lbl">ことばバンク</span>
+    <div class="ja" style="line-height:2.1"><ruby>妹<rt>いもうと</rt></ruby>が<ruby>結婚<rt>けっこん</rt></ruby>します ／ <ruby>熱<rt>ねつ</rt></ruby>が<ruby>下<rt>さ</rt></ruby>がりません ／ <ruby>毎日<rt>まいにち</rt></ruby><ruby>暑<rt>あつ</rt></ruby>いです ／ みんなに<ruby>親切<rt>しんせつ</rt></ruby>です ／ ボーナスが<ruby>出<rt>で</rt></ruby>ました ／ <ruby>国<rt>くに</rt></ruby>から<ruby>両親<rt>りょうしん</rt></ruby>が<ruby>来<rt>き</rt></ruby>ます ／ <ruby>父<rt>ちち</rt></ruby>の<ruby>具合<rt>ぐあい</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いです ／ <ruby>娘<rt>むすめ</rt></ruby>の<ruby>学校<rt>がっこう</rt></ruby>の<ruby>保護者会<rt>ほごしゃかい</rt></ruby>があります ／ かっこいいし、サッカーが<ruby>上手<rt>じょうず</rt></ruby>です ／ <ruby>入管<rt>にゅうかん</rt></ruby>に<ruby>行<rt>い</rt></ruby>かなければなりません</div>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>#</th><th>もんだい</th><th>こたえ（れい）</th></tr></thead>
+      <tbody>
+        <tr><td>例</td><td class="j">＿＿ので、<ruby>熱中症<rt>ねっちゅうしょう</rt></ruby>に<ruby>気<rt>き</rt></ruby>をつけてください。</td><td class="j"><em class="k"><ruby>毎日<rt>まいにち</rt></ruby><ruby>暑<rt>あつ</rt></ruby>い</em>ので<div class="gloss">It's hot every day, so take care not to get heatstroke.</div></td></tr>
+        <tr><td>①</td><td class="j"><ruby>彼<rt>かれ</rt></ruby>は＿＿ので、<ruby>人気<rt>にんき</rt></ruby>があります。</td><td class="j"><em class="k">かっこいいし、サッカーが<ruby>上手<rt>じょうず</rt></ruby>な</em>ので<div class="gloss">He's good-looking and good at football, so he's popular.</div></td></tr>
+        <tr><td>②</td><td class="j">＿＿ので、2<ruby>週間<rt>しゅうかん</rt></ruby>くらい<ruby>国<rt>くに</rt></ruby>へ<ruby>帰<rt>かえ</rt></ruby>ります。</td><td class="j"><em class="k"><ruby>妹<rt>いもうと</rt></ruby>が<ruby>結婚<rt>けっこん</rt></ruby>する</em>ので<div class="gloss">My sister's getting married, so I'll go home for about two weeks.</div></td></tr>
+        <tr><td>③</td><td class="j">＿＿ので、<ruby>早退<rt>そうたい</rt></ruby>してもいいですか。</td><td class="j"><em class="k"><ruby>父<rt>ちち</rt></ruby>の<ruby>具合<rt>ぐあい</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>い</em>ので<div class="gloss">My father isn't well, so may I leave early?</div></td></tr>
+        <tr><td>④</td><td class="j">＿＿ので、たぶん<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>試合<rt>しあい</rt></ruby>には<ruby>出<rt>で</rt></ruby>られないと<ruby>思<rt>おも</rt></ruby>います。</td><td class="j"><em class="k"><ruby>熱<rt>ねつ</rt></ruby>が<ruby>下<rt>さ</rt></ruby>がらない</em>ので<div class="gloss">My fever won't go down, so I probably can't play in next week's match.</div></td></tr>
+        <tr><td>⑤〜⑧</td><td class="j"><ruby>漢字<rt>かんじ</rt></ruby>は<ruby>難<rt>むずか</rt></ruby>しいので、＿＿。 など</td><td class="j">なんでもOK<div class="gloss">Free answer — any true sentence works.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="call">
+    <span class="lbl">はなしましょう — phoning to excuse yourself</span>
+    <div class="ex-ja" style="font-size:16px;line-height:2">もしもし、<ruby>田中<rt>たなか</rt></ruby>さんですか。ノイです。すみません、<ruby>風邪<rt>かぜ</rt></ruby>をひいた<em class="k">ので</em>、きょうは<ruby>休<rt>やす</rt></ruby>みます。</div>
+    <div class="gloss" style="margin-top:5px">Hello, is that Tanaka-san? It's Noi. Sorry, I've caught a cold, so I'll be absent today.</div>
+  </div>
+
+  <h3>★ ぶんぽうのまとめ（P65） 「から」と「ので」 <span class="en-h">the politeness split</span></h3>
+  <div class="call warn">
+    <span class="lbl">The one rule</span>
+    <strong>から</strong> = <ruby>理由<rt>りゆう</rt></ruby>を<strong>はっきり</strong><ruby>言<rt>い</rt></ruby>います（states the reason directly）　·　<strong>ので</strong> = <strong>ていねい</strong>。お<ruby>願<rt>ねが</rt></ruby>いするときや<ruby>謝<rt>あやま</rt></ruby>るときに<ruby>使<rt>つか</rt></ruby>います（softer — for requests and apologies）
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th></th><th class="col-temo">から</th><th class="col-tara">ので</th></tr></thead>
+      <tbody>
+        <tr><td><strong>あいて</strong></td><td class="j"><ruby>友<rt>とも</rt></ruby>だち・<ruby>家族<rt>かぞく</rt></ruby><div class="gloss">friends, family</div></td><td class="j">ていねい・やさしい<div class="gloss">polite, gentle</div></td></tr>
+        <tr><td><strong>例1</strong></td><td class="j"><ruby>危険<rt>きけん</rt></ruby>です<em class="k">から</em>、ここに<ruby>入<rt>はい</rt></ruby>らないでください。<div class="gloss">It's dangerous, so do not enter.</div></td><td class="j">すみません、<ruby>頭<rt>あたま</rt></ruby>が<ruby>痛<rt>いた</rt></ruby>い<em class="k2">ので</em>、<ruby>早<rt>はや</rt></ruby>く<ruby>帰<rt>かえ</rt></ruby>ってもいいですか。<div class="gloss">Excuse me, I have a headache, so may I go home early?</div></td></tr>
+        <tr><td><strong>例2</strong></td><td class="j"><ruby>暑<rt>あつ</rt></ruby>い<em class="k">から</em>、エアコンをつけよう。<div class="gloss">It's hot — let's put the AC on. (casual)</div></td><td class="j"><ruby>暑<rt>あつ</rt></ruby>い<em class="k2">ので</em>、エアコンをつけましょうか。<div class="gloss">It's hot, so shall we put the AC on? (polite)</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>新しい ことば <span class="en-h">extra words from P62–P65</span></h3>
+  <div class="vocab">
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">熱中症</mark><rt>ねっちゅうしょう</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">heatstroke</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">保護者会</mark><rt>ほごしゃかい</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">parents' meeting</div><div class="ex"><div class="gloss"><ruby>保護者<rt>ほごしゃ</rt></ruby> ＝ <ruby>子<rt>こ</rt></ruby>どもを<ruby>守<rt>まも</rt></ruby>る<ruby>人<rt>ひと</rt></ruby> ＝ おとうさん・おかあさん</div></div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">書類</mark><rt>しょるい</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">documents, paperwork</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">新幹線</mark><rt>しんかんせん</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">shinkansen, bullet train</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="v">予約</mark><rt>よやく</rt></ruby><mark class="v">します</mark></span><span class="chip g3">3G</span></div><div class="rhs"><div class="meaning">to reserve, to book</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="a">狭</mark><rt>せま</rt></ruby><mark class="a">い</mark></span><span class="chip">いA</span></div><div class="rhs"><div class="meaning">narrow, cramped</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="a">軽</mark><rt>かる</rt></ruby><mark class="a">い</mark></span><span class="chip">いA</span></div><div class="rhs"><div class="meaning">light (in weight)</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="a">不便</mark><rt>ふべん</rt></ruby><mark class="a">な</mark></span><span class="chip">なA</span></div><div class="rhs"><div class="meaning">inconvenient</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="v">引</mark><rt>ひ</rt></ruby><mark class="v">っ</mark><ruby><mark class="v">越</mark><rt>こ</rt></ruby><mark class="v">します</mark></span><span class="chip g1">1G</span></div><div class="rhs"><div class="meaning">to move house</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="v">寝坊</mark><rt>ねぼう</rt></ruby><mark class="v">します</mark></span><span class="chip g3">3G</span></div><div class="rhs"><div class="meaning">to oversleep</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><mark class="v">すいています</mark></span><span class="chip">—</span></div><div class="rhs"><div class="meaning">to be empty, uncrowded</div></div></div>
+  </div>
+</section>
+
+<!-- =================== SEP 16 =================== -->
+<section id="d16" hidden>
+  <div class="sec-head">
+    <span class="date">2026.09.16</span>
+    <h2>いっぽ にほんご さんぽ 3 — 第48課-2</h2>
+    <span class="src">ひらくにほんご U174</span>
+  </div>
+  <p class="sec-sub">Three review patterns, then the new one: <strong>〜ても</strong>. The lesson ends by contrasting 〜ても with 〜たら — that contrast is the point of the day.</p>
+
+  <h3>復習① 〜場合は <span class="en-h">in the case of, if — formal</span></h3>
+  <div class="pat-box">
+    <span class="tag">Review · Formation</span>
+    <p class="pat">V<ruby>普通形<rt>ふつうけい</rt></ruby> / いA / なA <span style="color:var(--muted)">な</span> / N <span style="color:var(--muted)">の</span> ＋ <b><ruby>場合<rt>ばあい</rt></ruby>は</b></p>
+    <p class="note">Used for rules, instructions and procedures — notices, manuals, workplace policy. More formal than 〜たら.</p>
+  </div>
+  <ul class="ex-list">
+    <li><div class="ex-ja"><ruby>地震<rt>じしん</rt></ruby>が<ruby>起<rt>お</rt></ruby>きた<em class="k2"><ruby>場合<rt>ばあい</rt></ruby>は</em>、つくえの<ruby>下<rt>した</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ってください。</div><div class="gloss">If an earthquake occurs, please get under a desk.</div></li>
+    <li><div class="ex-ja"><ruby>雨<rt>あめ</rt></ruby>の<em class="k2"><ruby>場合<rt>ばあい</rt></ruby>は</em>、BBQは<ruby>中止<rt>ちゅうし</rt></ruby>です。</div><div class="gloss">In case of rain, the BBQ is cancelled.</div></li>
+    <li><div class="ex-ja"><ruby>運転<rt>うんてん</rt></ruby>する<em class="k2"><ruby>場合<rt>ばあい</rt></ruby>は</em>、<ruby>携帯<rt>けいたい</rt></ruby>を<ruby>見<rt>み</rt></ruby>てはいけません。</div><div class="gloss">When driving, you must not look at your phone.</div></li>
+    <li><div class="ex-ja"><ruby>事故<rt>じこ</rt></ruby>を<ruby>起<rt>お</rt></ruby>こした<em class="k2"><ruby>場合<rt>ばあい</rt></ruby>は</em>、<ruby>警察<rt>けいさつ</rt></ruby>に<ruby>電話<rt>でんわ</rt></ruby>します。</div><div class="gloss">If you cause an accident, you call the police.</div></li>
+    <li><div class="ex-ja"><ruby>保証書<rt>ほしょうしょ</rt></ruby>がある<em class="k2"><ruby>場合<rt>ばあい</rt></ruby>は</em>、<ruby>修理<rt>しゅうり</rt></ruby>は<ruby>無料<rt>むりょう</rt></ruby>です。</div><div class="gloss">If you have the warranty, the repair is free.</div></li>
+    <li><div class="ex-ja"><ruby>勉強<rt>べんきょう</rt></ruby>がわからない<em class="k2"><ruby>場合<rt>ばあい</rt></ruby>は</em>、<ruby>先生<rt>せんせい</rt></ruby>に<ruby>聞<rt>き</rt></ruby>いてください。</div><div class="gloss">If you don't understand the lesson, please ask the teacher.</div></li>
+    <li><div class="ex-ja"><ruby>遅刻<rt>ちこく</rt></ruby>する<em class="k2"><ruby>場合<rt>ばあい</rt></ruby>は</em>、<ruby>連絡<rt>れんらく</rt></ruby>しなければなりません。</div><div class="gloss">If you are going to be late, you must get in touch.</div></li>
+  </ul>
+
+  <h3>復習② 〜ないで <span class="en-h">without doing ~</span></h3>
+  <div class="pat-box">
+    <span class="tag">Review · Formation</span>
+    <p class="pat">V<ruby>テ形<rt>けい</rt></ruby> → do A, then B<br>V<ruby>ナイ形<rt>けい</rt></ruby> ＋ <b>で</b> → do B <em>without</em> doing A</p>
+    <p class="note">The pair is usually taught back to back — the て-form says you did it, the ないで form says you skipped it.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>〜て（した）</th><th>〜ないで（しなかった）</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="j"><ruby>砂糖<rt>さとう</rt></ruby>を<ruby>入<rt>い</rt></ruby>れ<em class="k2">て</em>、コーヒーを<ruby>飲<rt>の</rt></ruby>みます。<div class="gloss">I put sugar in and drink the coffee.</div></td>
+          <td class="j"><ruby>砂糖<rt>さとう</rt></ruby>を<ruby>入<rt>い</rt></ruby>れ<em class="k">ないで</em>、コーヒーを<ruby>飲<rt>の</rt></ruby>みます。<div class="gloss">I drink the coffee without putting sugar in.</div></td>
+        </tr>
+        <tr>
+          <td class="j"><ruby>電気<rt>でんき</rt></ruby>をつけ<em class="k2">て</em><ruby>寝<rt>ね</rt></ruby>ます。<div class="gloss">I sleep with the light on.</div></td>
+          <td class="j"><ruby>電気<rt>でんき</rt></ruby>をつけ<em class="k">ないで</em><ruby>寝<rt>ね</rt></ruby>ます。<div class="gloss">I sleep without turning the light on.</div></td>
+        </tr>
+        <tr>
+          <td class="j"><ruby>電気<rt>でんき</rt></ruby>を<ruby>消<rt>け</rt></ruby>し<em class="k2">て</em><ruby>寝<rt>ね</rt></ruby>ます。<div class="gloss">I turn the light off and sleep.</div></td>
+          <td class="j">（＝ almost the same result, different focus）<div class="gloss">消して = you actively turned it off. つけないで = you never turned it on.</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="ex-list">
+    <li><div class="ex-ja"><ruby>明日<rt>あした</rt></ruby><ruby>試験<rt>しけん</rt></ruby>ですが、<ruby>勉強<rt>べんきょう</rt></ruby>し<em class="k">ないで</em><ruby>寝<rt>ね</rt></ruby>ます。</div><div class="gloss">I have an exam tomorrow, but I'm going to sleep without studying.</div></li>
+    <li><div class="ex-ja"><ruby>明日<rt>あした</rt></ruby><ruby>試験<rt>しけん</rt></ruby>なので、<ruby>寝<rt>ね</rt></ruby><em class="k">ないで</em><ruby>勉強<rt>べんきょう</rt></ruby>します。</div><div class="gloss">I have an exam tomorrow, so I'll study without sleeping.</div></li>
+    <li><div class="ex-ja">ご<ruby>飯<rt>はん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べ<em class="k">ないで</em>、パンを<ruby>食<rt>た</rt></ruby>べます。</div><div class="gloss">I eat bread instead of rice.</div></li>
+    <li><div class="ex-ja">バスに<ruby>乗<rt>の</rt></ruby>ら<em class="k">ないで</em>、<ruby>歩<rt>ある</rt></ruby>いて<ruby>行<rt>い</rt></ruby>きます。</div><div class="gloss">I'll walk instead of taking the bus.</div></li>
+    <li><div class="ex-ja">ゲームをし<em class="k">ないで</em>、<ruby>勉強<rt>べんきょう</rt></ruby>します。</div><div class="gloss">I'll study instead of playing games.</div></li>
+    <li><div class="ex-ja"><ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べ<em class="k">ないで</em>、<ruby>会社<rt>かいしゃ</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。</div><div class="gloss">I went to the office without eating breakfast.</div></li>
+  </ul>
+
+  <h3>復習③ 〜ので <span class="en-h">because ~ (softer than から)</span></h3>
+  <div class="call">
+    <span class="lbl">ならった日</span>
+    This was <strong>introduced on 9月14日</strong> (P62–P64). The formation table and the full 「から」と「ので」 comparison are in the <a href="#d14" style="color:var(--indigo)">9/14 section</a>.
+  </div>
+  <div class="pat-box">
+    <span class="tag">Review · Formation</span>
+    <p class="pat"><ruby>普通形<rt>ふつうけい</rt></ruby> ＋ <b>ので</b>　　なA・N は <b>な</b>＋ので</p>
+    <p class="note">から states a reason plainly and can sound blunt. ので is softer and more polite — the safe choice for excuses, apologies and requests.</p>
+  </div>
+  <ul class="ex-list">
+    <li><div class="ex-ja"><ruby>電車<rt>でんしゃ</rt></ruby>が<ruby>遅<rt>おく</rt></ruby>れた<em class="k2">ので</em>、<ruby>遅刻<rt>ちこく</rt></ruby>しました。</div><div class="gloss">The train was delayed, so I was late.</div></li>
+    <li><div class="ex-ja"><ruby>熱<rt>ねつ</rt></ruby>がある<em class="k2">ので</em>、<ruby>学校<rt>がっこう</rt></ruby>を<ruby>休<rt>やす</rt></ruby>みます。</div><div class="gloss">I have a fever, so I'll be absent from school.</div></li>
+    <li><div class="ex-ja"><ruby>外<rt>そと</rt></ruby>がうるさかった<em class="k2">ので</em>、<ruby>寝<rt>ね</rt></ruby>られませんでした。</div><div class="gloss">It was noisy outside, so I couldn't sleep.</div></li>
+    <li><div class="ex-ja"><ruby>寝坊<rt>ねぼう</rt></ruby>をした<em class="k2">ので</em>、デートに<ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>いませんでした。</div><div class="gloss">I overslept, so I didn't make it to the date on time.</div></li>
+    <li><div class="ex-ja"><ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>った<em class="k2">ので</em>、サッカーの<ruby>試合<rt>しあい</rt></ruby>はありません。</div><div class="gloss">It rained, so there's no soccer match.</div></li>
+    <li><div class="ex-ja"><ruby>車<rt>くるま</rt></ruby>で<ruby>来<rt>き</rt></ruby>た<em class="k2">ので</em>、ビールは<ruby>飲<rt>の</rt></ruby>めません。</div><div class="gloss">I came by car, so I can't drink beer.</div></li>
+    <li><div class="ex-ja"><ruby>先週<rt>せんしゅう</rt></ruby>の<ruby>休<rt>やす</rt></ruby>みは<ruby>暇<rt>ひま</rt></ruby>だった<em class="k2">ので</em>、ずっとテレビを<ruby>見<rt>み</rt></ruby>ていました。</div><div class="gloss">I was free last weekend, so I watched TV the whole time.</div></li>
+  </ul>
+
+  <h3>★ 新しい文法 〜ても <span class="en-h">even if ~, even though ~</span></h3>
+  <div class="pat-box new">
+    <span class="tag">New · Formation</span>
+    <p class="pat">V テ形 ＋ <b>も</b>　／　いA <span style="color:var(--muted)">〜い</span> → <b>〜くても</b>　／　なA・N ＋ <b>でも</b>　／　ない → <b>なくても</b></p>
+    <p class="note">The second half goes <em>against</em> what you'd expect from the first half. That is the whole meaning.</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>品詞</th><th>もとの形</th><th>〜ても</th></tr></thead>
+      <tbody>
+        <tr><td>V</td><td class="j"><ruby>待<rt>ま</rt></ruby>ちます</td><td class="j"><ruby>待<rt>ま</rt></ruby>っ<em class="k">ても</em><div class="gloss">even if I wait</div></td></tr>
+        <tr><td>V</td><td class="j"><ruby>考<rt>かんが</rt></ruby>えます</td><td class="j"><ruby>考<rt>かんが</rt></ruby>え<em class="k">ても</em><div class="gloss">even if I think about it</div></td></tr>
+        <tr><td>V</td><td class="j"><ruby>練習<rt>れんしゅう</rt></ruby>します</td><td class="j"><ruby>練習<rt>れんしゅう</rt></ruby>し<em class="k">ても</em><div class="gloss">even if I practise</div></td></tr>
+        <tr><td>いA</td><td class="j"><ruby>悪<rt>わる</rt></ruby>い</td><td class="j"><ruby>悪<rt>わる</rt></ruby><em class="k">くても</em><div class="gloss">even if it's bad</div></td></tr>
+        <tr><td>いA</td><td class="j"><ruby>痛<rt>いた</rt></ruby>い</td><td class="j"><ruby>痛<rt>いた</rt></ruby><em class="k">くても</em><div class="gloss">even if it hurts</div></td></tr>
+        <tr><td>ない</td><td class="j"><ruby>寝<rt>ね</rt></ruby>ない</td><td class="j"><ruby>寝<rt>ね</rt></ruby><em class="k">なくても</em><div class="gloss">even if I don't sleep</div></td></tr>
+        <tr><td>なA</td><td class="j"><ruby>大変<rt>たいへん</rt></ruby>な</td><td class="j"><ruby>大変<rt>たいへん</rt></ruby><em class="k">でも</em><div class="gloss">even if it's tough</div></td></tr>
+        <tr><td>N</td><td class="j"><ruby>日曜日<rt>にちようび</rt></ruby></td><td class="j"><ruby>日曜日<rt>にちようび</rt></ruby><em class="k">でも</em><div class="gloss">even on Sunday</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="ex-list">
+    <li><div class="ex-ja">1<ruby>時間<rt>じかん</rt></ruby><ruby>待<rt>ま</rt></ruby>っ<em class="k">ても</em>、パフェを<ruby>食<rt>た</rt></ruby>べます。</div><div class="gloss">Even if I wait an hour, I'm going to eat the parfait.</div></li>
+    <li><div class="ex-ja"><ruby>安<rt>やす</rt></ruby><em class="k">くても</em>、<ruby>食<rt>た</rt></ruby>べません。</div><div class="gloss">Even if it's cheap, I won't eat it.</div></li>
+    <li><div class="ex-ja"><ruby>暑<rt>あつ</rt></ruby><em class="k">くても</em>、エアコンをつけません。</div><div class="gloss">Even if it's hot, I don't turn the air conditioner on.</div></li>
+    <li><div class="ex-ja"><ruby>日曜日<rt>にちようび</rt></ruby><em class="k">でも</em>、<ruby>働<rt>はたら</rt></ruby>きます。</div><div class="gloss">Even on Sundays, I work.</div></li>
+    <li><div class="ex-ja"><ruby>忙<rt>いそが</rt></ruby>し<em class="k">くても</em>、<ruby>毎日<rt>まいにち</rt></ruby><ruby>勉強<rt>べんきょう</rt></ruby>します。</div><div class="gloss">Even if I'm busy, I study every day.</div></li>
+    <li><div class="ex-ja">ピーマンは<ruby>体<rt>からだ</rt></ruby>によ<em class="k">くても</em>、<ruby>食<rt>た</rt></ruby>べません。</div><div class="gloss">Even though green peppers are good for you, I don't eat them.</div></li>
+    <li><div class="ex-ja">ピーマンはおいしく<em class="k">なくても</em>、<ruby>食<rt>た</rt></ruby>べます。</div><div class="gloss">Even if green peppers don't taste good, I eat them.</div></li>
+  </ul>
+
+  <h3>★ 核心 〜たら vs 〜ても <span class="en-h">the contrast the whole lesson is built on</span></h3>
+  <div class="call">
+    <span class="lbl">The one rule</span>
+    <strong class="col-tara">〜たら</strong> → the result you'd <strong>expect</strong>. &nbsp;·&nbsp; <strong class="col-temo">〜ても</strong> → the result that goes <strong>against</strong> expectation.
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th class="col-tara">〜たら — expected ○</th><th class="col-temo">〜ても — contrary ×</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="j"><ruby>高<rt>たか</rt></ruby>かったら<ruby>買<rt>か</rt></ruby>いません。<div class="gloss">If it's expensive, I won't buy it.</div></td>
+          <td class="j"><ruby>高<rt>たか</rt></ruby>くても<ruby>買<rt>か</rt></ruby>います。<div class="gloss">Even if it's expensive, I'll buy it.</div></td>
+        </tr>
+        <tr>
+          <td class="j"><ruby>携帯<rt>けいたい</rt></ruby>で<ruby>調<rt>しら</rt></ruby>べたら、わかります。<div class="gloss">If I look it up on my phone, I'll understand.</div></td>
+          <td class="j"><ruby>携帯<rt>けいたい</rt></ruby>で<ruby>調<rt>しら</rt></ruby>べても、わかりません。<div class="gloss">Even if I look it up on my phone, I don't understand.</div></td>
+        </tr>
+        <tr>
+          <td class="j">たくさん<ruby>寝<rt>ね</rt></ruby>たら、<ruby>元気<rt>げんき</rt></ruby>になります。<div class="gloss">If I sleep a lot, I feel better.</div></td>
+          <td class="j">たくさん<ruby>寝<rt>ね</rt></ruby>ても、<ruby>元気<rt>げんき</rt></ruby>になりません。<div class="gloss">Even if I sleep a lot, I don't feel better.</div></td>
+        </tr>
+        <tr>
+          <td class="j"><ruby>走<rt>はし</rt></ruby>ったら、8<ruby>時<rt>じ</rt></ruby>に<ruby>学校<rt>がっこう</rt></ruby>に<ruby>着<rt>つ</rt></ruby>きます。<div class="gloss">If I run, I'll get to school at 8.</div></td>
+          <td class="j"><ruby>走<rt>はし</rt></ruby>っても、8<ruby>時<rt>じ</rt></ruby>に<ruby>学校<rt>がっこう</rt></ruby>に<ruby>着<rt>つ</rt></ruby>きません。<div class="gloss">Even if I run, I won't get to school at 8.</div></td>
+        </tr>
+        <tr>
+          <td class="j"><ruby>一週間<rt>いっしゅうかん</rt></ruby><ruby>休<rt>やす</rt></ruby>みがあったら、<ruby>旅行<rt>りょこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きたい。<div class="gloss">If I had a week off, I'd like to travel.</div></td>
+          <td class="j"><ruby>一週間<rt>いっしゅうかん</rt></ruby><ruby>休<rt>やす</rt></ruby>みがなくても、<ruby>旅行<rt>りょこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きたい。<div class="gloss">Even without a week off, I want to travel.</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>会話練習 — the drill from p.52</h4>
+  <div class="pat-box">
+    <p class="ex-ja" style="margin:0">
+      A：<ruby>時間<rt>じかん</rt></ruby>がたくさんあったら<ruby>何<rt>なに</rt></ruby>をしますか。<br>
+      B：<ruby>時間<rt>じかん</rt></ruby>があったら<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>ます。<br>
+      A：どうしてですか。<br>
+      B：<ruby>映画<rt>えいが</rt></ruby>が<ruby>好<rt>す</rt></ruby>きだからです。<br>
+      A：では<ruby>時間<rt>じかん</rt></ruby>があってもしないことは<ruby>何<rt>なん</rt></ruby>ですか。<br>
+      B：<ruby>時間<rt>じかん</rt></ruby>があっても<ruby>本<rt>ほん</rt></ruby>を<ruby>読<rt>よ</rt></ruby>みません。<br>
+      A：どうしてですか。<br>
+      B：<ruby>日本語<rt>にほんご</rt></ruby>が<ruby>難<rt>むずか</rt></ruby>しいからです。
+    </p>
+    <p class="note">A: If you had lots of time, what would you do? — B: If I had time, I'd watch films. — A: Why? — B: Because I like films. — A: Then what's something you <em>wouldn't</em> do even if you had time? — B: Even if I had time, I wouldn't read books. — A: Why? — B: Because Japanese is difficult.</p>
+  </div>
+</section>
+
+<!-- =================== SEP 18 =================== -->
+<section id="d18" hidden>
+  <div class="sec-head">
+    <span class="date">2026.09.18</span>
+    <h2>漢字・ことば・文法</h2>
+    <span class="src">O-ML2511 クラス</span>
+  </div>
+  <p class="sec-sub">The biggest deck of the three: three new kanji, two review kanji, vocabulary from Units 174 / 175 / 178, and two new grammar points — <strong>〜すぎ</strong> and <strong>〜かもしれません</strong>.</p>
+
+  <h3>今日の漢字 <span class="en-h">new kanji — 駅・電・急</span></h3>
+  <div class="kgrid">
+    <div class="kcard">
+      <div class="top"><span class="glyph">駅</span><span class="rd"><b>えき</b> — station</span></div>
+      <ul>
+        <li><span class="jw"><ruby>駅員<rt>えきいん</rt></ruby></span>station staff</li>
+        <li><span class="jw"><ruby>駅前<rt>えきまえ</rt></ruby></span>in front of the station</li>
+        <li><span class="jw"><ruby>各駅停車<rt>かくえきていしゃ</rt></ruby></span>local train — stops at every station</li>
+      </ul>
+    </div>
+    <div class="kcard">
+      <div class="top"><span class="glyph">電</span><span class="rd"><b>デン</b> — electricity</span></div>
+      <ul>
+        <li><span class="jw"><ruby>電話<rt>でんわ</rt></ruby></span>telephone</li>
+        <li><span class="jw"><ruby>電車<rt>でんしゃ</rt></ruby></span>train</li>
+        <li><span class="jw"><ruby>電池<rt>でんち</rt></ruby></span>battery</li>
+        <li><span class="jw"><ruby>電源<rt>でんげん</rt></ruby></span>power source, power switch</li>
+      </ul>
+    </div>
+    <div class="kcard">
+      <div class="top"><span class="glyph">急</span><span class="rd"><b>いそ-ぐ</b> · <b>キュウ</b> — hurry, sudden, express</span></div>
+      <ul>
+        <li><span class="jw"><ruby>急<rt>いそ</rt></ruby>ぎます</span>to hurry</li>
+        <li><span class="jw"><ruby>急<rt>きゅう</rt></ruby>ブレーキ</span>sudden braking</li>
+        <li><span class="jw"><ruby>急行<rt>きゅうこう</rt></ruby></span>express train</li>
+      </ul>
+    </div>
+  </div>
+  <div class="call">
+    <span class="lbl">Train speed ladder — from the slides</span>
+    <span class="ja"><ruby>各駅停車<rt>かくえきていしゃ</rt></ruby></span> stops at <strong>every</strong> station → <span class="ja"><ruby>急行<rt>きゅうこう</rt></ruby></span> skips some → <span class="ja"><ruby>特急<rt>とっきゅう</rt></ruby></span> (Unit 174) skips most. The slide drilled this with とまる / とまらない.
+  </div>
+
+  <h3>水曜日の漢字 ふくしゅう <span class="en-h">review kanji — 道・乗</span></h3>
+  <div class="kgrid">
+    <div class="kcard">
+      <div class="top"><span class="glyph">道</span><span class="rd">くんよみ <b>みち</b><br>おんよみ <b>ドウ・トウ</b></span></div>
+      <ul>
+        <li><span class="jw"><ruby>道具<rt>どうぐ</rt></ruby></span>tool</li>
+        <li><span class="jw"><ruby>帰<rt>かえ</rt></ruby>り<ruby>道<rt>みち</rt></ruby></span>the way home</li>
+        <li><span class="jw"><ruby>道路<rt>どうろ</rt></ruby></span>road</li>
+        <li><span class="jw"><ruby>北海道<rt>ほっかいどう</rt></ruby></span>Hokkaido</li>
+      </ul>
+    </div>
+    <div class="kcard">
+      <div class="top"><span class="glyph">乗</span><span class="rd">くんよみ <b>の-る</b><br>おんよみ <b>ジョウ</b></span></div>
+      <ul>
+        <li><span class="jw"><ruby>乗<rt>の</rt></ruby>ります</span>to ride, to get on</li>
+        <li><span class="jw"><ruby>乗車券<rt>じょうしゃけん</rt></ruby></span>passenger ticket</li>
+        <li><span class="jw"><ruby>乗<rt>の</rt></ruby>り<ruby>物<rt>もの</rt></ruby></span>vehicle</li>
+        <li><span class="jw"><ruby>乗車<rt>じょうしゃ</rt></ruby></span>boarding</li>
+      </ul>
+    </div>
+  </div>
+  <div class="call warn">
+    <span class="lbl">Reading trap</span>
+    <span class="ja"><ruby>道<rt>みち</rt></ruby></span> alone and in <span class="ja"><ruby>帰<rt>かえ</rt></ruby>り<ruby>道<rt>みち</rt></ruby></span> is <strong>みち</strong>, but inside compounds it is <strong>ドウ</strong> — <span class="ja"><ruby>道路<rt>どうろ</rt></ruby>・<ruby>道具<rt>どうぐ</rt></ruby>・<ruby>北海道<rt>ほっかいどう</rt></ruby></span>. Same for 乗: <span class="ja"><ruby>乗<rt>の</rt></ruby>ります</span> but <span class="ja"><ruby>乗車券<rt>じょうしゃけん</rt></ruby></span>.
+  </div>
+
+  <h4>漢字の「読み」 — reading practice</h4>
+  <ul class="ex-list">
+    <li><div class="ex-ja"><ruby>会社<rt>かいしゃ</rt></ruby>からの<ruby>帰<rt>かえ</rt></ruby>り<ruby>道<rt>みち</rt></ruby>、<ruby>急<rt>きゅう</rt></ruby>に<ruby>雨<rt>あめ</rt></ruby>がふり<ruby>出<rt>だ</rt></ruby>しました。</div><div class="gloss">On the way home from work, it suddenly started to rain.</div></li>
+    <li><div class="ex-ja"><ruby>急<rt>いそ</rt></ruby>いで<ruby>駅前<rt>えきまえ</rt></ruby>のコンビニでかさを<ruby>買<rt>か</rt></ruby>って<ruby>帰<rt>かえ</rt></ruby>りました。</div><div class="gloss">I hurried, bought an umbrella at the convenience store by the station, and went home.</div></li>
+    <li><div class="ex-ja"><ruby>電車<rt>でんしゃ</rt></ruby>がなかなか<ruby>来<rt>き</rt></ruby>ません。<ruby>大雨<rt>おおあめ</rt></ruby>で<ruby>止<rt>と</rt></ruby>まってると<ruby>思<rt>おも</rt></ruby>います。</div><div class="gloss">The train just won't come. I think it's stopped because of the heavy rain.</div></li>
+    <li><div class="ex-ja"><ruby>北海道<rt>ほっかいどう</rt></ruby>は<ruby>道路<rt>どうろ</rt></ruby>がひろくて、<ruby>車<rt>くるま</rt></ruby>で<ruby>走<rt>はし</rt></ruby>ると<ruby>気<rt>き</rt></ruby>もちがいいです。</div><div class="gloss">In Hokkaido the roads are wide, and driving feels great.</div></li>
+  </ul>
+
+  <h4>漢字の「書き」 — writing practice + answer key</h4>
+  <div class="tw">
+    <table>
+      <thead><tr><th>ひらがな</th><th>漢字（答え）</th></tr></thead>
+      <tbody>
+        <tr><td class="j">でんしゃを おりると あめでした。</td><td class="j"><mark class="n">電車</mark>を おりると <mark class="n">雨</mark>でした。<div class="gloss">When I got off the train, it was raining.</div></td></tr>
+        <tr><td class="j">いつもは えきから あるいて かえりますが、</td><td class="j">いつもは <mark class="n">駅</mark>から <mark class="v">歩</mark>いて <mark class="v">帰</mark>りますが、<div class="gloss">I usually walk home from the station, but…</div></td></tr>
+        <tr><td class="j">いそいでいたので タクシーに のりました。</td><td class="j"><mark class="v">急</mark>いでいたので タクシーに <mark class="v">乗</mark>りました。<div class="gloss">…I was in a hurry, so I took a taxi.</div></td></tr>
+        <tr><td class="j">でも、あめで みちが とても こんでいました。</td><td class="j">でも、<mark class="n">雨</mark>で <mark class="n">道</mark>が とても こんでいました。<div class="gloss">But because of the rain the roads were very congested.</div></td></tr>
+        <tr><td class="j">いえまで 20ぷん も かかりました。</td><td class="j"><mark class="n">家</mark>まで 20<mark class="n">分</mark> も かかりました。<div class="gloss">It took a full 20 minutes to get home.</div></td></tr>
+        <tr><td class="j">あるいた ほうが はやかった と おもいます。</td><td class="j"><mark class="v">歩</mark>いた ほうが はやかった と <mark class="v">思</mark>います。<div class="gloss">I think walking would have been faster.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>ことば — Unit 174 <span class="en-h">covered Wednesday, reviewed Friday</span></h3>
+  <div class="vocab">
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">特急</mark><rt>とっきゅう</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">limited express (train)</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="v">渋滞</mark><rt>じゅうたい</rt></ruby><mark class="v">します</mark></span><span class="chip g3">3G</span></div><div class="rhs"><div class="meaning">to be jammed, to be congested (traffic)</div><div class="ex"><div class="ex-ja"><ruby>道<rt>みち</rt></ruby>が<ruby>渋滞<rt>じゅうたい</rt></ruby>しています。</div><div class="gloss">The road is jammed.</div></div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">調子</mark><rt>ちょうし</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">condition, form (of a body or a machine)</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><mark class="n">ダイエット</mark></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">diet</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">顔色</mark><rt>かおいろ</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">complexion, the look on someone's face</div><div class="ex"><div class="ex-ja"><ruby>顔色<rt>かおいろ</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いですね。<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですか。</div><div class="gloss">You look pale. Are you all right?</div></div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">発音</mark><rt>はつおん</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">pronunciation</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="v">辞</mark><rt>や</rt></ruby><mark class="v">めます</mark>［<ruby>仕事<rt>しごと</rt></ruby>を〜］</span><span class="chip g2">2G</span></div><div class="rhs"><div class="meaning">to quit (a job)</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="v">過</mark><rt>す</rt></ruby><mark class="v">ごします</mark></span><span class="chip g1">1G</span></div><div class="rhs"><div class="meaning">to spend (time)</div><div class="ex"><div class="ex-ja"><ruby>週末<rt>しゅうまつ</rt></ruby>は<ruby>家族<rt>かぞく</rt></ruby>と<ruby>過<rt>す</rt></ruby>ごします。</div><div class="gloss">I spend the weekend with my family.</div></div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="a">平気</mark><rt>へいき</rt></ruby><mark class="a">な</mark></span><span class="chip">なA</span></div><div class="rhs"><div class="meaning">all right, fine, not bothered</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">続</mark><rt>つづ</rt></ruby><mark class="n">き</mark></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">continuation, the rest (of something)</div><div class="ex"><div class="ex-ja"><ruby>続<rt>つづ</rt></ruby>きをかきます。</div><div class="gloss">I'll write the rest.</div></div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">待</mark><rt>ま</rt></ruby><mark class="n">ち</mark><ruby><mark class="n">合</mark><rt>あ</rt></ruby><mark class="n">わせ</mark></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">meeting up, an arranged meeting</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word">もしかすると</span><span class="chip">ADV</span></div><div class="rhs"><div class="meaning">possibly, perhaps</div></div></div>
+  </div>
+
+  <h3>ことば — Unit 175</h3>
+  <div class="vocab">
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">涙</mark><rt>なみだ</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">tear(s)</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><mark class="n">アルコール</mark></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">alcohol</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">動画</mark><rt>どうが</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">video</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">掃除機</mark><rt>そうじき</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">vacuum cleaner</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="v">遅刻</mark><rt>ちこく</rt></ruby><mark class="v">します</mark></span><span class="chip g3">3G</span></div><div class="rhs"><div class="meaning">to be late</div><div class="ex"><div class="ex-ja"><ruby>寝坊<rt>ねぼう</rt></ruby>して<ruby>遅刻<rt>ちこく</rt></ruby>しました。</div><div class="gloss">I overslept and was late.</div></div></div></div>
+  </div>
+
+  <h3>ことば — Unit 178</h3>
+  <div class="vocab">
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">健康</mark><rt>けんこう</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">health</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">健康診断</mark><rt>けんこうしんだん</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">medical checkup</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">仲間</mark><rt>なかま</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">friends, mates, people you belong with</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="v">慣</mark><rt>な</rt></ruby><mark class="v">れます</mark>［<ruby>生活<rt>せいかつ</rt></ruby>に〜］</span><span class="chip g2">2G</span></div><div class="rhs"><div class="meaning">to get accustomed to (life here)</div><div class="ex"><div class="ex-ja"><ruby>日本<rt>にほん</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>に<ruby>慣<rt>な</rt></ruby>れました。</div><div class="gloss">I've got used to life in Japan.</div></div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">寒気</mark><rt>さむけ</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">a chill</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><mark class="v">します</mark>［<ruby>寒気<rt>さむけ</rt></ruby>が〜］</span><span class="chip g3">3G</span></div><div class="rhs"><div class="meaning">to feel a chill</div><div class="ex"><div class="ex-ja"><ruby>寒気<rt>さむけ</rt></ruby>がします。<ruby>熱<rt>ねつ</rt></ruby>があるかもしれません。</div><div class="gloss">I feel a chill. I might have a fever.</div></div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">食中毒</mark><rt>しょくちゅうどく</rt></ruby></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">food poisoning</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="v">冷</mark><rt>ひ</rt></ruby><mark class="v">えます</mark></span><span class="chip g2">2G</span></div><div class="rhs"><div class="meaning">to get cold, to become chilled</div><div class="ex"><div class="ex-ja"><ruby>体<rt>からだ</rt></ruby>が<ruby>冷<rt>ひ</rt></ruby>えると<ruby>体調<rt>たいちょう</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>くなります。</div><div class="gloss">If your body gets cold, you feel unwell.</div></div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word"><ruby><mark class="n">帰</mark><rt>かえ</rt></ruby><mark class="n">り</mark></span><span class="chip nn">N</span></div><div class="rhs"><div class="meaning">return, the way back</div></div></div>
+    <div class="vrow"><div class="lhs"><span class="word">もしかしたら</span><span class="chip">ADV</span></div><div class="rhs"><div class="meaning">maybe, perhaps</div></div></div>
+  </div>
+
+  <div class="call">
+    <span class="lbl">Two pairs worth separating</span>
+    <span class="ja"><ruby>具合<rt>ぐあい</rt></ruby></span> (U173) vs <span class="ja"><ruby>調子<rt>ちょうし</rt></ruby></span> (U174) — both "condition". 具合 leans to <strong>health</strong>; 調子 leans to <strong>form / how well something is running</strong>, and works for machines too.<br>
+    <span class="ja">もしかすると</span> / <span class="ja">もしかしたら</span> — both "maybe", and both naturally pair with <strong>〜かもしれません</strong> at the end of the sentence.
+  </div>
+
+  <h3>★ 新しい文法⑴ 〜すぎ <span class="en-h">too much, excessively</span></h3>
+  <div class="pat-box new">
+    <span class="tag">New · Three patterns</span>
+    <p class="pat">
+      ①　〔<ruby>動詞<rt>どうし</rt></ruby>／ます<ruby>形<rt>けい</rt></ruby>〕＋ <b>すぎ</b><br>
+      ②　〔<ruby>名詞<rt>めいし</rt></ruby>〕の ＋〔<ruby>動詞<rt>どうし</rt></ruby>／ます<ruby>形<rt>けい</rt></ruby>〕＋ <b>すぎ</b><br>
+      ③　〔<ruby>形容詞<rt>けいようし</rt></ruby>の<ruby>語幹<rt>ごかん</rt></ruby>〕＋ <b>すぎます</b>
+    </p>
+    <p class="note">い-adjective: drop い (<span class="ja">辛い → 辛すぎる</span>). な-adjective: drop な (<span class="ja">大変な → 大変すぎる</span>). Irregular: <span class="ja">いい → よすぎる</span>.</p>
+  </div>
+
+  <h4>① 〔Vます形〕＋ すぎ</h4>
+  <ul class="ex-list">
+    <li><div class="ex-ja">ごはんを<ruby>食<rt>た</rt></ruby><em class="k">べすぎました</em>。</div><div class="gloss">I ate too much.</div></li>
+    <li><div class="ex-ja">ビールを<ruby>飲<rt>の</rt></ruby><em class="k">みすぎました</em>。</div><div class="gloss">I drank too much beer.</div></li>
+    <li><div class="ex-ja">ゲーム<em class="k">しすぎました</em>。</div><div class="gloss">I played games too much.</div></li>
+    <li><div class="ex-ja">もう12<ruby>時<rt>じ</rt></ruby>ですよ。<ruby>寝<rt>ね</rt></ruby><em class="k">すぎ</em>ですよ。</div><div class="gloss">It's already 12 o'clock. You've slept too long.</div></li>
+    <li><div class="ex-ja"><ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby><em class="k">しすぎ</em>ですよ。</div><div class="gloss">You're shopping too much.</div></li>
+  </ul>
+  <p class="gloss" style="margin-top:8px">Drill stems from the deck: <span class="ja"><ruby>飲<rt>の</rt></ruby>み ／ <ruby>歌<rt>うた</rt></ruby>い ／ <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>し ／ <ruby>入<rt>い</rt></ruby>れ ／ <ruby>笑<rt>わら</rt></ruby>い</span></p>
+
+  <h4>② 〔N〕の ＋〔Vます形〕＋ すぎ</h4>
+  <ul class="ex-list">
+    <li><div class="ex-ja">お<ruby>酒<rt>さけ</rt></ruby><em class="k">の</em><ruby>飲<rt>の</rt></ruby>み<em class="k">すぎ</em>ですね。</div><div class="gloss">That's too much drinking.</div></li>
+    <li><div class="ex-ja">スマホ<em class="k">の</em><ruby>見<rt>み</rt></ruby><em class="k">すぎ</em>ですよ。</div><div class="gloss">You look at your phone too much.</div></li>
+    <li><div class="ex-ja"><ruby>練習<rt>れんしゅう</rt></ruby><em class="k">の</em>し<em class="k">すぎ</em>ですよ。</div><div class="gloss">You're practising too much.</div></li>
+    <li><div class="ex-ja">パソコン<em class="k">の</em><ruby>使<rt>つか</rt></ruby>い<em class="k">すぎ</em>です。</div><div class="gloss">You use the computer too much.</div></li>
+    <li><div class="ex-ja"><ruby>残業<rt>ざんぎょう</rt></ruby><em class="k">の</em>し<em class="k">すぎ</em>です。</div><div class="gloss">That's too much overtime.</div></li>
+    <li><div class="ex-ja">お<ruby>土産<rt>みやげ</rt></ruby><em class="k">の</em><ruby>買<rt>か</rt></ruby>い<em class="k">すぎ</em>です。</div><div class="gloss">You've bought too many souvenirs.</div></li>
+    <li><div class="ex-ja">ゲーム<em class="k">の</em>やり<em class="k">すぎ</em>です。</div><div class="gloss">That's too much gaming.</div></li>
+    <li><div class="ex-ja">ご<ruby>飯<rt>はん</rt></ruby><em class="k">の</em>あげ<em class="k">すぎ</em>です。</div><div class="gloss">You're giving it too much food.</div></li>
+  </ul>
+
+  <h4>③ 〔A語幹〕＋ すぎます</h4>
+  <div class="tw">
+    <table>
+      <thead><tr><th>もとの形</th><th>〜すぎ</th><th>例文</th></tr></thead>
+      <tbody>
+        <tr><td class="j"><ruby>辛<rt>から</rt></ruby>い</td><td class="j"><ruby>辛<rt>から</rt></ruby>すぎます</td><td class="j">このラーメンは<ruby>辛<rt>から</rt></ruby>すぎます。<div class="gloss">This ramen is too spicy.</div></td></tr>
+        <tr><td class="j"><ruby>高<rt>たか</rt></ruby>い</td><td class="j"><ruby>高<rt>たか</rt></ruby>すぎます</td><td class="j">このカバンは<ruby>高<rt>たか</rt></ruby>すぎます。お<ruby>金<rt>かね</rt></ruby>が<ruby>足<rt>た</rt></ruby>りません。<div class="gloss">This bag is too expensive. I don't have enough money.</div></td></tr>
+        <tr><td class="j"><ruby>小<rt>ちい</rt></ruby>さい</td><td class="j"><ruby>小<rt>ちい</rt></ruby>さすぎます</td><td class="j">このズボンは<ruby>小<rt>ちい</rt></ruby>さすぎます。<ruby>入<rt>はい</rt></ruby>りません。<div class="gloss">These trousers are too small. They don't fit.</div></td></tr>
+        <tr><td class="j"><ruby>暇<rt>ひま</rt></ruby>な</td><td class="j"><ruby>暇<rt>ひま</rt></ruby>すぎます</td><td class="j"><ruby>今日<rt>きょう</rt></ruby>はおきゃくさんが<ruby>来<rt>こ</rt></ruby>なくて、お<ruby>店<rt>みせ</rt></ruby>が<ruby>暇<rt>ひま</rt></ruby>すぎます。<div class="gloss">No customers came today — the shop is far too quiet.</div></td></tr>
+        <tr><td class="j"><ruby>重<rt>おも</rt></ruby>い ／ <ruby>遠<rt>とお</rt></ruby>い</td><td class="j"><ruby>重<rt>おも</rt></ruby>すぎます ／ <ruby>遠<rt>とお</rt></ruby>すぎます</td><td class="j">このかばんは<ruby>重<rt>おも</rt></ruby>すぎます。<div class="gloss">This bag is too heavy.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="gloss" style="margin-top:8px">Drill stems from the deck: <span class="ja"><ruby>甘<rt>あま</rt></ruby>い → <ruby>甘<rt>あま</rt></ruby>すぎ ／ <ruby>難<rt>むずか</rt></ruby>しい → <ruby>難<rt>むずか</rt></ruby>しすぎ ／ <ruby>大変<rt>たいへん</rt></ruby>な → <ruby>大変<rt>たいへん</rt></ruby>すぎ ／ <ruby>硬<rt>かた</rt></ruby>い → <ruby>硬<rt>かた</rt></ruby>すぎ ／ <ruby>簡単<rt>かんたん</rt></ruby>な → <ruby>簡単<rt>かんたん</rt></ruby>すぎ</span></p>
+
+  <div class="call">
+    <span class="lbl">Can-Do for this lesson</span>
+    <span class="ja"><ruby>自分<rt>じぶん</rt></ruby>がしすぎてしまったことや、<ruby>相手<rt>あいて</rt></ruby>がしすぎていることの<ruby>指摘<rt>してき</rt></ruby>や<ruby>反省<rt>はんせい</rt></ruby>を<ruby>伝<rt>つた</rt></ruby>えたり<ruby>理解<rt>りかい</rt></ruby>したりすることができる。</span>
+    <div class="gloss" style="margin-top:5px">You can point out when you or the other person has gone too far, and express or understand regret about it.</div>
+  </div>
+
+  <h3>★ 新しい文法⑵ 〜かもしれません <span class="en-h">might, maybe — about 50% sure</span></h3>
+  <div class="pat-box new">
+    <span class="tag">New · Formation</span>
+    <p class="pat">〔<ruby>普通形<rt>ふつうけい</rt></ruby>〕＋ <b>かもしれません</b></p>
+    <p class="note">Nouns and な-adjectives attach <strong>directly</strong> — no な, no だ. <span class="ja">○ <ruby>雪<rt>ゆき</rt></ruby>かもしれません ／ ✕ <ruby>雪<rt>ゆき</rt></ruby>だかもしれません</span>. Often paired with <span class="ja">もしかすると／もしかしたら</span> at the start.</p>
+  </div>
+  <ul class="ex-list">
+    <li><div class="ex-ja"><ruby>今日<rt>きょう</rt></ruby>はゆきがふる<em class="k">かもしれません</em>。</div><div class="gloss">It might snow today.</div></li>
+    <li><div class="ex-ja">パソコンがこわれた<em class="k">かもしれません</em>。</div><div class="gloss">The computer might be broken.</div></li>
+    <li><div class="ex-ja">さいふをおとした<em class="k">かもしれません</em>。</div><div class="gloss">I might have dropped my wallet.</div></li>
+    <li><div class="ex-ja">このTシャツは、わたしの<ruby>子<rt>こ</rt></ruby>どもには<ruby>小<rt>ちい</rt></ruby>さい<em class="k">かもしれません</em>。</div><div class="gloss">This T-shirt might be too small for my child.</div></li>
+    <li><div class="ex-ja">あした<ruby>授業<rt>じゅぎょう</rt></ruby>はオンライン<em class="k">かもしれません</em>。</div><div class="gloss">Tomorrow's class might be online.</div></li>
+    <li><div class="ex-ja">もしかしたら<ruby>忘<rt>わす</rt></ruby>れた<em class="k">かもしれません</em>。</div><div class="gloss">I might possibly have forgotten.</div></li>
+  </ul>
+</section>
+
+<!-- =================== SUMMARY =================== -->
+<section id="matome" hidden>
+  <div class="sec-head">
+    <span class="date">まとめ</span>
+    <h2>One-page summary</h2>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>文法</th><th>つくりかた</th><th>English</th><th>日</th></tr></thead>
+      <tbody>
+        <tr><td class="j"><span class="col-tara">〜たほうがいいです</span></td><td class="j">Vた形 ＋ ほうがいいです</td><td><strong>you'd better ~</strong></td><td>9/14</td></tr>
+        <tr><td class="j"><span class="col-tara">〜ないほうがいいです</span></td><td class="j">Vない形 ＋ ほうがいいです</td><td><strong>you'd better not ~</strong></td><td>9/14</td></tr>
+        <tr><td class="j"><span class="col-temo">〜ので</span></td><td class="j">普通形 ＋ ので（なA・N は <strong>な</strong>＋ので）</td><td><strong>because</strong> — polite</td><td>9/14</td></tr>
+        <tr><td class="j">から ↔ ので</td><td class="j">から＝はっきり ／ ので＝ていねい</td><td>ので for requests &amp; apologies</td><td>9/14</td></tr>
+        <tr><td class="j"><ruby>場合<rt>ばあい</rt></ruby>は</td><td class="j">V普通形・いA・なAな・Nの ＋ 場合は</td><td>in the case of — formal, for rules</td><td>9/16</td></tr>
+        <tr><td class="j">〜ないで</td><td class="j">Vナイ形 ＋ で</td><td>without doing ~</td><td>9/16</td></tr>
+        <tr><td class="j"><span class="col-temo">〜ても</span></td><td class="j">Vて＋も ／ いAくても ／ なA・N＋でも</td><td><strong>even if</strong> — contrary result</td><td>9/16</td></tr>
+        <tr><td class="j"><span class="col-tara">〜たら</span></td><td class="j">Vた ＋ ら</td><td><strong>if</strong> — expected result</td><td>9/16</td></tr>
+        <tr><td class="j"><span class="col-temo">〜すぎ</span></td><td class="j">Vます形 ／ Nの＋Vます形 ／ A語幹＋すぎます</td><td><strong>too much</strong></td><td>9/18</td></tr>
+        <tr><td class="j"><span class="col-temo">〜かもしれません</span></td><td class="j">普通形（N・なA はそのまま）</td><td><strong>might, maybe</strong></td><td>9/18</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="call">
+    <span class="lbl">Kanji this week</span>
+    <span class="ja" style="font-size:22px"><mark class="n">駅</mark> <mark class="n">電</mark> <mark class="n">急</mark></span> new &nbsp;·&nbsp; <span class="ja" style="font-size:22px"><mark class="a">道</mark> <mark class="a">乗</mark></span> review
+  </div>
+</section>
+
+<!-- =================== QUIZ =================== -->
+<section id="quiz" hidden>
+  <div class="sec-head">
+    <span class="date">クイズ</span>
+    <h2>29問 — Quiz</h2>
+    <span class="src">answer first, then reveal</span>
+  </div>
+  <p class="sec-sub">Try turning <strong>ふりがな</strong> off for sections C and D. Write your answers before you open the reveal.</p>
+
+  <h3>A. ことば（9/14 · Unit 173）</h3>
+
+  <div class="q"><span class="num">Q1</span>
+    <p class="ask">「まどがわ」と「つうろがわ」を<ruby>漢字<rt>かんじ</rt></ruby>で<ruby>書<rt>か</rt></ruby>いて、English も<ruby>書<rt>か</rt></ruby>いてください。</p>
+    <p class="gloss">Write both in kanji and give the English.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>窓側<rt>まどがわ</rt></ruby> = window side / window seat</p>
+      <p class="ex-ja"><ruby>通路側<rt>つうろがわ</rt></ruby> = aisle side / aisle seat</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q2</span>
+    <p class="ask"><ruby>早退<rt>そうたい</rt></ruby>します — English は？ そして 1G / 2G / 3G のどれですか。</p>
+    <p class="gloss">What does it mean, and which verb group?</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>早退<rt>そうたい</rt></ruby>します — to leave early (from work or school) · <strong>3G</strong>（する verb）</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q3</span>
+    <p class="ask">「ねつが ＿＿＿＿ ました。」— Unit 173 のどの<ruby>動詞<rt>どうし</rt></ruby>ですか。</p>
+    <p class="gloss">Which Unit 173 verb fills the gap?</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>熱<rt>ねつ</rt></ruby>が<em class="k"><ruby>下<rt>さ</rt></ruby>がり</em>ました。 — My fever went down.（1G）</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q4</span>
+    <p class="ask">「<ruby>試合<rt>しあい</rt></ruby>＿<ruby>出<rt>で</rt></ruby>ます」「ボーナス＿<ruby>出<rt>で</rt></ruby>ます」— <ruby>助詞<rt>じょし</rt></ruby>を<ruby>入<rt>い</rt></ruby>れてください。</p>
+    <p class="gloss">Fill in the particles.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>試合<rt>しあい</rt></ruby><em class="k">に</em><ruby>出<rt>で</rt></ruby>ます — to take part in the match</p>
+      <p class="ex-ja">ボーナス<em class="k">が</em><ruby>出<rt>で</rt></ruby>ます — a bonus is given</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q5</span>
+    <p class="ask"><ruby>具合<rt>ぐあい</rt></ruby> — よみかたと English は？ <ruby>調子<rt>ちょうし</rt></ruby>とのちがいも<ruby>言<rt>い</rt></ruby>ってください。</p>
+    <p class="gloss">Reading, meaning, and how it differs from 調子.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>具合<rt>ぐあい</rt></ruby> — condition, state (mostly of <strong>health</strong>)</p>
+      <p class="gloss"><ruby>調子<rt>ちょうし</rt></ruby> is form / how well something is running, and also works for machines: パソコンの<ruby>調子<rt>ちょうし</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>い.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q6</span>
+    <p class="ask"><ruby>入管<rt>にゅうかん</rt></ruby> のもとの<ruby>言葉<rt>ことば</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。</p>
+    <p class="gloss">What is 入管 short for?</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>入国管理局<rt>にゅうこくかんりきょく</rt></ruby> — the Immigration Bureau / immigration office</p>
+    </div></details>
+  </div>
+
+  <h3>A2. ぶんぽう（9/14 · 〜ほうがいいです / 〜ので / から）</h3>
+
+  <div class="q"><span class="num">Q6a</span>
+    <p class="ask">「<ruby>熱<rt>ねつ</rt></ruby>があるんです。」→ アドバイスを1<ruby>文<rt>ぶん</rt></ruby>（〜ほうがいいです）。</p>
+    <p class="gloss">Give advice using 〜ほうがいいです.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>会社<rt>かいしゃ</rt></ruby>を<ruby>休<rt>やす</rt></ruby><em class="k2">んだ</em>ほうがいいです。<span class="gloss">You'd better take the day off work.</span></p>
+      <p class="gloss">Positive advice takes the <strong>た形</strong>, not the dictionary form.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q6b</span>
+    <p class="ask">「やせたいです。」→ アドバイスを1<ruby>文<rt>ぶん</rt></ruby>。</p>
+    <p class="gloss">Give advice — this one needs the negative.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja">ケーキを<ruby>食<rt>た</rt></ruby>べ<em class="k">ない</em>ほうがいいです。<span class="gloss">You'd better not eat cake.</span></p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q6c</span>
+    <p class="ask">〜ので で1<ruby>文<rt>ぶん</rt></ruby>にしてください：「ICカードは<ruby>便利<rt>べんり</rt></ruby>です。＋ よく<ruby>使<rt>つか</rt></ruby>います。」</p>
+    <p class="gloss">Join with 〜ので. Careful — this is a な-adjective.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja">ICカードは<ruby>便利<rt>べんり</rt></ruby><em class="k">な</em>ので、よく<ruby>使<rt>つか</rt></ruby>います。</p>
+      <p class="gloss">な-adjectives and nouns insert <strong>な</strong> before ので. ✗ 便利 so ので.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q6d</span>
+    <p class="ask">〜ので で1<ruby>文<rt>ぶん</rt></ruby>に：「<ruby>今日<rt>きょう</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>です。＋ <ruby>出<rt>で</rt></ruby>かけません。」／「<ruby>電車<rt>でんしゃ</rt></ruby>が<ruby>来<rt>き</rt></ruby>ません。＋ <ruby>会社<rt>かいしゃ</rt></ruby>に<ruby>遅<rt>おく</rt></ruby>れます。」</p>
+    <p class="gloss">Two sentences — one noun, one verb.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>今日<rt>きょう</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby><em class="k">な</em>ので、<ruby>出<rt>で</rt></ruby>かけません。<span class="gloss">名詞 ＋ な ＋ ので</span></p>
+      <p class="ex-ja"><ruby>電車<rt>でんしゃ</rt></ruby>が<em class="k"><ruby>来<rt>こ</rt></ruby>ない</em>ので、<ruby>会社<rt>かいしゃ</rt></ruby>に<ruby>遅<rt>おく</rt></ruby>れます。<span class="gloss">動詞は ふつう形そのまま（な は いらない）</span></p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q6e</span>
+    <p class="ask">「から」と「ので」— どちらを <ruby>使<rt>つか</rt></ruby>いますか。なぜですか。<br>① <ruby>先生<rt>せんせい</rt></ruby>に「<ruby>早<rt>はや</rt></ruby>く<ruby>帰<rt>かえ</rt></ruby>ってもいいですか」と <ruby>聞<rt>き</rt></ruby>くとき　② <ruby>友<rt>とも</rt></ruby>だちに「エアコンをつけよう」と <ruby>言<rt>い</rt></ruby>うとき</p>
+    <p class="gloss">Which one, and why?</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja">① <em class="k2">ので</em> — すみません、<ruby>頭<rt>あたま</rt></ruby>が<ruby>痛<rt>いた</rt></ruby>い<strong>ので</strong>、<ruby>早<rt>はや</rt></ruby>く<ruby>帰<rt>かえ</rt></ruby>ってもいいですか。</p>
+      <p class="gloss">お願いするとき・謝るときは ので。「から」より ていねい。</p>
+      <p class="ex-ja">② <em class="k">から</em> — <ruby>暑<rt>あつ</rt></ruby>い<strong>から</strong>、エアコンをつけよう。</p>
+      <p class="gloss">友だち・家族には から でOK。理由を はっきり 言う言い方。</p>
+    </div></details>
+  </div>
+
+  <h3>B. ぶんぽう（9/16 · 〜ても / 〜たら）</h3>
+
+  <div class="q"><span class="num">Q7</span>
+    <p class="ask"><ruby>高<rt>たか</rt></ruby>いです ＋ <ruby>買<rt>か</rt></ruby>います → 〜ても で1<ruby>文<rt>ぶん</rt></ruby>。</p>
+    <p class="gloss">Join with 〜ても.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>高<rt>たか</rt></ruby><em class="k">くても</em>、<ruby>買<rt>か</rt></ruby>います。</p>
+      <p class="gloss">Even if it's expensive, I'll buy it. — い-adj drops い → くても.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q8</span>
+    <p class="ask">ピーマンはおいしくないです ＋ <ruby>食<rt>た</rt></ruby>べます → 〜ても で1<ruby>文<rt>ぶん</rt></ruby>。</p>
+    <p class="gloss">Join with 〜ても.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja">ピーマンはおいしく<em class="k">なくても</em>、<ruby>食<rt>た</rt></ruby>べます。</p>
+      <p class="gloss">Even if green peppers don't taste good, I eat them. — ない → なくても.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q9</span>
+    <p class="ask"><ruby>日曜日<rt>にちようび</rt></ruby>です ＋ <ruby>働<rt>はたら</rt></ruby>きます → 〜ても で1<ruby>文<rt>ぶん</rt></ruby>。</p>
+    <p class="gloss">Join with 〜ても.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>日曜日<rt>にちようび</rt></ruby><em class="k">でも</em>、<ruby>働<rt>はたら</rt></ruby>きます。</p>
+      <p class="gloss">Even on Sunday, I work. — Nouns take でも, not くても.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q10</span>
+    <p class="ask">「<ruby>携帯<rt>けいたい</rt></ruby>で<ruby>調<rt>しら</rt></ruby>べ＿＿、わかります。」「<ruby>携帯<rt>けいたい</rt></ruby>で<ruby>調<rt>しら</rt></ruby>べ＿＿、わかりません。」</p>
+    <p class="gloss">Fill both gaps — one takes たら, one takes ても.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>携帯<rt>けいたい</rt></ruby>で<ruby>調<rt>しら</rt></ruby>べ<em class="k2">たら</em>、わかります。<span class="gloss">If I look it up, I'll understand.（expected ○）</span></p>
+      <p class="ex-ja"><ruby>携帯<rt>けいたい</rt></ruby>で<ruby>調<rt>しら</rt></ruby>べ<em class="k">ても</em>、わかりません。<span class="gloss">Even if I look it up, I don't understand.（contrary ×）</span></p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q11</span>
+    <p class="ask">「<ruby>一週間<rt>いっしゅうかん</rt></ruby><ruby>休<rt>やす</rt></ruby>みが<strong>あったら</strong><ruby>旅行<rt>りょこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きたい」と「<ruby>一週間<rt>いっしゅうかん</rt></ruby><ruby>休<rt>やす</rt></ruby>みが<strong>なくても</strong><ruby>旅行<rt>りょこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きたい」— <ruby>意味<rt>いみ</rt></ruby>のちがいは？</p>
+    <p class="gloss">Explain the difference in meaning.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="gloss"><strong>あったら</strong> — the trip depends on getting the week off. No week off, no trip. (condition → expected result)</p>
+      <p class="gloss"><strong>なくても</strong> — the trip happens regardless. Even a short holiday won't stop me. (contrary to expectation)</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q12</span>
+    <p class="ask"><ruby>自分<rt>じぶん</rt></ruby>のことで1<ruby>文<rt>ぶん</rt></ruby>：「<ruby>時間<rt>じかん</rt></ruby>があっても、＿＿＿＿＿＿。＿＿＿＿＿＿からです。」</p>
+    <p class="gloss">Make it about yourself, then give the reason with 〜からです.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>時間<rt>じかん</rt></ruby>があっても、<ruby>掃除<rt>そうじ</rt></ruby>をしません。<ruby>掃除<rt>そうじ</rt></ruby>が<ruby>嫌<rt>きら</rt></ruby>いだからです。</p>
+      <p class="gloss">Even if I have time, I don't clean — because I hate cleaning. (Any true sentence with this shape is correct.)</p>
+    </div></details>
+  </div>
+
+  <h3>C. かんじ（9/18）</h3>
+
+  <div class="q"><span class="num">Q13</span>
+    <p class="ask">各駅停車 — よみかたと<ruby>意味<rt>いみ</rt></ruby>は？</p>
+    <p class="gloss">Reading and meaning.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>各駅停車<rt>かくえきていしゃ</rt></ruby> — a local train that stops at every station.</p>
+      <p class="gloss">Faster: <ruby>急行<rt>きゅうこう</rt></ruby> (express) → <ruby>特急<rt>とっきゅう</rt></ruby> (limited express).</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q14</span>
+    <p class="ask">急ぎます・急ブレーキ・急行 — 3つのよみかたを<ruby>書<rt>か</rt></ruby>いてください。</p>
+    <p class="gloss">Give all three readings of 急.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>急<rt>いそ</rt></ruby>ぎます — to hurry ／ <ruby>急<rt>きゅう</rt></ruby>ブレーキ — sudden braking ／ <ruby>急行<rt>きゅうこう</rt></ruby> — express train</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q15</span>
+    <p class="ask">道 の くんよみ と おんよみ は？ そして 帰り道・道路・北海道 をよんでください。</p>
+    <p class="gloss">Kun and on readings, then read the three compounds.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja">くんよみ <strong>みち</strong> ／ おんよみ <strong>ドウ・トウ</strong></p>
+      <p class="ex-ja"><ruby>帰<rt>かえ</rt></ruby>り<ruby>道<rt>みち</rt></ruby> the way home ／ <ruby>道路<rt>どうろ</rt></ruby> road ／ <ruby>北海道<rt>ほっかいどう</rt></ruby> Hokkaido</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q16</span>
+    <p class="ask">ひらがな → <ruby>漢字<rt>かんじ</rt></ruby>：「でんしゃを おりると あめでした。いそいでいたので タクシーに のりました。」</p>
+    <p class="gloss">Rewrite using the kanji from this week.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><mark class="n">電車</mark>を おりると <mark class="n">雨</mark>でした。<mark class="v">急</mark>いでいたので タクシーに <mark class="v">乗</mark>りました。</p>
+      <p class="gloss">When I got off the train it was raining. I was in a hurry, so I took a taxi.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q17</span>
+    <p class="ask">乗車券・乗り物・乗車 — よみかたは？</p>
+    <p class="gloss">Read the three 乗 compounds.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>乗車券<rt>じょうしゃけん</rt></ruby> ticket ／ <ruby>乗<rt>の</rt></ruby>り<ruby>物<rt>もの</rt></ruby> vehicle ／ <ruby>乗車<rt>じょうしゃ</rt></ruby> boarding</p>
+      <p class="gloss">Compound = ジョウ, standalone verb = の-る.</p>
+    </div></details>
+  </div>
+
+  <h3>D. ぶんぽう（9/18 · 〜すぎ / 〜かもしれません）</h3>
+
+  <div class="q"><span class="num">Q18</span>
+    <p class="ask">〜すぎ の3つのパターンを、<ruby>例<rt>れい</rt></ruby>といっしょに<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>書<rt>か</rt></ruby>いてください。</p>
+    <p class="gloss">Name all three patterns with one example each.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja">① 〔Vます形〕＋すぎ　→　<ruby>飲<rt>の</rt></ruby>みすぎです</p>
+      <p class="ex-ja">② 〔N〕の＋〔Vます形〕＋すぎ　→　お<ruby>酒<rt>さけ</rt></ruby>の<ruby>飲<rt>の</rt></ruby>みすぎです</p>
+      <p class="ex-ja">③ 〔A語幹〕＋すぎます　→　この<ruby>店<rt>みせ</rt></ruby>は<ruby>高<rt>たか</rt></ruby>すぎます</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q19</span>
+    <p class="ask">〜すぎ でかきなおす：「このズボンは<ruby>小<rt>ちい</rt></ruby>さいです。<ruby>入<rt>はい</rt></ruby>りません。」</p>
+    <p class="gloss">Rewrite with 〜すぎ.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja">このズボンは<ruby>小<rt>ちい</rt></ruby><em class="k">さすぎます</em>。<ruby>入<rt>はい</rt></ruby>りません。</p>
+      <p class="gloss">小さい → drop い → 小さすぎます.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q20</span>
+    <p class="ask">「スマホを<ruby>見<rt>み</rt></ruby>ます」→ ②のパターンで：「スマホ＿＿＿＿＿ですよ。」</p>
+    <p class="gloss">Convert to the noun + の pattern.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja">スマホ<em class="k">の<ruby>見<rt>み</rt></ruby>すぎ</em>ですよ。</p>
+      <p class="gloss">You look at your phone too much.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q21</span>
+    <p class="ask">〜かもしれません で2<ruby>文<rt>ぶん</rt></ruby>：①<ruby>動詞<rt>どうし</rt></ruby>、②<ruby>名詞<rt>めいし</rt></ruby>。</p>
+    <p class="gloss">One sentence with a verb, one with a noun.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja">① <ruby>明日<rt>あした</rt></ruby><ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>る<em class="k">かもしれません</em>。<span class="gloss">It might rain tomorrow.</span></p>
+      <p class="ex-ja">② <ruby>明日<rt>あした</rt></ruby>の<ruby>授業<rt>じゅぎょう</rt></ruby>はオンライン<em class="k">かもしれません</em>。<span class="gloss">Tomorrow's class might be online.</span></p>
+      <p class="gloss">Noun attaches directly — ✕ オンラインだかもしれません.</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q22</span>
+    <p class="ask">「<ruby>簡単<rt>かんたん</rt></ruby>な」「<ruby>辛<rt>から</rt></ruby>い」「いい」を 〜すぎ の<ruby>形<rt>かたち</rt></ruby>にしてください。</p>
+    <p class="gloss">Put all three into the 〜すぎ form.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>簡単<rt>かんたん</rt></ruby>な → <ruby>簡単<rt>かんたん</rt></ruby>すぎます（drop な）</p>
+      <p class="ex-ja"><ruby>辛<rt>から</rt></ruby>い → <ruby>辛<rt>から</rt></ruby>すぎます（drop い）</p>
+      <p class="ex-ja">いい → <strong>よすぎます</strong>（irregular — not いすぎます）</p>
+    </div></details>
+  </div>
+
+  <h3>E. ことば（9/18 · U174 / 175 / 178）</h3>
+
+  <div class="q"><span class="num">Q23</span>
+    <p class="ask">English は？ <ruby>渋滞<rt>じゅうたい</rt></ruby>します ／ <ruby>顔色<rt>かおいろ</rt></ruby> ／ <ruby>平気<rt>へいき</rt></ruby>な ／ <ruby>待<rt>ま</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせ ／ <ruby>仲間<rt>なかま</rt></ruby></p>
+    <p class="gloss">Give the English for all five.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="gloss"><span class="ja"><ruby>渋滞<rt>じゅうたい</rt></ruby>します</span> to be jammed / congested · <span class="ja"><ruby>顔色<rt>かおいろ</rt></ruby></span> complexion, the look on your face · <span class="ja"><ruby>平気<rt>へいき</rt></ruby>な</span> all right, not bothered · <span class="ja"><ruby>待<rt>ま</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせ</span> an arranged meeting · <span class="ja"><ruby>仲間<rt>なかま</rt></ruby></span> friends, mates</p>
+    </div></details>
+  </div>
+
+  <div class="q"><span class="num">Q24</span>
+    <p class="ask">「さむけ」を<ruby>漢字<rt>かんじ</rt></ruby>で<ruby>書<rt>か</rt></ruby>いて、<ruby>授業<rt>じゅぎょう</rt></ruby>で<ruby>習<rt>なら</rt></ruby>った<ruby>言<rt>い</rt></ruby>い<ruby>方<rt>かた</rt></ruby>で<ruby>使<rt>つか</rt></ruby>ってください。</p>
+    <p class="gloss">Write it in kanji and use it in the set phrase from class.</p>
+    <details class="ans"><summary>答えを見る · Show answer</summary><div class="ansbody">
+      <p class="ex-ja"><ruby>寒気<rt>さむけ</rt></ruby> — a chill ／ <ruby>寒気<rt>さむけ</rt></ruby><em class="k">がします</em> — to feel a chill（3G）</p>
+      <p class="ex-ja"><ruby>寒気<rt>さむけ</rt></ruby>がします。<ruby>風邪<rt>かぜ</rt></ruby>かもしれません。<span class="gloss">I feel a chill. It might be a cold.</span></p>
+    </div></details>
+  </div>
+</section>
+
+<div class="pager" data-pager>
+  <button type="button" class="pg-prev" aria-label="Previous">
+    <span aria-hidden="true">←</span><span class="txt">前へ</span>
+  </button>
+  <div class="pg-mid"><span class="pg-pos"></span><span class="pg-label"></span></div>
+  <button type="button" class="pg-next" aria-label="Next">
+    <span class="txt">つぎへ</span><span aria-hidden="true">→</span>
+  </button>
+</div>
+
+<footer>
+  <div style="font-family:var(--ja);font-size:17px;font-weight:600">つぎの じゅぎょうの おしらせ</div>
+  <div class="gloss">Next class information</div>
+  <div class="nx">
+    <div><span class="k">日時 · Date &amp; time</span><span class="v">2026年9月25日（金）10:00–12:00</span></div>
+    <div><span class="k">学習範囲 · Lesson range</span><span class="v">p.16 – p.18</span></div>
+    <div><span class="k">Can-Do</span><span class="v"><ruby>柔<rt>やわ</rt></ruby>らかい<ruby>表現<rt>ひょうげん</rt></ruby>で<ruby>指示<rt>しじ</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いたり<ruby>伝<rt>つた</rt></ruby>えたりすることができる<div class="gloss">Listen to and give instructions using gentle language.</div></span></div>
+    <div><span class="k">例文 · Example</span><span class="v"><ruby>毎日<rt>まいにち</rt></ruby>、<ruby>日本語<rt>にほんご</rt></ruby>で<ruby>日記<rt>にっき</rt></ruby>を<ruby>書<rt>か</rt></ruby>くようにしています。<div class="gloss">I make a point of writing a diary in Japanese every day.</div></span></div>
+  </div>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var b=document.body;
+  function load(k,d){try{var v=localStorage.getItem(k);return v===null?d:v==="1";}catch(e){return d;}}
+  function save(k,v){try{localStorage.setItem(k,v?"1":"0");}catch(e){}}
+  function wire(id,key,cls){
+    var btn=document.getElementById(id);
+    var on=load(key,true);
+    function apply(){b.classList.toggle(cls,!on);btn.setAttribute("aria-pressed",on?"true":"false");}
+    apply();
+    btn.addEventListener("click",function(){on=!on;apply();save(key,on);});
+  }
+  wire("tgFuri","tcj.furigana","fg-off");
+  wire("tgEn","tcj.english","en-off");
+})();
+
+/* Build the contents menu from the section and sub-section headings. */
+(function(){
+  var list=document.getElementById("tocList"), cnt=document.getElementById("tocCnt");
+  if(!list)return;
+  var seen=0;
+  document.querySelectorAll("main section").forEach(function(sec){
+    var h2=sec.querySelector(".sec-head h2"); if(!h2)return;
+    if(!sec.id)sec.id="s"+(++seen);
+    var date=sec.querySelector(".sec-head .date");
+    list.insertAdjacentHTML("beforeend",
+      '<li class="lv2"><a href="#'+sec.id+'">'+(date?date.textContent.trim()+"　":"")+h2.textContent.trim()+'</a></li>');
+    sec.querySelectorAll("h3").forEach(function(h3){
+      if(!h3.id)h3.id="h"+(++seen);
+      var t=h3.cloneNode(true);
+      var en=t.querySelector(".en-h"); if(en)en.remove();
+      list.insertAdjacentHTML("beforeend",
+        '<li><a href="#'+h3.id+'">'+t.textContent.trim()+'</a></li>');
+    });
+  });
+  cnt.textContent=list.children.length+" sections";
+})();
+
+/* One day/section "page" visible at a time — Prev/Next instead of an
+   endless scroll through every day. Sections start `hidden` in the HTML
+   (except the first) so there's no flash of the whole week before this
+   runs; the hash still deep-links to any day or sub-heading. */
+(function(){
+  var PAGES=[
+    {ids:["d14"],   label:"9月14日"},
+    {ids:["d16"],   label:"9月16日"},
+    {ids:["d18"],   label:"9月18日"},
+    {ids:["matome","quiz"], label:"まとめ・テスト"}
+  ];
+  var idToPage={};
+  PAGES.forEach(function(p,i){p.ids.forEach(function(id){idToPage[id]=i;});});
+
+  var current=0;
+
+  function pageIndexFor(hashId){
+    if(!hashId)return -1;
+    if(idToPage.hasOwnProperty(hashId))return idToPage[hashId];
+    var el=document.getElementById(hashId);
+    if(!el)return -1;
+    var sec=el.closest("section[id]");
+    return sec&&idToPage.hasOwnProperty(sec.id)?idToPage[sec.id]:-1;
+  }
+
+  function showPage(i,targetId){
+    if(i<0)i=0; if(i>=PAGES.length)i=PAGES.length-1;
+    current=i;
+    PAGES.forEach(function(p,pi){
+      p.ids.forEach(function(id){
+        var el=document.getElementById(id);
+        if(el)el.hidden=(pi!==i);
+      });
+    });
+    document.querySelectorAll(".rail li").forEach(function(li){
+      var a=li.querySelector("a"); if(!a)return;
+      var idx=pageIndexFor(a.getAttribute("href").replace("#",""));
+      li.classList.toggle("current",idx===current);
+    });
+    document.querySelectorAll("[data-pager]").forEach(function(bar){
+      bar.querySelector(".pg-pos").textContent=(current+1)+" / "+PAGES.length;
+      bar.querySelector(".pg-label").textContent=PAGES[current].label;
+      bar.querySelector(".pg-prev").disabled=(current===0);
+      bar.querySelector(".pg-next").disabled=(current===PAGES.length-1);
+    });
+    var target=targetId?document.getElementById(targetId):null;
+    (target||document.querySelector("main")).scrollIntoView({block:"start"});
+  }
+
+  function goTo(i){
+    var hash=PAGES[i].ids[0];
+    if(location.hash.slice(1)===hash)showPage(i);
+    else location.hash=hash;
+  }
+
+  window.addEventListener("hashchange",function(){
+    var id=location.hash.slice(1);
+    var idx=pageIndexFor(id);
+    if(idx>-1)showPage(idx,id);
+  });
+
+  document.querySelectorAll("[data-pager] .pg-prev").forEach(function(b){
+    b.addEventListener("click",function(){if(current>0)goTo(current-1);});
+  });
+  document.querySelectorAll("[data-pager] .pg-next").forEach(function(b){
+    b.addEventListener("click",function(){if(current<PAGES.length-1)goTo(current+1);});
+  });
+
+  var initId=location.hash.slice(1);
+  var initIdx=pageIndexFor(initId);
+  showPage(initIdx>-1?initIdx:0, initIdx>-1?initId:null);
+})();
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
