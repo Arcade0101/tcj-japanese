@@ -53,6 +53,13 @@
 @media (max-width:640px){
   .episodes .ep{grid-template-columns:28px 1fr auto}
 }
+
+.epnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 0 0}
+.epnav a,.epnav .side{font-family:var(--en);font-size:13px;color:var(--muted);text-decoration:none;
+  display:flex;align-items:center;gap:5px;padding:6px 2px}
+.epnav a:hover{color:var(--indigo)}
+.epnav .side.empty{visibility:hidden}
+.epnav .center{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.06em}
 </style>
 </head>
 <body>
@@ -85,6 +92,11 @@
     <p class="sub">Benが、ゆきとはるの会話を紹介します。スキットは日本語だけ。
     <a href="review.html" style="color:var(--indigo)">復習シート</a> ·
     <a href="quiz.html" style="color:var(--indigo)">たしかめテスト</a> · <a href="../cast.html" style="color:var(--indigo)">キャスト</a></p>
+    <nav class="epnav" aria-label="Episode navigation">
+      <span class="side empty">←</span>
+      <span class="center">第1回 / 2</span>
+      <a class="side" href="../2026-09-16/podcast.html">第2回 →</a>
+    </nav>
     <div class="rule"></div>
   </div>
 

@@ -53,6 +53,13 @@
 @media (max-width:640px){
   .episodes .ep{grid-template-columns:28px 1fr auto}
 }
+
+.epnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 0 0}
+.epnav a,.epnav .side{font-family:var(--en);font-size:13px;color:var(--muted);text-decoration:none;
+  display:flex;align-items:center;gap:5px;padding:6px 2px}
+.epnav a:hover{color:var(--indigo)}
+.epnav .side.empty{visibility:hidden}
+.epnav .center{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.06em}
 </style>
 </head>
 <body>
@@ -84,6 +91,11 @@
     <h1>にほんごノート 第2回</h1>
     <p class="sub">Benが、ゆきとはるの会話を紹介します。スキットは日本語だけ。
     <a href="../cast.html" style="color:var(--indigo)">キャスト</a></p>
+    <nav class="epnav" aria-label="Episode navigation">
+      <a class="side" href="../2026-09-14/podcast.html">← 第1回</a>
+      <span class="center">第2回 / 2</span>
+      <span class="side empty">→</span>
+    </nav>
     <div class="rule"></div>
   </div>
 
