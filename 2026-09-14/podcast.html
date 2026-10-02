@@ -35,6 +35,24 @@
   .l .who{padding-top:0}
   .player{position:static}
 }
+
+.episodes{margin:14px 0 0;display:flex;flex-direction:column;gap:6px}
+.episodes .label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 2px}
+.episodes .ep{display:grid;grid-template-columns:34px 1fr auto;gap:3px 12px;align-items:start;
+  padding:9px 12px;border:1px solid var(--line);border-radius:4px;text-decoration:none;color:inherit}
+.episodes a.ep:hover{border-color:var(--indigo);background:var(--indigo-soft)}
+.episodes .ep.current{border-left:3px solid var(--vermilion);background:var(--surface)}
+.episodes .ep .num{font-family:var(--mono);font-size:12px;color:var(--faint);padding-top:1px}
+.episodes .ep .title{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--indigo);grid-column:2/3}
+.episodes .ep .syn{font-family:var(--ja);font-size:13.5px;color:var(--muted);grid-column:2/3;line-height:1.6}
+.episodes .ep .syn .who{font-family:var(--en);font-size:10.5px;color:var(--faint);margin-right:4px}
+.episodes .ep .dur{font-family:var(--mono);font-size:11px;color:var(--faint);grid-column:3/4;grid-row:1/3;
+  align-self:center;white-space:nowrap}
+@media (max-width:640px){
+  .episodes .ep{grid-template-columns:28px 1fr auto}
+}
 </style>
 </head>
 <body>
@@ -80,6 +98,22 @@
     </div>
     <div class="meta"><span>2分19秒</span><span>Ben · はる · ゆき</span></div>
   </div>
+
+  <nav class="episodes" aria-label="全エピソード">
+    <p class="label">全エピソード <small>ALL EPISODES</small></p>
+    <span class="ep current" aria-current="page">
+      <span class="num">#1</span>
+      <span class="title">〜ので</span>
+      <span class="syn"><span class="who">ゆき</span>「無理しないでくださいね。」</span>
+      <span class="dur">2:19</span>
+    </span>
+    <a class="ep" href="../2026-09-16/podcast.html">
+      <span class="num">#2</span>
+      <span class="title">〜ても</span>
+      <span class="syn"><span class="who">はる</span>「アメリカに行っても、無理しないでくださいね。」</span>
+      <span class="dur">2:25</span>
+    </a>
+  </nav>
 
 <section class="seg">
 <h2>1. オープニング</h2>
